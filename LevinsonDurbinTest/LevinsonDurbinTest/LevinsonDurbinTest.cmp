@@ -1,0 +1,7 @@
+	component LevinsonDurbinTest is
+		port (
+			clk_clk  : in  std_logic                    := 'X'; -- clk
+			leds_led : out std_logic_vector(7 downto 0)         -- led
+		);
+	end component LevinsonDurbinTest;
+

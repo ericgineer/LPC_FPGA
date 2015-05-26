@@ -1,0 +1,23 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst LevinsonDurbinTest.master_0.p2b_adapter -pg 1
+preplace inst LevinsonDurbinTest.master_0.clk_rst -pg 1
+preplace inst LevinsonDurbinTest -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst LevinsonDurbinTest.master_0.p2b -pg 1
+preplace inst LevinsonDurbinTest.master_0.b2p -pg 1
+preplace inst LevinsonDurbinTest.master_0 -pg 1 -lvl 2 -y 50
+preplace inst LevinsonDurbinTest.master_0.transacto -pg 1
+preplace inst LevinsonDurbinTest.master_0.jtag_phy_embedded_in_jtag_master -pg 1
+preplace inst LevinsonDurbinTest.master_0.b2p_adapter -pg 1
+preplace inst LevinsonDurbinTest.LevinsonDurbin_0 -pg 1 -lvl 3 -y 110
+preplace inst LevinsonDurbinTest.master_0.timing_adt -pg 1
+preplace inst LevinsonDurbinTest.master_0.clk_src -pg 1
+preplace inst LevinsonDurbinTest.clk_0 -pg 1 -lvl 1 -y 150
+preplace inst LevinsonDurbinTest.master_0.fifo -pg 1
+preplace netloc EXPORT<net_container>LevinsonDurbinTest</net_container>(SLAVE)LevinsonDurbinTest.leds,(SLAVE)LevinsonDurbin_0.LEDs) 1 0 3 NJ 240 NJ 240 NJ
+preplace netloc POINT_TO_POINT<net_container>LevinsonDurbinTest</net_container>(MASTER)master_0.master,(SLAVE)LevinsonDurbin_0.avalon_slave_0) 1 2 1 590
+preplace netloc EXPORT<net_container>LevinsonDurbinTest</net_container>(SLAVE)LevinsonDurbinTest.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>LevinsonDurbinTest</net_container>(SLAVE)clk_0.clk_in_reset,(MASTER)master_0.master_reset,(SLAVE)master_0.clk_reset,(SLAVE)LevinsonDurbin_0.reset_sink) 1 0 3 70 220 290 140 550
+preplace netloc FAN_OUT<net_container>LevinsonDurbinTest</net_container>(MASTER)clk_0.clk,(SLAVE)master_0.clk,(SLAVE)LevinsonDurbin_0.clock) 1 1 2 270 160 N
+levelinfo -pg 1 0 40 780
+levelinfo -hier LevinsonDurbinTest 50 100 390 640 770

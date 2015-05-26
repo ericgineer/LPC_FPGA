@@ -1,0 +1,215 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR
+vcoeff_update
+Z1 !s110 1432608525
+!i10b 1
+!s100 dK2>ZCGV?oP:;dT4OL8>K0
+I_><UFohJS1^OG;cKhY3b40
+Z2 V`JN@9S9cnhjKRR_L]QIcM3
+R0
+w1430798610
+8C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/coeff_update.v
+FC:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/coeff_update.v
+L0 3
+Z3 OV;L;10.3c;59
+r1
+!s85 0
+31
+!s108 1432608525.034000
+!s107 C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/coeff_update.v|
+!s90 -reportprogress|300|-work|work|C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/coeff_update.v|
+!i113 1
+Z4 o-work work
+vcorrelation
+R1
+!i10b 1
+!s100 ICV1:hQ]eQidBF@A1C=3h2
+IHH=3=EKzKS<[a6F5_8F=i1
+R2
+R0
+w1428632135
+8C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/correlation.v
+FC:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/correlation.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1432608525.129000
+!s107 C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/correlation.v|
+!s90 -reportprogress|300|-work|work|C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/correlation.v|
+!i113 1
+R4
+vdivide
+R1
+!i10b 1
+!s100 4@UPK;>UZG^TX4CHFXJd[0
+IJX1TZ@f6IDiI_e5Bz1fKQ1
+R2
+R0
+w1430697251
+8C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/divide.v
+FC:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/divide.v
+L0 5
+R3
+r1
+!s85 0
+31
+!s108 1432608525.214000
+!s107 C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/divide.v|
+!s90 -reportprogress|300|-work|work|C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/divide.v|
+!i113 1
+R4
+vdivide_stage
+R1
+!i10b 1
+!s100 LJ74N^h9f?C7;i<^ZbQQm2
+I3]5A]f[50I1>UZ0adDd^e3
+R2
+R0
+w1431322319
+8C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/divide_stage.v
+FC:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/divide_stage.v
+L0 4
+R3
+r1
+!s85 0
+31
+!s108 1432608525.300000
+!s107 C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/divide_stage.v|
+!s90 -reportprogress|300|-work|work|C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/divide_stage.v|
+!i113 1
+R4
+vLDR
+R1
+!i10b 1
+!s100 :8Pd_86R6LA<f]:BWG0Ca1
+IHTWVcfIoz4gEGE5ROf48g2
+R2
+R0
+w1431321790
+8C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDR.v
+FC:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDR.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1432608525.383000
+!s107 C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDR.v|
+!s90 -reportprogress|300|-work|work|C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDR.v|
+!i113 1
+R4
+n@l@d@r
+vLDR_tb
+R1
+!i10b 1
+!s100 ?UHk<?WAARZjk8CAOoQ1;3
+IkhVCJACU2ClcRzjldiS;z3
+R2
+R0
+w1431320163
+8C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDR_tb.v
+FC:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDR_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1432608525.499000
+!s107 C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDR_tb.v|
+!s90 -reportprogress|30|-work|work|C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDR_tb.v|
+!i113 1
+R4
+n@l@d@r_tb
+vLDRavalonWrapper
+Z5 !s110 1432612966
+!i10b 1
+!s100 V_O8H91SA3>?55b<=9im03
+IWoVzoiGUmOEZhbT?OK]0n3
+R2
+R0
+w1432612437
+8C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDRavalonWrapper.v
+FC:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDRavalonWrapper.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1432612966.388000
+!s107 C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDRavalonWrapper.v|
+!s90 -reportprogress|300|-work|work|C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDRavalonWrapper.v|
+!i113 1
+R4
+n@l@d@ravalon@wrapper
+vLDRavalonWrapper_tb
+R5
+!i10b 1
+!s100 VUX`K]6hfJ7Y?F6HYo2dM1
+I7WeNl@3:z8zeTiz67][Ia3
+R2
+R0
+w1432612899
+8C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDRavalonWrapper_tb.v
+FC:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDRavalonWrapper_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1432612966.497000
+!s107 C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDRavalonWrapper_tb.v|
+!s90 -reportprogress|300|-work|work|C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/LDRavalonWrapper_tb.v|
+!i113 1
+R4
+n@l@d@ravalon@wrapper_tb
+vNumDen
+R1
+!i10b 1
+!s100 mPP8Faml@:JzE1BU`Le5l0
+Ia=fI@A7YTQmiM_jL44GbV1
+R2
+R0
+w1430704461
+8C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/NumDen.v
+FC:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/NumDen.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1432608525.764000
+!s107 C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/NumDen.v|
+!s90 -reportprogress|30|-work|work|C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/NumDen.v|
+!i113 1
+R4
+n@num@den
+vreflect_coeff
+R1
+!i10b 1
+!s100 8G``NALlFH]86SGFL9E4z0
+I]HlNf`lJmZhcXaDm[@W_O2
+R2
+R0
+w1431320111
+8C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/reflect_coeff.v
+FC:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/reflect_coeff.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1432608525.844000
+!s107 C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/reflect_coeff.v|
+!s90 -reportprogress|30|-work|work|C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LDR/reflect_coeff.v|
+!i113 1
+R4
