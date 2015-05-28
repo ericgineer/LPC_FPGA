@@ -1,0 +1,17 @@
+======================================
+5/26/15
+======================================
+1) Fixed Avalon memory mapped interface addressing
+    issues. 
+
+======================================
+5/27/15
+======================================
+1) Recorded logic and DSP block utilization for different
+    multiplier configurations
+2) Added a counter that counts the number of clock cycles
+   used for the levinson-durbin algorithm
+3) Added the counter to a register in the Avalon-MM 
+    interface
+4) Added a file of expected output values for the 
+    levinson-durbin recursion algorithm.

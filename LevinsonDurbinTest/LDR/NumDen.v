@@ -36,8 +36,8 @@ module NumDen(input wire signed [15:0] R_num0,
 			  input wire 			 v,
 			  input wire			 clk,
 			  input wire			 rst,
-			  output reg signed[31:0] Rn,
-			  output reg signed[31:0] Rd,
+			  output reg signed[31:0] Rn /* synthesis multstyle = "logic" */,
+			  output reg signed[31:0] Rd /* synthesis multstyle = "logic" */,
 			  output reg 			vout);
 			  
 	  always @(posedge clk)

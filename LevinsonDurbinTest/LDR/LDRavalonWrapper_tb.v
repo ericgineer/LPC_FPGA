@@ -65,7 +65,10 @@ module LDRavalonWrapper_tb;
 		readstuff(16'h15); // A7
 		readstuff(16'h16); // A8
 		readstuff(16'h17); // A9
-		readstuff(16'h18); // A10
+		readstuff(16'h18); // A10	
+		repeat(5) @(posedge clk);
+		readstuff(16'h19); // counter
+		repeat(3) @(posedge clk);
 		$finish;
 	end
 	

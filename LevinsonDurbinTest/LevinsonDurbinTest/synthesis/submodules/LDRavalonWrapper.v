@@ -15,7 +15,7 @@ module LDRavalonWrapper(input wire clk,
 		reg reset, start;
 		wire done;
 		
-		reg [15:0] mem_null;
+		reg [15:0] mem_null, counter;
 		
 		reg [1:0] state;
 		parameter S0 = 0, S1 = 1, S2 = 2;
@@ -74,6 +74,17 @@ module LDRavalonWrapper(input wire clk,
 		// 0x2C: 0x16: A8 (read only)
 		// 0x3E: 0x17: A9 (read only)
 		// 0x30: 0x18: A10 (read only)
+		// 0x32: 0x19: clock counter
+		
+		always @(posedge clk)
+		begin
+			if (state == S1)
+				counter <= counter + 1;
+			else if (reset)
+				counter <= 16'b0;
+			else
+				counter <= counter;
+		end
 		
 		always @(posedge clk)
 		begin
@@ -105,6 +116,7 @@ module LDRavalonWrapper(input wire clk,
 					16'h16: readdata <= A8;
 					16'h17: readdata <= A9;
 					16'h18: readdata <= A10;
+					16'h19: readdata <= counter;
 					default: readdata <= 16'hbad;
 				endcase
 			end else

@@ -1,0 +1,13 @@
+Using hardware multipliers except in NumDen
+=============================================
+Clock cycles: 1783
+Total registers: 3907
+Logic utilization (in ALMs): 4880 (52%)
+Total DSP Blocks: 20 (80%)
+
+Using only logic multipliers
+============================================
+Clock cycles: 1783
+Total registers: 3918
+Logic utilization (in ALMs): 6049 (64%)
+Total DSP Blocks: 0
