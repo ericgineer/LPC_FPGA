@@ -1,5 +1,5 @@
 EDA Netlist Writer report for top_LevinsonDurbinTest
-Wed May 27 20:59:46 2015
+Thu May 28 19:48:45 2015
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Wed May 27 20:59:46 2015 ;
+; EDA Netlist Writer Status ; Successful - Thu May 28 19:48:45 2015 ;
 ; Revision Name             ; top_LevinsonDurbinTest                ;
 ; Top-level Entity Name     ; top_LevinsonDurbinTest                ;
 ; Family                    ; Cyclone V                             ;
@@ -82,13 +82,13 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
-    Info: Processing started: Wed May 27 20:59:39 2015
+    Info: Processing started: Thu May 28 19:48:37 2015
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off LevinsonDurbinTest -c top_LevinsonDurbinTest
 Warning (10905): Generated the EDA functional simulation files although EDA timing simulation option is chosen.
 Info (204019): Generated file top_LevinsonDurbinTest.vo in folder "C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 770 megabytes
-    Info: Processing ended: Wed May 27 20:59:47 2015
+    Info: Peak virtual memory: 769 megabytes
+    Info: Processing ended: Thu May 28 19:48:45 2015
     Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:08
 

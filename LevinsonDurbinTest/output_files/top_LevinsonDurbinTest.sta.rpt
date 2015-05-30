@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for top_LevinsonDurbinTest
-Wed May 27 20:59:36 2015
+Thu May 28 19:48:35 2015
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -149,8 +149,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-----------------------------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                                               ; Status ; Read at                  ;
 +-----------------------------------------------------------------------------+--------+--------------------------+
-; LevinsonDurbinTest/synthesis/submodules/altera_reset_controller.sdc         ; OK     ; Wed May 27 20:58:36 2015 ;
-; LevinsonDurbinTest/synthesis/submodules/altera_avalon_st_jtag_interface.sdc ; OK     ; Wed May 27 20:58:36 2015 ;
+; LevinsonDurbinTest/synthesis/submodules/altera_reset_controller.sdc         ; OK     ; Thu May 28 19:47:34 2015 ;
+; LevinsonDurbinTest/synthesis/submodules/altera_avalon_st_jtag_interface.sdc ; OK     ; Thu May 28 19:47:34 2015 ;
 +-----------------------------------------------------------------------------+--------+--------------------------+
 
 
@@ -1654,7 +1654,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
-    Info: Processing started: Wed May 27 20:58:29 2015
+    Info: Processing started: Thu May 28 19:47:27 2015
 Info: Command: quartus_sta LevinsonDurbinTest -c top_LevinsonDurbinTest
 Info: qsta_default_script.tcl version: #3
 Warning (20028): Parallel compilation is not licensed and has been disabled
@@ -1835,9 +1835,9 @@ Info (332114): Report Metastability: Found 5 synchronizer chains.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 1172 megabytes
-    Info: Processing ended: Wed May 27 20:59:36 2015
-    Info: Elapsed time: 00:01:07
+    Info: Peak virtual memory: 1173 megabytes
+    Info: Processing ended: Thu May 28 19:48:35 2015
+    Info: Elapsed time: 00:01:08
     Info: Total CPU time (on all processors): 00:01:07
 
 

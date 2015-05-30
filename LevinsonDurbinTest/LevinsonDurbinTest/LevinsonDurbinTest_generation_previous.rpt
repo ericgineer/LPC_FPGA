@@ -8,10 +8,14 @@ Progress: Adding clk_0 [clock_source 14.1]
 Progress: Parameterizing module clk_0
 Progress: Adding master_0 [altera_jtag_avalon_master 14.1]
 Progress: Parameterizing module master_0
+Progress: Adding pll_0 [altera_pll 14.1]
+Progress: Parameterizing module pll_0
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
+Info: LevinsonDurbinTest.pll_0: The legal reference clock frequency is 5.0 MHz..650.0 MHz
+Info: LevinsonDurbinTest.pll_0: Able to implement PLL with user settings
 Info: ip-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
@@ -25,10 +29,14 @@ Progress: Adding clk_0 [clock_source 14.1]
 Progress: Parameterizing module clk_0
 Progress: Adding master_0 [altera_jtag_avalon_master 14.1]
 Progress: Parameterizing module master_0
+Progress: Adding pll_0 [altera_pll 14.1]
+Progress: Parameterizing module pll_0
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
+Info: LevinsonDurbinTest.pll_0: The legal reference clock frequency is 5.0 MHz..650.0 MHz
+Info: LevinsonDurbinTest.pll_0: Able to implement PLL with user settings
 Info: LevinsonDurbinTest: Generating LevinsonDurbinTest "LevinsonDurbinTest" for QUARTUS_SYNTH
 Info: Interconnect is inserted between master master_0.master and slave LevinsonDurbin_0.avalon_slave_0 because the master has address signal 32 bit wide, but the slave is 16 bit wide.
 Info: Interconnect is inserted between master master_0.master and slave LevinsonDurbin_0.avalon_slave_0 because the master has readdata signal 32 bit wide, but the slave is 16 bit wide.
@@ -38,6 +46,7 @@ Info: Interconnect is inserted between master master_0.master and slave Levinson
 Info: Interconnect is inserted between master master_0.master and slave LevinsonDurbin_0.avalon_slave_0 because the master has byteenable signal 4 bit wide, but the slave is 0 bit wide.
 Info: LevinsonDurbin_0: "LevinsonDurbinTest" instantiated LevinsonDurbin "LevinsonDurbin_0"
 Info: master_0: "LevinsonDurbinTest" instantiated altera_jtag_avalon_master "master_0"
+Info: pll_0: "LevinsonDurbinTest" instantiated altera_pll "pll_0"
 Info: mm_interconnect_0: "LevinsonDurbinTest" instantiated altera_mm_interconnect "mm_interconnect_0"
 Info: rst_controller: "LevinsonDurbinTest" instantiated altera_reset_controller "rst_controller"
 Info: jtag_phy_embedded_in_jtag_master: "master_0" instantiated altera_jtag_dc_streaming "jtag_phy_embedded_in_jtag_master"
@@ -64,6 +73,6 @@ Info: Reusing file C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/Levinso
 Info: LevinsonDurbin_0_avalon_slave_0_rsp_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "LevinsonDurbin_0_avalon_slave_0_rsp_width_adapter"
 Info: Reusing file C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LevinsonDurbinTest/synthesis/submodules/altera_merlin_address_alignment.sv
 Info: Reusing file C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LevinsonDurbinTest/LevinsonDurbinTest/synthesis/submodules/altera_merlin_burst_uncompressor.sv
-Info: LevinsonDurbinTest: Done "LevinsonDurbinTest" with 24 modules, 44 files
+Info: LevinsonDurbinTest: Done "LevinsonDurbinTest" with 25 modules, 46 files
 Info: ip-generate succeeded.
 Info: Finished: Create HDL design files for synthesis
