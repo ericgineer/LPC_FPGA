@@ -5,6 +5,7 @@
 module LPCenc(input wire signed [15:0] x,
 			  input wire 			   v,
 			  input wire 			   clk,
+			  input wire 			   d_clk,
 			  input wire 			   rst,
 			  output reg signed [15:0] A0,
 			  output reg signed [15:0] A1,
@@ -38,7 +39,7 @@ module LPCenc(input wire signed [15:0] x,
 		correlation corr(.x(x),
 					   .y(x),
 					   .v(v),
-					   .clk(clk),
+					   .clk(d_clk),
 					   .rst(rst),
 					   .R0(R0),
 					   .R1(R1),
@@ -81,7 +82,7 @@ module LPCenc(input wire signed [15:0] x,
 			   .done(done));
 			   
 		// LPC rate counter
-		always @(posedge clk)
+		always @(posedge d_clk)
 		begin
 			if (rst)
 				count <= 16'b0;

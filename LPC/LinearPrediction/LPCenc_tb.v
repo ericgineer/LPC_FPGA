@@ -3,7 +3,7 @@
 module LPCenc_tb;
 	reg 		   start;
 	reg signed [15:0]  x;
-	reg 	           clk;
+	reg 	           clk, d_clk;
 	reg 	           rst;
 	reg v;
 	
@@ -21,6 +21,7 @@ module LPCenc_tb;
 		x		<= 16'b0;
 		v    	<= 16'b0;
 		clk   	<= 1'b0;
+		d_clk   <= 1'b0;
 		rst   	<= 16'b0;	
 		x_read  <= $fopen("cross_seg.txt","r");
 	end
@@ -28,6 +29,7 @@ module LPCenc_tb;
 	LPCenc LPC(.x(x),
 			  .v(v),
 			  .clk(clk),
+			  .d_clk(d_clk),
 			  .rst(rst),
 			  .A0(A0),
 			  .A1(A1),
@@ -50,12 +52,14 @@ module LPCenc_tb;
 	
 	always #1 clk = ~clk;  // 50 MHz clock
 	
+	always #3125 d_clk = ~d_clk; // data clock running at 8 kHz
+	
 	initial
 	begin
 		count <= 0;
 		repeat(10) @(posedge clk);
 		rst <= 1'b1;
-		@(posedge clk)
+		@(posedge d_clk)
 		rst <= 1'b0;
 		repeat(3) @(posedge clk);
 		writestuff(16'h0,16'd240);
@@ -64,14 +68,11 @@ module LPCenc_tb;
 		begin
 			v    <= 1'b1;
 			x_in <= $fscanf(x_read,"%d\n",x);
-			@(posedge clk);
-			v 	 <= 1'b0;
-			x_in <= 16'b0;
-			repeat(6250) @(posedge clk);  // Update sample every 6250 clock cycle to run LPC at 8 kHz while the system clock is 50 MHz
+			@(posedge d_clk)
 			count <= count + 1;
 		end
 		v <= 1'b0;
-		repeat(10) @(posedge clk);
+		repeat(3) @(posedge d_clk);
 		$finish;
 	end
 	
