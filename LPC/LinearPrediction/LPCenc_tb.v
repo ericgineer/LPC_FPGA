@@ -3,6 +3,7 @@
 module LPCenc_tb;
 	reg 		   start;
 	reg signed [15:0]  x;
+	wire 	   [15:0] freq_count;
 	reg 	           clk, d_clk;
 	reg 	           rst;
 	reg v;
@@ -43,6 +44,7 @@ module LPCenc_tb;
 			  .A9(A9),
 			  .A10(A10),
 			  .voiced(),
+			  .freq_count(freq_count),
 			  .address(address),
 			  .read(read),
 			  .write(write),
@@ -64,7 +66,7 @@ module LPCenc_tb;
 		repeat(3) @(posedge clk);
 		writestuff(16'h0,16'd240);
 		repeat(10) @(posedge clk);
-		while (count <= 245)
+		while (count <= 246)
 		begin
 			v    <= 1'b1;
 			x_in <= $fscanf(x_read,"%d\n",x);
@@ -72,7 +74,7 @@ module LPCenc_tb;
 			count <= count + 1;
 		end
 		v <= 1'b0;
-		repeat(3) @(posedge d_clk);
+		repeat(5) @(posedge d_clk);
 		$finish;
 	end
 	

@@ -88,6 +88,26 @@ r1
 !s90 -reportprogress|300|-work|work|C:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/divide_stage.v|
 !i113 1
 R4
+vdualportram
+!s110 1433223027
+!i10b 1
+!s100 TE_OTfMMDX>Zi:CT7:4G_1
+In3Ke1DGk5e^MXB@FF`5C=3
+R2
+R5
+w1433223005
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/dualportram.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/dualportram.v
+L0 4
+R6
+r1
+!s85 0
+31
+!s108 1433223027.886655
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/dualportram.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/dualportram.v|
+!i113 1
+R4
 vfreq_est
 !s110 1433129554
 !i10b 1
@@ -150,13 +170,13 @@ r1
 R4
 n@l@d@r
 vLPCenc
-!s110 1433122231
+!s110 1433225373
 !i10b 1
-!s100 J5aDO<32R0e@M?2X<W0R60
-IPZQno>VN=z7_id`1M0]m92
+!s100 5Y[Y`Gh245<z`17T6W;:o0
+IKCXdGeFl_i@1eFM;POQnz3
 R2
 R5
-w1433120879
+w1433225331
 8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc.v
 F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc.v
 L0 5
@@ -164,20 +184,20 @@ R6
 r1
 !s85 0
 31
-!s108 1433122231.351573
+!s108 1433225373.586885
 !s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc.v|
 !s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc.v|
 !i113 1
 R4
 n@l@p@cenc
 vLPCenc_tb
-!s110 1433122786
+!s110 1433223032
 !i10b 1
-!s100 nI56N[V]M]>9XeH9nXe390
-I[_N8jd^SeZ7HXIjhbUWSA3
+!s100 ACkGLo?K328T>@HK?RzhC2
+I>k0<WacXPACz88lhJIKTB3
 R2
 R5
-w1433122768
+w1433222959
 8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc_tb.v
 F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc_tb.v
 L0 3
@@ -185,7 +205,7 @@ R6
 r1
 !s85 0
 31
-!s108 1433122786.987373
+!s108 1433223032.180109
 !s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc_tb.v|
 !s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc_tb.v|
 !i113 1
