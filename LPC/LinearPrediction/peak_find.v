@@ -1,4 +1,4 @@
-`timescale 10ns/10ns
+`timescale 1ns/1ns
 
 module peak_find(input wire signed [15:0] x,
 				 input wire 	   v,

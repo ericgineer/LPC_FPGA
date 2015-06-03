@@ -1,3 +1,5 @@
+`timescale 1ns/1ns
+
 // Quartus II Verilog Template
 // True Dual Port RAM with dual clocks
 

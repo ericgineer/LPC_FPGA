@@ -1,4 +1,4 @@
-`timescale 10ns/10ns
+`timescale 1ns/1ns
 
 module freq_est_tb;
 	reg signed [15:0] x, threshold;

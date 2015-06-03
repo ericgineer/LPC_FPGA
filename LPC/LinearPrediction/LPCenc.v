@@ -1,4 +1,4 @@
-`timescale 10ns/10ns 
+`timescale 1ns/1ns 
 
 // LPC encode module
 
@@ -48,9 +48,6 @@ module LPCenc(input wire signed [15:0] x,
 		
 		reg [2:0] state;
 		parameter S0 = 0, S1 = 1, S2 = 2, S3 = 3, S4 = 4, S5 = 5;
-		
-		reg [1:0] state2;
-		parameter S0_2 = 0, S1_2 = 1, S2_2 = 2;
 			  
 		correlation corr(.x(x),
 					   .y(x),
@@ -162,13 +159,18 @@ module LPCenc(input wire signed [15:0] x,
 		// rate counter
 		always @(posedge d_clk)
 		begin
-			if (rst || (count == rate))
+			if (rst)
 				count <= 16'b0;
 			if (v)
-				count <= count + 1;
+			begin
+				if (count == rate)
+					count <= 16'b0;
+				else
+					count <= count + 1;
+			end
 		end
 		
-		// Pitch estimate counter
+		// Frequency estimator counter
 		always @(posedge clk)
 		begin
 			if (freq_est_v)
@@ -177,108 +179,64 @@ module LPCenc(input wire signed [15:0] x,
 				freq_est_count <= 16'b0;
 		end
 		
-		// State machine to control LPC blocks
-		
+		// LDR sequencer
 		always @(posedge d_clk)
+		begin	
+			case (count)
+				rate: begin
+						start <= 1'b1;
+						peak_find_v <= 1'b0;
+						peak_rst <= 1'b1;
+						LDR_rst <= 1'b0;
+						freq_est_rst <= 1'b0;
+					  end
+				rate-2: begin
+							LDR_rst <= 1'b1;
+							freq_est_rst <= 1'b1;
+						end
+				default: begin
+							start <= 1'b0;
+							peak_find_v <= 1'b1;
+							LDR_rst <= 1'b0;
+							freq_est_rst <= 1'b0;
+							peak_rst <= 1'b0;
+						end
+			endcase
+		end
+		
+		// Frequency estimation sequencing state machine
+		always @(posedge clk)
 		begin
 			if (rst)
 				state <= S0;
 			else
-			begin
 				case (state)
-					S0: state <= S1;
-					S1: if (count == rate)
+					S0: if (count == rate)
+							state <= S1;
+						else
+							state <= S0;
+					S1: if (freq_est_count == rate)
 							state <= S2;
 						else
 							state <= S1;
-					S2: if (S2)
-							state <= S3;
-						else
-							state <= S2;
-					S3: if (S3)
-							state <= S4;
-						else
-							state <= S3;
-					S4: if (S4)
-							state <= S5;
-						else
-							state <= S4;
-					S5: if (done)
+					S2: if (freq_est_rst)
 							state <= S0;
 						else
-							state <= S5;
+							state <= S2;
 					default: state <= S0;
 				endcase
-			end
 		end
 		
-		always @(posedge d_clk)
+		always @(posedge clk)
 		begin
 			case (state)
-				S0: begin
-						LDR_rst <= 1'b1;
-						peak_rst <= 1'b1;
-						peak_find_v <= 1'b1;
-						freq_est_count <= 16'b0;
-						freq_est_rst <= 1'b0;
-					end
+				S0: freq_est_v <= 1'b0;
 				S1: begin
-						LDR_rst <= 1'b0;
-						peak_rst <= 1'b0;
-					end
-				S2: begin
+						freq_est_v <= 1'b1;
 						threshold <= peak >>> 2;
-						peak_find_v <= 1'b0;
 					end
-				S3: begin
-						freq_est_count <= 16'b0;
-						freq_est_start <= 1'b1;
-						start <= 1'b1;
-						peak_rst <= 1'b1;
-					end
-				S4: begin
-						start <= 1'b0;
-						freq_est_start <= 1'b0;
-						peak_rst <= 1'b0;
-					end
-				default: begin
-							LDR_rst <= 1'b1;
-							peak_rst <= 1'b1;
-							peak_find_v <= 1'b1;
-							freq_est_count <= 16'b0;
-							freq_est_rst <= 1'b0;
-						 end
+				S2: freq_est_v <= 1'b0;
 			endcase
 		end
-		
-		// State machine for pitch estimation circuit
-		always @(posedge clk)
-		begin
-			if (rst || LDR_rst)
-				state2 <= S0_2;
-			else
-				case (state2)
-					S0_2: if (freq_est_start)
-								state2 <= S1_2;
-						  else
-								state2 <= S0_2;
-					S1_2: if (freq_est_count == rate)
-								state2 <= S2_2;
-						  else
-								state2 <= S1_2;
-					S2_2: state2 <= S2_2;
-					default: state2 <= S0_2;
-				endcase
-		end
-		
-		always @(posedge clk)
-		begin
-			case (state2)
-				S0_2: freq_est_v <= 1'b0;
-				S1_2: freq_est_v <= 1'b1;
-				S2_2: freq_est_v <= 1'b0;
-				default: state2 <= S0_2;
-			endcase
-		end	
 endmodule
 				

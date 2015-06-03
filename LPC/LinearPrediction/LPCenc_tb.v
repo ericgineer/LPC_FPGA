@@ -1,4 +1,4 @@
-`timescale 10ns/10ns
+`timescale 1ns/1ns
 
 module LPCenc_tb;
 	reg 		   start;
@@ -52,9 +52,9 @@ module LPCenc_tb;
 		      .readdata(readdata));
 	
 	
-	always #1 clk = ~clk;  // 50 MHz clock
+	always #10 clk = ~clk;  // 50 MHz clock
 	
-	always #3125 d_clk = ~d_clk; // data clock running at 8 kHz
+	always #62500 d_clk = ~d_clk; // data clock running at 8 kHz
 	
 	initial
 	begin
@@ -75,7 +75,7 @@ module LPCenc_tb;
 		end
 		v <= 1'b0;
 		repeat(5) @(posedge d_clk);
-		$finish;
+		$stop;
 	end
 	
 	task writestuff;
