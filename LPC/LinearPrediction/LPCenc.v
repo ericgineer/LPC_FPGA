@@ -120,8 +120,8 @@ module LPCenc(input wire signed [15:0] x,
 							 .count(freq_count_tmp),
 							 .vout(freq_est_vout));
 			   
-		always @(posedge d_clk)
-		begin	
+		always @(posedge done)
+		begin
 			A0 <= A0_tmp;
 			A1 <= A1_tmp;
 			A2 <= A2_tmp;

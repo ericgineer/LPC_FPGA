@@ -1,0 +1,14 @@
+======================================================
+6/1/15
+======================================================
+1) Finished Levinson-durbin, frequency estimation, and peak 
+detection sequencing.
+
+======================================================
+6/1/15
+======================================================
+1) Set coefficient and frequency estimation outputs to update on 
+the done signal of the Levinson-durbin recursion algorithm.
+
+2) Increased run time on the LPCenc testbench to 60 ms (two LPC
+frames).

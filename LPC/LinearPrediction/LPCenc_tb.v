@@ -66,7 +66,15 @@ module LPCenc_tb;
 		repeat(3) @(posedge clk);
 		writestuff(16'h0,16'd240);
 		repeat(10) @(posedge clk);
-		while (count <= 246)
+		while (count <= 240)
+		begin
+			v    <= 1'b1;
+			x_in <= $fscanf(x_read,"%d\n",x);
+			@(posedge d_clk)
+			count <= count + 1;
+		end
+		x_in <= $rewind(x_read);
+		while (count <= 486)
 		begin
 			v    <= 1'b1;
 			x_in <= $fscanf(x_read,"%d\n",x);
