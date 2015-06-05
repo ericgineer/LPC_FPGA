@@ -2,6 +2,9 @@
 
 // LPC encode module
 
+`define peak_threshold 3000  // If input amplitude is greater than peak_threshold, the LPC frame
+						     // is considered voiced speech. Otherwise it is unvoiced.
+
 module LPCenc(input wire signed [15:0] x,
 			  input wire 			   v,
 			  input wire 			   clk,
@@ -18,7 +21,7 @@ module LPCenc(input wire signed [15:0] x,
 			  output reg signed [15:0] A8,
 			  output reg signed [15:0] A9,
 			  output reg signed [15:0] A10,
-			  output reg 			   voiced,
+			  output reg 			   voiced,     // 0) Unvoiced speech. 1) Voiced speech
 			  output reg 		[15:0] freq_count,
 			  
 			  // Avalon-MM interface
@@ -45,6 +48,7 @@ module LPCenc(input wire signed [15:0] x,
 		wire freq_est_vout, peak_find_vout;
 		
 		reg freq_est_rst, peak_rst, freq_est_start;
+		reg voiced_tmp;
 		
 		reg [2:0] state;
 		parameter S0 = 0, S1 = 1, S2 = 2, S3 = 3, S4 = 4, S5 = 5;
@@ -134,6 +138,7 @@ module LPCenc(input wire signed [15:0] x,
 			A9 <= A9_tmp;
 			A10 <= A10_tmp;
 			freq_count <= freq_count_tmp;
+			voiced <= (peak >= `peak_threshold) ? 1'b1 : 1'b0;
 		end
 		
 		// Avalon-MM interface

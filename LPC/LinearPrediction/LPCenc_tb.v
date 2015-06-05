@@ -1,12 +1,13 @@
 `timescale 1ns/1ns
 
 module LPCenc_tb;
-	reg 		   start;
+	reg 		   	   start;
 	reg signed [15:0]  x;
-	wire 	   [15:0] freq_count;
+	wire 	   [15:0]  freq_count;
 	reg 	           clk, d_clk;
 	reg 	           rst;
 	reg v;
+	wire 			   voiced;
 	
 	reg [15:0] address;
 	reg [15:0] writedata;
@@ -43,7 +44,7 @@ module LPCenc_tb;
 			  .A8(A8),
 			  .A9(A9),
 			  .A10(A10),
-			  .voiced(),
+			  .voiced(voiced),
 			  .freq_count(freq_count),
 			  .address(address),
 			  .read(read),
