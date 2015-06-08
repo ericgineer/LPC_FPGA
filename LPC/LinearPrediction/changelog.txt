@@ -19,3 +19,13 @@ frames).
 1) Added voiced/unvoiced speech detection. Outputs voiced=1 if
 the LPC frame is voiced speech and voiced=0 if the LPC frame
 is unvoiced speech.
+
+======================================================
+6/7/15
+======================================================
+1) Added a linear feedback shift register for unvoiced speech
+generation
+
+2) Added a pulse generator for voiced speech generation
+
+3) Added a voice synthesis filter
