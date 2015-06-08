@@ -7,6 +7,7 @@ module LPCenc_tb;
 	reg 	           clk, d_clk;
 	reg 	           rst;
 	reg v;
+	wire vout;
 	wire 			   voiced;
 	
 	reg [15:0] address;
@@ -46,6 +47,7 @@ module LPCenc_tb;
 			  .A10(A10),
 			  .voiced(voiced),
 			  .freq_count(freq_count),
+			  .vout(vout);
 			  .address(address),
 			  .read(read),
 			  .write(write),

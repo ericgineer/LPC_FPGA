@@ -23,6 +23,7 @@ module LPCenc(input wire signed [15:0] x,
 			  output reg signed [15:0] A10,
 			  output reg 			   voiced,     // 0) Unvoiced speech. 1) Voiced speech
 			  output reg 		[15:0] freq_count,
+			  output reg 			   vout,
 			  
 			  // Avalon-MM interface
 			  input wire [15:0] address,
@@ -139,6 +140,10 @@ module LPCenc(input wire signed [15:0] x,
 			A10 <= A10_tmp;
 			freq_count <= freq_count_tmp;
 			voiced <= (peak >= `peak_threshold) ? 1'b1 : 1'b0;
+			if (v)
+				vout <= 1'b1;
+			else
+				vout <= 1'b0;
 		end
 		
 		// Avalon-MM interface
