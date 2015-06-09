@@ -29,3 +29,9 @@ generation
 2) Added a pulse generator for voiced speech generation
 
 3) Added a voice synthesis filter
+
+======================================================
+6/8/15
+======================================================
+1) Added LPCdec (LPC decoder) which integrates the synthesis filter,
+pulse generator, and linear feedback shift register into one module.

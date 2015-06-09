@@ -5,6 +5,9 @@ module pulsegen_tb;
 	reg [15:0] pulserate, lpcrate;
 	wire [15:0] pulseout;
 	
+	wire vout;
+	reg v;
+	
 	initial
 	begin
 		pulserate <= 16'd4;
@@ -17,9 +20,11 @@ module pulsegen_tb;
 	
 	pulsegen pulsegen(.clk(clk),
 					 .rst(rst),
+					 .v(v),
 					 .pulserate(pulserate),
 					 .lpcrate(lpcrate),
-					 .pulseout(pulseout));
+					 .pulseout(pulseout),
+					 .vout(vout));
 		     
 	initial
 	begin
@@ -27,6 +32,7 @@ module pulsegen_tb;
 		rst <= 1'b1;
 		repeat(1) @(posedge clk);
 		rst <= 1'b0;
+		v <= 1'b1;
 		repeat(240) @(posedge clk);
 		$stop;
 	end

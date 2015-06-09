@@ -1,10 +1,12 @@
 `timescale 1ns/1ns
 
-module pulsegen(input wire clk,
-				input wire rst,
-				input wire [15:0] pulserate,
-				input wire [15:0] lpcrate,
-				output reg signed [15:0] pulseout);
+module pulsegen(input wire 				 clk,
+				input wire 				 rst,
+				input wire 				 v,
+				input wire 		  [15:0] pulserate,
+				input wire 		  [15:0] lpcrate,
+				output reg signed [15:0] pulseout,
+				output reg               vout);
 				
 		reg [15:0] count;
 				
@@ -14,7 +16,8 @@ module pulsegen(input wire clk,
 			begin
 				pulseout <= 16'b0;
 				count <= 16'b0;
-			end else
+			end
+			if (v)
 			begin
 				if (count >= lpcrate)
 				begin
@@ -23,8 +26,13 @@ module pulsegen(input wire clk,
 				end else
 				begin
 					pulseout <= 16'b0;
-					count <= count + pulserate + 1;
+					count <= count + pulserate;
 				end
+				vout <= 1'b1;
+			end else
+			begin
+				vout <= 1'b0;
+				count <= 16'b0;
 			end
 		end
 endmodule

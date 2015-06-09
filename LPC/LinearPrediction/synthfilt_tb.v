@@ -9,7 +9,7 @@ module synthfilt_tb;
 	synthfilt synthfilt(.clk(clk),
 						 .rst(rst),
 						 .v(v),
-						 .x(x1),
+						 .x(x),
 						 .A0(A0),
 						 .A1(A1),
 						 .A2(A2),
@@ -26,9 +26,11 @@ module synthfilt_tb;
 						 
 	pulsegen pulsegen(.clk(clk),
 					 .rst(rst),
+					 .v(v),
 					 .pulserate(16'd4),
 					 .lpcrate(16'd240),
-					 .pulseout(x));
+					 .pulseout(x),
+					 .vout(vout));
 	
 	LFSR LFSR(.clk(clk),
 			  .rst(rst),

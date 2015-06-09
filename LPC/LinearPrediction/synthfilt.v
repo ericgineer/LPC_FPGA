@@ -73,8 +73,8 @@ module synthfilt(input wire clk,
 				v1 <= 1'b0;
 			if (v1)
 			begin
-				y <= (x_tmp + y1_tmp + y2_tmp + y3_tmp + y4_tmp + y5_tmp
-					  + y6_tmp + y7_tmp + y8_tmp + y9_tmp + y10_tmp) >>> 15;
+				y <= (x_tmp - y1_tmp - y2_tmp - y3_tmp - y4_tmp - y5_tmp
+					  - y6_tmp - y7_tmp - y8_tmp - y9_tmp - y10_tmp) >>> 14;
 				vout <= 1'b1;
 			end else
 				vout <= 1'b0;
