@@ -1,0 +1,219 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+d/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/verilog
+vburst_read_master
+Z0 !s110 1434346199
+!i10b 1
+!s100 db^PDUG6WE@@[ko[[M8F32
+IO4V;MRPOmA7l^9Ch9LTlR2
+Z1 V`JN@9S9cnhjKRR_L]QIcM3
+Z2 d/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/verilog/avalon_mm_master
+w1434324174
+8burst_read_master.v
+Fburst_read_master.v
+L0 36
+Z3 OV;L;10.3d;59
+r1
+!s85 0
+31
+Z4 !s108 1434346199.381112
+Z5 !s107 write_master.v|master_tb.v|master_avalon_interface.v|latency_aware_read_master.v|dualportram.v|ddr3_mem_sim.v|custom_master.v|clk_divide_tb.v|clk_divide.v|burst_write_master.v|burst_read_master.v|
+Z6 !s90 -reportprogress|300|burst_read_master.v|burst_write_master.v|clk_divide.v|clk_divide_tb.v|custom_master.v|ddr3_mem_sim.v|dualportram.v|latency_aware_read_master.v|master_avalon_interface.v|master_tb.v|write_master.v|
+!i113 1
+vburst_write_master
+R0
+!i10b 1
+!s100 KA51mBnUNfWLE5lg21D?91
+IIYknQ5WIikmNbQX3c_gMZ1
+R1
+R2
+w1434324181
+8burst_write_master.v
+Fburst_write_master.v
+L0 37
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vclk_divide
+R0
+!i10b 1
+!s100 88^i`IDh?be67WmeSmzdD1
+IUhl7?_Rg<4O9GhgC9XMAo1
+R1
+R2
+w1434343609
+8clk_divide.v
+Fclk_divide.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vclk_divide_tb
+R0
+!i10b 1
+!s100 D]`g<8;9LPih2hIRIzVJC0
+IdImKVbSN_kfEJT99iPnEN3
+R1
+R2
+w1434343629
+8clk_divide_tb.v
+Fclk_divide_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vcustom_master
+R0
+!i10b 1
+!s100 K2>9<652R;LkMO:BZj;KP3
+IMlcaRmXPbUDD?V^S3Y=Zl1
+R1
+R2
+w1222461946
+8custom_master.v
+Fcustom_master.v
+L0 9
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vddr3_mem_sim
+R0
+!i10b 1
+!s100 9ge;gYZV:idefm:iGYl`>1
+Ib;SNRQ4REm6^nz:F]:FmH1
+R1
+R2
+w1434326145
+8ddr3_mem_sim.v
+Fddr3_mem_sim.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vdualportram
+R0
+!i10b 1
+!s100 HXccIg1BT1@iL`7R7Yo=H1
+I]WQ`aKmP1Ho]lX4<BDXLA0
+R1
+R2
+w1434300849
+8dualportram.v
+Fdualportram.v
+L0 5
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vlatency_aware_read_master
+R0
+!i10b 1
+!s100 NjC24NiH2PK5f9[3gREl70
+I81z<hCV_CD>ajaYOiQj`B3
+R1
+R2
+w1217537024
+8latency_aware_read_master.v
+Flatency_aware_read_master.v
+Z7 L0 35
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vmaster_avalon_interface
+R0
+!i10b 1
+!s100 GC_a;>^N4Uo6Q9SWjBi4E1
+IKPYbSK^=M?Yb4cX[JBV4Z3
+R1
+R2
+w1434339155
+8master_avalon_interface.v
+Fmaster_avalon_interface.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vmaster_tb
+R0
+!i10b 1
+!s100 3a8^k;2:_E9KRfS2eTcEZ2
+I0FbjQeBcFzzhS3MUXLHf12
+R1
+R2
+w1434346184
+8master_tb.v
+Fmaster_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vwrite_master
+R0
+!i10b 1
+!s100 CH<;>?<AT>:giiHOC5J@f0
+IT@U>HiBaL49PdZ8fQ=J4X1
+R1
+R2
+w1217627836
+8write_master.v
+Fwrite_master.v
+R7
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1

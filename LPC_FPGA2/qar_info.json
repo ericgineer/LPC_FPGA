@@ -1,0 +1,7 @@
+{
+	"common_dir" : "/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA/",
+	"acds_version" : "Version 15.0.0",
+	"platform" : "linux",
+	"os" : "Ubuntu 14.04.2",
+	"qpf" : "top_HMC.qpf"
+}

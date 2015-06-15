@@ -1,0 +1,143 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/verilog
+vddr3_mem_sim
+Z1 !s110 1434305587
+!i10b 1
+!s100 VQMcRFz3EF<>LP^L0TI2^2
+IfA1T5L[d]aHgobGEmeAEX2
+Z2 V`JN@9S9cnhjKRR_L]QIcM3
+R0
+w1434167085
+8ddr3_mem_sim.v
+Fddr3_mem_sim.v
+L0 3
+Z3 OV;L;10.3d;59
+r1
+!s85 0
+31
+Z4 !s108 1434305587.733745
+Z5 !s107 writetodram.v|streamfromdram_tb.v|streamfromdram.v|stream_tb.v|stream_fifo.v|dualportram.v|ddr3_mem_sim.v|
+Z6 !s90 -reportprogress|300|ddr3_mem_sim.v|dualportram.v|stream_fifo.v|stream_tb.v|streamfromdram.v|streamfromdram_tb.v|writetodram.v|
+!i113 1
+vdualportram
+R1
+!i10b 1
+!s100 HXccIg1BT1@iL`7R7Yo=H1
+I]WQ`aKmP1Ho]lX4<BDXLA0
+R2
+R0
+w1434300849
+8dualportram.v
+Fdualportram.v
+L0 5
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vstream_fifo
+R1
+!i10b 1
+!s100 C8c4fHjeoL2[gCmVZb:eB2
+I_ml]D;2k3fo=ai:aWWz[90
+R2
+R0
+w1434305573
+8stream_fifo.v
+Fstream_fifo.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vstream_tb
+R1
+!i10b 1
+!s100 VNannJH;=4;7DYl;4eZj40
+ILS_<2@V;6>aSfmHLNjSbe2
+R2
+R0
+w1434302085
+8stream_tb.v
+Fstream_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vstreamfromdram
+R1
+!i10b 1
+!s100 zC27g]_E_0;lz^EIGeZER3
+I4HgK08=Bd<`@:8[bYBRmS0
+R2
+R0
+w1434304773
+8streamfromdram.v
+Fstreamfromdram.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vstreamfromdram_tb
+R1
+!i10b 1
+!s100 nPCX`[=dC;=_@Y?:l52Ah1
+IW=e0^VLm5BUV`6MUa6MQm3
+R2
+R0
+w1433997835
+8streamfromdram_tb.v
+Fstreamfromdram_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vwritetodram
+R1
+!i10b 1
+!s100 oT3NS4S;6?56RMnQ;=8HT2
+I8C>X;XAcO0b=[>b;0iI@E0
+R2
+R0
+w1434304143
+8writetodram.v
+Fwritetodram.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1

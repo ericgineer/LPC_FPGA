@@ -1,0 +1,73 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst top_LPC_FPGA.write_master -pg 1 -lvl 2 -y 380
+preplace inst top_LPC_FPGA.clk_50M -pg 1 -lvl 4 -y 270
+preplace inst top_LPC_FPGA.DDR3_interface.s0 -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.pll0 -pg 1
+preplace inst top_LPC_FPGA.avmm_master_interface_0 -pg 1 -lvl 5 -y 30
+preplace inst top_LPC_FPGA.JTAG_master -pg 1 -lvl 3 -y 330
+preplace inst top_LPC_FPGA.JTAG_master.b2p_adapter -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.dmaster.p2b -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.dmaster.timing_adt -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.mp_cmd_clk_0 -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.p0 -pg 1
+preplace inst top_LPC_FPGA.read_master -pg 1 -lvl 2 -y 110
+preplace inst top_LPC_FPGA.JTAG_master.p2b -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.mp_cmd_clk_1 -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.mp_cmd_reset_n_0 -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.c0 -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.dmaster.b2p_adapter -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.dmaster.jtag_phy_embedded_in_jtag_master -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.mp_cmd_clk_2 -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.mp_cmd_reset_n_1 -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.dmaster.clk_src -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.as0 -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.afi_clk -pg 1
+preplace inst top_LPC_FPGA.JTAG_master.transacto -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.mp_cmd_reset_n_2 -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.dmaster.fifo -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.afi_reset_export -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.afi_reset -pg 1
+preplace inst top_LPC_FPGA.JTAG_master.p2b_adapter -pg 1
+preplace inst top_LPC_FPGA.JTAG_master.fifo -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.dmaster.b2p -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface -pg 1 -lvl 5 -y 160
+preplace inst top_LPC_FPGA.JTAG_master.clk_src -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.dll0 -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.dmaster -pg 1
+preplace inst top_LPC_FPGA.JTAG_master.b2p -pg 1
+preplace inst top_LPC_FPGA.JTAG_master.timing_adt -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.global_reset -pg 1
+preplace inst top_LPC_FPGA.JTAG_master.jtag_phy_embedded_in_jtag_master -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.oct0 -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.dmaster.transacto -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.pll_ref_clk -pg 1
+preplace inst top_LPC_FPGA -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst top_LPC_FPGA.DDR3_interface.dmaster.p2b_adapter -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.dmaster.clk_rst -pg 1
+preplace inst top_LPC_FPGA.clk_8k -pg 1 -lvl 1 -y 310
+preplace inst top_LPC_FPGA.JTAG_master.clk_rst -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.pll_bridge -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.afi_half_clk -pg 1
+preplace inst top_LPC_FPGA.DDR3_interface.soft_reset -pg 1
+preplace netloc FAN_OUT<net_container>top_LPC_FPGA</net_container>(MASTER)JTAG_master.master,(SLAVE)DDR3_interface.avl_0,(SLAVE)avmm_master_interface_0.avmm_master_interface) 1 3 2 NJ 340 1130
+preplace netloc EXPORT<net_container>top_LPC_FPGA</net_container>(SLAVE)DDR3_interface.memory,(SLAVE)top_LPC_FPGA.memory) 1 0 5 NJ 260 NJ 260 NJ 260 NJ 260 NJ
+preplace netloc EXPORT<net_container>top_LPC_FPGA</net_container>(SLAVE)avmm_master_interface_0.master_control,(SLAVE)top_LPC_FPGA.avmm_master_control) 1 0 5 NJ 220 NJ 220 NJ 220 NJ 220 NJ
+preplace netloc FAN_OUT<net_container>top_LPC_FPGA</net_container>(SLAVE)DDR3_interface.mp_rfifo_reset_n_1,(MASTER)JTAG_master.master_reset,(SLAVE)JTAG_master.clk_reset,(SLAVE)DDR3_interface.mp_cmd_reset_n_0,(SLAVE)DDR3_interface.mp_cmd_reset_n_2,(SLAVE)DDR3_interface.soft_reset,(SLAVE)DDR3_interface.mp_rfifo_reset_n_0,(SLAVE)DDR3_interface.global_reset,(SLAVE)DDR3_interface.mp_wfifo_reset_n_0,(SLAVE)DDR3_interface.mp_rfifo_reset_n_2,(SLAVE)DDR3_interface.mp_wfifo_reset_n_2,(SLAVE)clk_50M.clk_in_reset,(SLAVE)DDR3_interface.mp_wfifo_reset_n_1,(SLAVE)DDR3_interface.mp_cmd_reset_n_1) 1 2 3 650 430 910 360 1250
+preplace netloc EXPORT<net_container>top_LPC_FPGA</net_container>(SLAVE)top_LPC_FPGA.write_master_control,(SLAVE)write_master.control) 1 0 2 NJ 430 NJ
+preplace netloc EXPORT<net_container>top_LPC_FPGA</net_container>(SLAVE)top_LPC_FPGA.clk,(SLAVE)clk_50M.clk_in) 1 0 4 NJ 280 NJ 280 NJ 280 NJ
+preplace netloc EXPORT<net_container>top_LPC_FPGA</net_container>(SLAVE)DDR3_interface.status,(SLAVE)top_LPC_FPGA.status) 1 0 5 NJ 710 NJ 710 NJ 710 NJ 710 NJ
+preplace netloc EXPORT<net_container>top_LPC_FPGA</net_container>(SLAVE)read_master.control,(SLAVE)top_LPC_FPGA.read_master_control) 1 0 2 NJ 160 NJ
+preplace netloc POINT_TO_POINT<net_container>top_LPC_FPGA</net_container>(MASTER)clk_50M.clk_reset,(SLAVE)avmm_master_interface_0.reset) 1 4 1 1170
+preplace netloc EXPORT<net_container>top_LPC_FPGA</net_container>(SLAVE)read_master.user,(SLAVE)top_LPC_FPGA.read_master_stream) 1 0 2 NJ 180 NJ
+preplace netloc FAN_OUT<net_container>top_LPC_FPGA</net_container>(SLAVE)read_master.clock_reset_reset,(SLAVE)write_master.clock_reset_reset,(MASTER)clk_8k.clk_reset) 1 1 1 370
+preplace netloc EXPORT<net_container>top_LPC_FPGA</net_container>(SLAVE)top_LPC_FPGA.clk_0,(SLAVE)clk_8k.clk_in) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>top_LPC_FPGA</net_container>(SLAVE)DDR3_interface.avl_1,(MASTER)read_master.avalon_master) 1 2 3 630 240 NJ 240 NJ
+preplace netloc EXPORT<net_container>top_LPC_FPGA</net_container>(SLAVE)DDR3_interface.oct,(SLAVE)top_LPC_FPGA.oct) 1 0 5 NJ 630 NJ 630 NJ 630 NJ 630 NJ
+preplace netloc EXPORT<net_container>top_LPC_FPGA</net_container>(SLAVE)top_LPC_FPGA.write_master_stream,(SLAVE)write_master.user) 1 0 2 NJ 450 NJ
+preplace netloc FAN_OUT<net_container>top_LPC_FPGA</net_container>(SLAVE)DDR3_interface.mp_cmd_clk_1,(SLAVE)DDR3_interface.mp_wfifo_clk_2,(SLAVE)JTAG_master.clk,(SLAVE)DDR3_interface.mp_wfifo_clk_0,(SLAVE)DDR3_interface.mp_cmd_clk_2,(SLAVE)DDR3_interface.mp_rfifo_clk_2,(SLAVE)DDR3_interface.mp_wfifo_clk_1,(MASTER)clk_50M.clk,(SLAVE)DDR3_interface.mp_rfifo_clk_1,(SLAVE)DDR3_interface.pll_ref_clk,(SLAVE)avmm_master_interface_0.clock,(SLAVE)DDR3_interface.mp_rfifo_clk_0,(SLAVE)DDR3_interface.mp_cmd_clk_0) 1 2 3 630 450 NJ 450 1230
+preplace netloc FAN_OUT<net_container>top_LPC_FPGA</net_container>(SLAVE)write_master.clock_reset,(MASTER)clk_8k.clk,(SLAVE)read_master.clock_reset) 1 1 1 350
+preplace netloc EXPORT<net_container>top_LPC_FPGA</net_container>(SLAVE)clk_8k.clk_in_reset,(SLAVE)top_LPC_FPGA.reset) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>top_LPC_FPGA</net_container>(MASTER)write_master.avalon_master,(SLAVE)DDR3_interface.avl_2) 1 2 3 N 410 NJ 410 NJ
+levelinfo -pg 1 0 140 1570
+levelinfo -hier top_LPC_FPGA 150 180 400 750 940 1380 1560
