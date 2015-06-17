@@ -1,5 +1,6 @@
 	component top_LPC_FPGA is
 		port (
+			algorithm_run_export                  : out   std_logic;                                        -- export
 			avmm_master_control_rm_fixed_location : out   std_logic;                                        -- rm_fixed_location
 			avmm_master_control_rm_read_base      : out   std_logic_vector(31 downto 0);                    -- rm_read_base
 			avmm_master_control_rm_read_length    : out   std_logic_vector(31 downto 0);                    -- rm_read_length
@@ -52,6 +53,7 @@
 
 	u0 : component top_LPC_FPGA
 		port map (
+			algorithm_run_export                  => CONNECTED_TO_algorithm_run_export,                  --        algorithm_run.export
 			avmm_master_control_rm_fixed_location => CONNECTED_TO_avmm_master_control_rm_fixed_location, --  avmm_master_control.rm_fixed_location
 			avmm_master_control_rm_read_base      => CONNECTED_TO_avmm_master_control_rm_read_base,      --                     .rm_read_base
 			avmm_master_control_rm_read_length    => CONNECTED_TO_avmm_master_control_rm_read_length,    --                     .rm_read_length

@@ -7,7 +7,7 @@
 
 `timescale 1 ps / 1 ps
 module top_LPC_FPGA_mm_interconnect_0 (
-		input  wire        clk_50M_clk_clk,                                             //                                           clk_50M_clk.clk
+		input  wire        clk_divide_8k_0_clock_out_clk,                               //                             clk_divide_8k_0_clock_out.clk
 		input  wire        DDR3_interface_mp_cmd_reset_n_1_reset_bridge_in_reset_reset, // DDR3_interface_mp_cmd_reset_n_1_reset_bridge_in_reset.reset
 		input  wire        read_master_clock_reset_reset_reset_bridge_in_reset_reset,   //   read_master_clock_reset_reset_reset_bridge_in_reset.reset
 		input  wire [31:0] read_master_avalon_master_address,                           //                             read_master_avalon_master.address
@@ -155,7 +155,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 		.AV_LINEWRAPBURSTS           (0),
 		.AV_REGISTERINCOMINGSIGNALS  (0)
 	) read_master_avalon_master_translator (
-		.clk                    (clk_50M_clk_clk),                                                              //                       clk.clk
+		.clk                    (clk_divide_8k_0_clock_out_clk),                                                //                       clk.clk
 		.reset                  (read_master_clock_reset_reset_reset_bridge_in_reset_reset),                    //                     reset.reset
 		.uav_address            (read_master_avalon_master_translator_avalon_universal_master_0_address),       // avalon_universal_master_0.address
 		.uav_burstcount         (read_master_avalon_master_translator_avalon_universal_master_0_burstcount),    //                          .burstcount
@@ -217,7 +217,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
 	) ddr3_interface_avl_1_translator (
-		.clk                    (clk_50M_clk_clk),                                           //                      clk.clk
+		.clk                    (clk_divide_8k_0_clock_out_clk),                             //                      clk.clk
 		.reset                  (read_master_clock_reset_reset_reset_bridge_in_reset_reset), //                    reset.reset
 		.uav_address            (ddr3_interface_avl_1_agent_m0_address),                     // avalon_universal_slave_0.address
 		.uav_burstcount         (ddr3_interface_avl_1_agent_m0_burstcount),                  //                         .burstcount
@@ -307,7 +307,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 		.USE_READRESPONSE          (0),
 		.USE_WRITERESPONSE         (0)
 	) read_master_avalon_master_agent (
-		.clk                   (clk_50M_clk_clk),                                                              //       clk.clk
+		.clk                   (clk_divide_8k_0_clock_out_clk),                                                //       clk.clk
 		.reset                 (read_master_clock_reset_reset_reset_bridge_in_reset_reset),                    // clk_reset.reset
 		.av_address            (read_master_avalon_master_translator_avalon_universal_master_0_address),       //        av.address
 		.av_write              (read_master_avalon_master_translator_avalon_universal_master_0_write),         //          .write
@@ -374,7 +374,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
 	) ddr3_interface_avl_1_agent (
-		.clk                     (clk_50M_clk_clk),                                           //             clk.clk
+		.clk                     (clk_divide_8k_0_clock_out_clk),                             //             clk.clk
 		.reset                   (read_master_clock_reset_reset_reset_bridge_in_reset_reset), //       clk_reset.reset
 		.m0_address              (ddr3_interface_avl_1_agent_m0_address),                     //              m0.address
 		.m0_burstcount           (ddr3_interface_avl_1_agent_m0_burstcount),                  //                .burstcount
@@ -433,7 +433,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) ddr3_interface_avl_1_agent_rsp_fifo (
-		.clk               (clk_50M_clk_clk),                                           //       clk.clk
+		.clk               (clk_divide_8k_0_clock_out_clk),                             //       clk.clk
 		.reset             (read_master_clock_reset_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.in_data           (ddr3_interface_avl_1_agent_rf_source_data),                 //        in.data
 		.in_valid          (ddr3_interface_avl_1_agent_rf_source_valid),                //          .valid
@@ -474,7 +474,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
 	) ddr3_interface_avl_1_agent_rdata_fifo (
-		.clk               (clk_50M_clk_clk),                                           //       clk.clk
+		.clk               (clk_divide_8k_0_clock_out_clk),                             //       clk.clk
 		.reset             (read_master_clock_reset_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.in_data           (ddr3_interface_avl_1_agent_rdata_fifo_src_data),            //        in.data
 		.in_valid          (ddr3_interface_avl_1_agent_rdata_fifo_src_valid),           //          .valid
@@ -507,7 +507,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 		.sink_data          (read_master_avalon_master_agent_cp_data),                   //          .data
 		.sink_startofpacket (read_master_avalon_master_agent_cp_startofpacket),          //          .startofpacket
 		.sink_endofpacket   (read_master_avalon_master_agent_cp_endofpacket),            //          .endofpacket
-		.clk                (clk_50M_clk_clk),                                           //       clk.clk
+		.clk                (clk_divide_8k_0_clock_out_clk),                             //       clk.clk
 		.reset              (read_master_clock_reset_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready          (router_src_ready),                                          //       src.ready
 		.src_valid          (router_src_valid),                                          //          .valid
@@ -523,7 +523,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 		.sink_data          (ddr3_interface_avl_1_agent_rp_data),                        //          .data
 		.sink_startofpacket (ddr3_interface_avl_1_agent_rp_startofpacket),               //          .startofpacket
 		.sink_endofpacket   (ddr3_interface_avl_1_agent_rp_endofpacket),                 //          .endofpacket
-		.clk                (clk_50M_clk_clk),                                           //       clk.clk
+		.clk                (clk_divide_8k_0_clock_out_clk),                             //       clk.clk
 		.reset              (read_master_clock_reset_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready          (router_001_src_ready),                                      //       src.ready
 		.src_valid          (router_001_src_valid),                                      //          .valid
@@ -534,7 +534,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 	);
 
 	top_LPC_FPGA_mm_interconnect_0_cmd_demux cmd_demux (
-		.clk                (clk_50M_clk_clk),                                           //       clk.clk
+		.clk                (clk_divide_8k_0_clock_out_clk),                             //       clk.clk
 		.reset              (read_master_clock_reset_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (router_src_ready),                                          //      sink.ready
 		.sink_channel       (router_src_channel),                                        //          .channel
@@ -551,7 +551,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 	);
 
 	top_LPC_FPGA_mm_interconnect_0_cmd_mux cmd_mux (
-		.clk                 (clk_50M_clk_clk),                                           //       clk.clk
+		.clk                 (clk_divide_8k_0_clock_out_clk),                             //       clk.clk
 		.reset               (read_master_clock_reset_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (cmd_mux_src_ready),                                         //       src.ready
 		.src_valid           (cmd_mux_src_valid),                                         //          .valid
@@ -568,7 +568,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 	);
 
 	top_LPC_FPGA_mm_interconnect_0_cmd_demux rsp_demux (
-		.clk                (clk_50M_clk_clk),                                           //       clk.clk
+		.clk                (clk_divide_8k_0_clock_out_clk),                             //       clk.clk
 		.reset              (read_master_clock_reset_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.sink_ready         (ddr3_interface_avl_1_rsp_width_adapter_src_ready),          //      sink.ready
 		.sink_channel       (ddr3_interface_avl_1_rsp_width_adapter_src_channel),        //          .channel
@@ -585,7 +585,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 	);
 
 	top_LPC_FPGA_mm_interconnect_0_rsp_mux rsp_mux (
-		.clk                 (clk_50M_clk_clk),                                           //       clk.clk
+		.clk                 (clk_divide_8k_0_clock_out_clk),                             //       clk.clk
 		.reset               (read_master_clock_reset_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.src_ready           (rsp_mux_src_ready),                                         //       src.ready
 		.src_valid           (rsp_mux_src_valid),                                         //          .valid
@@ -650,7 +650,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 		.PACKING                       (1),
 		.ENABLE_ADDRESS_ALIGNMENT      (0)
 	) ddr3_interface_avl_1_cmd_width_adapter (
-		.clk                  (clk_50M_clk_clk),                                           //       clk.clk
+		.clk                  (clk_divide_8k_0_clock_out_clk),                             //       clk.clk
 		.reset                (read_master_clock_reset_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.in_valid             (cmd_mux_src_valid),                                         //      sink.valid
 		.in_channel           (cmd_mux_src_channel),                                       //          .channel
@@ -716,7 +716,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 		.PACKING                       (1),
 		.ENABLE_ADDRESS_ALIGNMENT      (0)
 	) ddr3_interface_avl_1_rsp_width_adapter (
-		.clk                  (clk_50M_clk_clk),                                           //       clk.clk
+		.clk                  (clk_divide_8k_0_clock_out_clk),                             //       clk.clk
 		.reset                (read_master_clock_reset_reset_reset_bridge_in_reset_reset), // clk_reset.reset
 		.in_valid             (router_001_src_valid),                                      //      sink.valid
 		.in_channel           (router_001_src_channel),                                    //          .channel
@@ -751,7 +751,7 @@ module top_LPC_FPGA_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter (
-		.in_clk_0_clk   (clk_50M_clk_clk),                                           // in_clk_0.clk
+		.in_clk_0_clk   (clk_divide_8k_0_clock_out_clk),                             // in_clk_0.clk
 		.in_rst_0_reset (read_master_clock_reset_reset_reset_bridge_in_reset_reset), // in_rst_0.reset
 		.in_0_data      (ddr3_interface_avl_1_agent_rdata_fifo_out_data),            //     in_0.data
 		.in_0_valid     (ddr3_interface_avl_1_agent_rdata_fifo_out_valid),           //         .valid

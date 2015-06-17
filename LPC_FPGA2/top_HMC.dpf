@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pin_planner>
+	<pin_info>
+		<pin name="memory_mem_ck[0]" direction="Output" source="Hierarchy Database" >
+		</pin>
+		<pin name="memory_mem_dqs[1]" direction="Bidir" source="Hierarchy Database" >
+		</pin>
+		<pin name="memory_mem_dqs[0]" direction="Bidir" source="Hierarchy Database" >
+		</pin>
+	</pin_info>
+	<buses>
+	</buses>
+	<group_file_association>
+	</group_file_association>
+	<pin_planner_file_specifies>
+	</pin_planner_file_specifies>
+</pin_planner>

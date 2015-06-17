@@ -1,4 +1,5 @@
 	top_LPC_FPGA u0 (
+		.algorithm_run_export                  (<connected-to-algorithm_run_export>),                  //        algorithm_run.export
 		.avmm_master_control_rm_fixed_location (<connected-to-avmm_master_control_rm_fixed_location>), //  avmm_master_control.rm_fixed_location
 		.avmm_master_control_rm_read_base      (<connected-to-avmm_master_control_rm_read_base>),      //                     .rm_read_base
 		.avmm_master_control_rm_read_length    (<connected-to-avmm_master_control_rm_read_length>),    //                     .rm_read_length

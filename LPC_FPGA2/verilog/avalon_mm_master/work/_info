@@ -9,7 +9,7 @@ z2
 cModel Technology
 d/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/verilog
 vburst_read_master
-Z0 !s110 1434346199
+Z0 !s110 1434420937
 !i10b 1
 !s100 db^PDUG6WE@@[ko[[M8F32
 IO4V;MRPOmA7l^9Ch9LTlR2
@@ -23,7 +23,7 @@ Z3 OV;L;10.3d;59
 r1
 !s85 0
 31
-Z4 !s108 1434346199.381112
+Z4 !s108 1434420937.955979
 Z5 !s107 write_master.v|master_tb.v|master_avalon_interface.v|latency_aware_read_master.v|dualportram.v|ddr3_mem_sim.v|custom_master.v|clk_divide_tb.v|clk_divide.v|burst_write_master.v|burst_read_master.v|
 Z6 !s90 -reportprogress|300|burst_read_master.v|burst_write_master.v|clk_divide.v|clk_divide_tb.v|custom_master.v|ddr3_mem_sim.v|dualportram.v|latency_aware_read_master.v|master_avalon_interface.v|master_tb.v|write_master.v|
 !i113 1
@@ -182,11 +182,11 @@ R6
 vmaster_tb
 R0
 !i10b 1
-!s100 3a8^k;2:_E9KRfS2eTcEZ2
-I0FbjQeBcFzzhS3MUXLHf12
+!s100 kCfE<o<d7NZ3d?hXH=ezK3
+ID3lbNNJgmY;XemmRODmeK3
 R1
 R2
-w1434346184
+w1434420914
 8master_tb.v
 Fmaster_tb.v
 L0 3

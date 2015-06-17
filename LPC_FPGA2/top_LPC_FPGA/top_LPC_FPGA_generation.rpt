@@ -2,6 +2,8 @@ Info: Starting: Create block symbol file (.bsf)
 Info: qsys-generate /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/top_LPC_FPGA.qsys --block-symbol-file --output-directory=/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/top_LPC_FPGA --family="Cyclone V" --part=5CEFA2F23C8
 Progress: Loading LPC_FPGA2/top_LPC_FPGA.qsys
 Progress: Reading input file
+Progress: Adding AlgorithmRun [altera_avalon_pio 15.0]
+Progress: Parameterizing module AlgorithmRun
 Progress: Adding DDR3_interface [altera_mem_if_ddr3_emif 15.0]
 Progress: Parameterizing module DDR3_interface
 Progress: Adding JTAG_master [altera_jtag_avalon_master 15.0]
@@ -10,6 +12,8 @@ Progress: Adding avmm_master_interface_0 [avmm_master_interface 1.0]
 Progress: Parameterizing module avmm_master_interface_0
 Progress: Adding clk_50M [clock_source 15.0]
 Progress: Parameterizing module clk_50M
+Progress: Adding clk_divide_8k_0 [clk_divide_8k 1.0]
+Progress: Parameterizing module clk_divide_8k_0
 Progress: Adding read_master [master_template 1.0]
 Progress: Parameterizing module read_master
 Progress: Adding write_master [master_template 1.0]
@@ -21,6 +25,7 @@ Progress: Done reading input file
 Warning: top_LPC_FPGA.DDR3_interface: ODT is disabled. Enabling ODT (Mode Register 1) may improve signal integrity
 Warning: top_LPC_FPGA.DDR3_interface: 'Quick' simulation modes are NOT timing accurate. Some simulation memory models may issue warnings or errors
 Warning: top_LPC_FPGA.DDR3_interface.pll_bridge: pll_bridge.pll_sharing cannot be both connected and exported
+Warning: top_LPC_FPGA.clk_divide_8k_0.clock_reset_out: Associated reset sinks not declared
 Warning: top_LPC_FPGA.DDR3_interface: DDR3_interface.pll_sharing must be exported, or connected to a matching conduit.
 Info: ip-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
@@ -29,6 +34,8 @@ Info: Starting: Create HDL design files for synthesis
 Info: qsys-generate /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/top_LPC_FPGA.qsys --synthesis=VERILOG --output-directory=/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/top_LPC_FPGA/synthesis --family="Cyclone V" --part=5CEFA2F23C8
 Progress: Loading LPC_FPGA2/top_LPC_FPGA.qsys
 Progress: Reading input file
+Progress: Adding AlgorithmRun [altera_avalon_pio 15.0]
+Progress: Parameterizing module AlgorithmRun
 Progress: Adding DDR3_interface [altera_mem_if_ddr3_emif 15.0]
 Progress: Parameterizing module DDR3_interface
 Progress: Adding JTAG_master [altera_jtag_avalon_master 15.0]
@@ -37,6 +44,8 @@ Progress: Adding avmm_master_interface_0 [avmm_master_interface 1.0]
 Progress: Parameterizing module avmm_master_interface_0
 Progress: Adding clk_50M [clock_source 15.0]
 Progress: Parameterizing module clk_50M
+Progress: Adding clk_divide_8k_0 [clk_divide_8k 1.0]
+Progress: Parameterizing module clk_divide_8k_0
 Progress: Adding read_master [master_template 1.0]
 Progress: Parameterizing module read_master
 Progress: Adding write_master [master_template 1.0]
@@ -48,6 +57,7 @@ Progress: Done reading input file
 Warning: top_LPC_FPGA.DDR3_interface: ODT is disabled. Enabling ODT (Mode Register 1) may improve signal integrity
 Warning: top_LPC_FPGA.DDR3_interface: 'Quick' simulation modes are NOT timing accurate. Some simulation memory models may issue warnings or errors
 Warning: top_LPC_FPGA.DDR3_interface.pll_bridge: pll_bridge.pll_sharing cannot be both connected and exported
+Warning: top_LPC_FPGA.clk_divide_8k_0.clock_reset_out: Associated reset sinks not declared
 Warning: top_LPC_FPGA.DDR3_interface: DDR3_interface.pll_sharing must be exported, or connected to a matching conduit.
 Info: top_LPC_FPGA: Generating top_LPC_FPGA "top_LPC_FPGA" for QUARTUS_SYNTH
 Info: Interconnect is inserted between master read_master.avalon_master and slave DDR3_interface.avl_1 because the master has address signal 32 bit wide, but the slave is 25 bit wide.
@@ -56,9 +66,14 @@ Info: Interconnect is inserted between master read_master.avalon_master and slav
 Info: Interconnect is inserted between master write_master.avalon_master and slave DDR3_interface.avl_2 because the master has address signal 32 bit wide, but the slave is 25 bit wide.
 Info: Interconnect is inserted between master write_master.avalon_master and slave DDR3_interface.avl_2 because the master has byteenable signal 2 bit wide, but the slave is 4 bit wide.
 Info: Interconnect is inserted between master write_master.avalon_master and slave DDR3_interface.avl_2 because the master has writedata signal 16 bit wide, but the slave is 32 bit wide.
+Info: AlgorithmRun: Starting RTL generation for module 'top_LPC_FPGA_AlgorithmRun'
+Info: AlgorithmRun:   Generation command is [exec /home/eric/altera/15.0/quartus/linux64/perl/bin/perl -I /home/eric/altera/15.0/quartus/linux64/perl/lib -I /home/eric/altera/15.0/quartus/sopc_builder/bin/europa -I /home/eric/altera/15.0/quartus/sopc_builder/bin/perl_lib -I /home/eric/altera/15.0/quartus/sopc_builder/bin -I /home/eric/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I /home/eric/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/eric/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=top_LPC_FPGA_AlgorithmRun --dir=/tmp/alt6602_839546119745127153.dir/0003_AlgorithmRun_gen/ --quartus_dir=/home/eric/altera/15.0/quartus --verilog --config=/tmp/alt6602_839546119745127153.dir/0003_AlgorithmRun_gen//top_LPC_FPGA_AlgorithmRun_component_configuration.pl  --do_build_sim=0  ]
+Info: AlgorithmRun: Done RTL generation for module 'top_LPC_FPGA_AlgorithmRun'
+Info: AlgorithmRun: "top_LPC_FPGA" instantiated altera_avalon_pio "AlgorithmRun"
 Info: DDR3_interface: "top_LPC_FPGA" instantiated altera_mem_if_ddr3_emif "DDR3_interface"
 Info: JTAG_master: "top_LPC_FPGA" instantiated altera_jtag_avalon_master "JTAG_master"
 Info: avmm_master_interface_0: "top_LPC_FPGA" instantiated avmm_master_interface "avmm_master_interface_0"
+Info: clk_divide_8k_0: "top_LPC_FPGA" instantiated clk_divide_8k "clk_divide_8k_0"
 Info: read_master: "top_LPC_FPGA" instantiated master_template "read_master"
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_0: "top_LPC_FPGA" instantiated altera_mm_interconnect "mm_interconnect_0"
@@ -66,6 +81,7 @@ Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_1: "top_LPC_FPGA" instantiated altera_mm_interconnect "mm_interconnect_1"
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_2: "top_LPC_FPGA" instantiated altera_mm_interconnect "mm_interconnect_2"
 Info: rst_controller: "top_LPC_FPGA" instantiated altera_reset_controller "rst_controller"
 Info: pll0: "DDR3_interface" instantiated altera_mem_if_ddr3_pll "pll0"
@@ -127,6 +143,6 @@ Info: rsp_demux: "mm_interconnect_2" instantiated altera_merlin_demultiplexer "r
 Info: rsp_mux: "mm_interconnect_2" instantiated altera_merlin_multiplexer "rsp_mux"
 Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/top_LPC_FPGA/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
-Info: top_LPC_FPGA: Done "top_LPC_FPGA" with 44 modules, 126 files
+Info: top_LPC_FPGA: Done "top_LPC_FPGA" with 46 modules, 128 files
 Info: ip-generate succeeded.
 Info: Finished: Create HDL design files for synthesis

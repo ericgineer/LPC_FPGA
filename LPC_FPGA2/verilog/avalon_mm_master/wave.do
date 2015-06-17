@@ -177,8 +177,45 @@ add wave -noupdate -group avmm /master_tb/avmm/read
 add wave -noupdate -group avmm /master_tb/avmm/writedata
 add wave -noupdate -group avmm /master_tb/avmm/readdata
 add wave -noupdate -group avmm /master_tb/avmm/tmp
+add wave -noupdate -divider master_tb
+add wave -noupdate -group master_tb /master_tb/clk
+add wave -noupdate -group master_tb /master_tb/rst
+add wave -noupdate -group master_tb /master_tb/run
+add wave -noupdate -group master_tb /master_tb/v
+add wave -noupdate -group master_tb /master_tb/vout
+add wave -noupdate -group master_tb /master_tb/data
+add wave -noupdate -group master_tb /master_tb/rm_address
+add wave -noupdate -group master_tb /master_tb/rm_read
+add wave -noupdate -group master_tb /master_tb/rm_waitrequest
+add wave -noupdate -group master_tb /master_tb/rm_byteenable
+add wave -noupdate -group master_tb /master_tb/rm_burstcount
+add wave -noupdate -group master_tb /master_tb/rm_readdata
+add wave -noupdate -group master_tb /master_tb/rm_fixed_location
+add wave -noupdate -group master_tb /master_tb/rm_read_base
+add wave -noupdate -group master_tb /master_tb/rm_read_length
+add wave -noupdate -group master_tb /master_tb/rm_start
+add wave -noupdate -group master_tb /master_tb/rm_done
+add wave -noupdate -group master_tb /master_tb/wm_v
+add wave -noupdate -group master_tb /master_tb/wm_vout
+add wave -noupdate -group master_tb /master_tb/wm_address
+add wave -noupdate -group master_tb /master_tb/wm_write
+add wave -noupdate -group master_tb /master_tb/wm_waitrequest
+add wave -noupdate -group master_tb /master_tb/wm_byteenable
+add wave -noupdate -group master_tb /master_tb/wm_burstcount
+add wave -noupdate -group master_tb /master_tb/wm_writedata
+add wave -noupdate -group master_tb /master_tb/wm_fixed_location
+add wave -noupdate -group master_tb /master_tb/wm_write_base
+add wave -noupdate -group master_tb /master_tb/wm_write_length
+add wave -noupdate -group master_tb /master_tb/wm_start
+add wave -noupdate -group master_tb /master_tb/wm_done
+add wave -noupdate -group master_tb /master_tb/avmm_address
+add wave -noupdate -group master_tb /master_tb/avmm_write
+add wave -noupdate -group master_tb /master_tb/avmm_read
+add wave -noupdate -group master_tb /master_tb/avmm_writedata
+add wave -noupdate -group master_tb /master_tb/avmm_readdata
+add wave -noupdate -group master_tb /master_tb/rm_readdatavalid
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {331218 ps} 0}
+WaveRestoreCursors {{Cursor 1} {910000 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 210
 configure wave -valuecolwidth 100
@@ -194,4 +231,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ps} {9292500 ps}
+WaveRestoreZoom {696161 ps} {1016018 ps}

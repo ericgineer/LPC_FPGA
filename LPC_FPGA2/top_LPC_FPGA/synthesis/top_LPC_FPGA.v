@@ -4,6 +4,7 @@
 
 `timescale 1 ps / 1 ps
 module top_LPC_FPGA (
+		output wire        algorithm_run_export,                  //        algorithm_run.export
 		output wire        avmm_master_control_rm_fixed_location, //  avmm_master_control.rm_fixed_location
 		output wire [31:0] avmm_master_control_rm_read_base,      //                     .rm_read_base
 		output wire [31:0] avmm_master_control_rm_read_length,    //                     .rm_read_length
@@ -53,7 +54,8 @@ module top_LPC_FPGA (
 		output wire        write_master_stream_buffer_full        //                     .buffer_full
 	);
 
-	wire         jtag_master_master_reset_reset;                                            // JTAG_master:master_reset_reset -> [DDR3_interface:global_reset_n, DDR3_interface:mp_cmd_reset_n_0_reset_n, DDR3_interface:mp_cmd_reset_n_1_reset_n, DDR3_interface:mp_cmd_reset_n_2_reset_n, DDR3_interface:mp_rfifo_reset_n_0_reset_n, DDR3_interface:mp_rfifo_reset_n_1_reset_n, DDR3_interface:mp_rfifo_reset_n_2_reset_n, DDR3_interface:mp_wfifo_reset_n_0_reset_n, DDR3_interface:mp_wfifo_reset_n_1_reset_n, DDR3_interface:mp_wfifo_reset_n_2_reset_n, DDR3_interface:soft_reset_n, JTAG_master:clk_reset_reset, rst_controller:reset_in0]
+	wire         clk_divide_8k_0_clock_out_clk;                                             // clk_divide_8k_0:clk_out -> [AlgorithmRun:clk, DDR3_interface:mp_cmd_clk_0_clk, DDR3_interface:mp_cmd_clk_1_clk, DDR3_interface:mp_cmd_clk_2_clk, DDR3_interface:mp_rfifo_clk_0_clk, DDR3_interface:mp_rfifo_clk_1_clk, DDR3_interface:mp_rfifo_clk_2_clk, DDR3_interface:mp_wfifo_clk_0_clk, DDR3_interface:mp_wfifo_clk_1_clk, DDR3_interface:mp_wfifo_clk_2_clk, JTAG_master:clk_clk, avmm_master_interface_0:clk, mm_interconnect_0:clk_divide_8k_0_clock_out_clk, mm_interconnect_1:clk_divide_8k_0_clock_out_clk, mm_interconnect_2:clk_divide_8k_0_clock_out_clk, read_master:clk, rst_controller:clk, write_master:clk]
+	wire         jtag_master_master_reset_reset;                                            // JTAG_master:master_reset_reset -> [DDR3_interface:global_reset_n, DDR3_interface:mp_cmd_reset_n_0_reset_n, DDR3_interface:mp_cmd_reset_n_1_reset_n, DDR3_interface:mp_cmd_reset_n_2_reset_n, DDR3_interface:mp_rfifo_reset_n_0_reset_n, DDR3_interface:mp_rfifo_reset_n_1_reset_n, DDR3_interface:mp_rfifo_reset_n_2_reset_n, DDR3_interface:mp_wfifo_reset_n_0_reset_n, DDR3_interface:mp_wfifo_reset_n_1_reset_n, DDR3_interface:mp_wfifo_reset_n_2_reset_n, DDR3_interface:soft_reset_n, JTAG_master:clk_reset_reset, rst_controller:reset_in0, rst_controller_001:reset_in0]
 	wire  [15:0] read_master_avalon_master_readdata;                                        // mm_interconnect_0:read_master_avalon_master_readdata -> read_master:master_readdata
 	wire         read_master_avalon_master_waitrequest;                                     // mm_interconnect_0:read_master_avalon_master_waitrequest -> read_master:master_waitrequest
 	wire  [31:0] read_master_avalon_master_address;                                         // read_master:master_address -> mm_interconnect_0:read_master_avalon_master_address
@@ -110,7 +112,24 @@ module top_LPC_FPGA (
 	wire         mm_interconnect_2_avmm_master_interface_0_avmm_master_interface_read;      // mm_interconnect_2:avmm_master_interface_0_avmm_master_interface_read -> avmm_master_interface_0:read
 	wire         mm_interconnect_2_avmm_master_interface_0_avmm_master_interface_write;     // mm_interconnect_2:avmm_master_interface_0_avmm_master_interface_write -> avmm_master_interface_0:write
 	wire  [31:0] mm_interconnect_2_avmm_master_interface_0_avmm_master_interface_writedata; // mm_interconnect_2:avmm_master_interface_0_avmm_master_interface_writedata -> avmm_master_interface_0:writedata
-	wire         rst_controller_reset_out_reset;                                            // rst_controller:reset_out -> [avmm_master_interface_0:rst, mm_interconnect_0:DDR3_interface_mp_cmd_reset_n_1_reset_bridge_in_reset_reset, mm_interconnect_0:read_master_clock_reset_reset_reset_bridge_in_reset_reset, mm_interconnect_1:DDR3_interface_mp_cmd_reset_n_2_reset_bridge_in_reset_reset, mm_interconnect_1:write_master_clock_reset_reset_reset_bridge_in_reset_reset, mm_interconnect_2:JTAG_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:avmm_master_interface_0_reset_reset_bridge_in_reset_reset, read_master:reset, write_master:reset]
+	wire         mm_interconnect_2_algorithmrun_s1_chipselect;                              // mm_interconnect_2:AlgorithmRun_s1_chipselect -> AlgorithmRun:chipselect
+	wire  [31:0] mm_interconnect_2_algorithmrun_s1_readdata;                                // AlgorithmRun:readdata -> mm_interconnect_2:AlgorithmRun_s1_readdata
+	wire   [1:0] mm_interconnect_2_algorithmrun_s1_address;                                 // mm_interconnect_2:AlgorithmRun_s1_address -> AlgorithmRun:address
+	wire         mm_interconnect_2_algorithmrun_s1_write;                                   // mm_interconnect_2:AlgorithmRun_s1_write -> AlgorithmRun:write_n
+	wire  [31:0] mm_interconnect_2_algorithmrun_s1_writedata;                               // mm_interconnect_2:AlgorithmRun_s1_writedata -> AlgorithmRun:writedata
+	wire         rst_controller_reset_out_reset;                                            // rst_controller:reset_out -> [AlgorithmRun:reset_n, avmm_master_interface_0:rst, mm_interconnect_0:DDR3_interface_mp_cmd_reset_n_1_reset_bridge_in_reset_reset, mm_interconnect_0:read_master_clock_reset_reset_reset_bridge_in_reset_reset, mm_interconnect_1:DDR3_interface_mp_cmd_reset_n_2_reset_bridge_in_reset_reset, mm_interconnect_1:write_master_clock_reset_reset_reset_bridge_in_reset_reset, mm_interconnect_2:JTAG_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:avmm_master_interface_0_reset_reset_bridge_in_reset_reset, read_master:reset, write_master:reset]
+	wire         rst_controller_001_reset_out_reset;                                        // rst_controller_001:reset_out -> clk_divide_8k_0:clk_rst
+
+	top_LPC_FPGA_AlgorithmRun algorithmrun (
+		.clk        (clk_divide_8k_0_clock_out_clk),                //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
+		.address    (mm_interconnect_2_algorithmrun_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_2_algorithmrun_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_2_algorithmrun_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_2_algorithmrun_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_2_algorithmrun_s1_readdata),   //                    .readdata
+		.out_port   (algorithm_run_export)                          // external_connection.export
+	);
 
 	top_LPC_FPGA_DDR3_interface ddr3_interface (
 		.pll_ref_clk                (clk_clk),                                                   //        pll_ref_clk.clk
@@ -165,23 +184,23 @@ module top_LPC_FPGA (
 		.avl_read_req_2             (mm_interconnect_1_ddr3_interface_avl_2_read),               //                   .read
 		.avl_write_req_2            (mm_interconnect_1_ddr3_interface_avl_2_write),              //                   .write
 		.avl_size_2                 (mm_interconnect_1_ddr3_interface_avl_2_burstcount),         //                   .burstcount
-		.mp_cmd_clk_0_clk           (clk_clk),                                                   //       mp_cmd_clk_0.clk
+		.mp_cmd_clk_0_clk           (clk_divide_8k_0_clock_out_clk),                             //       mp_cmd_clk_0.clk
 		.mp_cmd_reset_n_0_reset_n   (~jtag_master_master_reset_reset),                           //   mp_cmd_reset_n_0.reset_n
-		.mp_cmd_clk_1_clk           (clk_clk),                                                   //       mp_cmd_clk_1.clk
+		.mp_cmd_clk_1_clk           (clk_divide_8k_0_clock_out_clk),                             //       mp_cmd_clk_1.clk
 		.mp_cmd_reset_n_1_reset_n   (~jtag_master_master_reset_reset),                           //   mp_cmd_reset_n_1.reset_n
-		.mp_cmd_clk_2_clk           (clk_clk),                                                   //       mp_cmd_clk_2.clk
+		.mp_cmd_clk_2_clk           (clk_divide_8k_0_clock_out_clk),                             //       mp_cmd_clk_2.clk
 		.mp_cmd_reset_n_2_reset_n   (~jtag_master_master_reset_reset),                           //   mp_cmd_reset_n_2.reset_n
-		.mp_rfifo_clk_0_clk         (clk_clk),                                                   //     mp_rfifo_clk_0.clk
+		.mp_rfifo_clk_0_clk         (clk_divide_8k_0_clock_out_clk),                             //     mp_rfifo_clk_0.clk
 		.mp_rfifo_reset_n_0_reset_n (~jtag_master_master_reset_reset),                           // mp_rfifo_reset_n_0.reset_n
-		.mp_wfifo_clk_0_clk         (clk_clk),                                                   //     mp_wfifo_clk_0.clk
+		.mp_wfifo_clk_0_clk         (clk_divide_8k_0_clock_out_clk),                             //     mp_wfifo_clk_0.clk
 		.mp_wfifo_reset_n_0_reset_n (~jtag_master_master_reset_reset),                           // mp_wfifo_reset_n_0.reset_n
-		.mp_rfifo_clk_1_clk         (clk_clk),                                                   //     mp_rfifo_clk_1.clk
+		.mp_rfifo_clk_1_clk         (clk_divide_8k_0_clock_out_clk),                             //     mp_rfifo_clk_1.clk
 		.mp_rfifo_reset_n_1_reset_n (~jtag_master_master_reset_reset),                           // mp_rfifo_reset_n_1.reset_n
-		.mp_wfifo_clk_1_clk         (clk_clk),                                                   //     mp_wfifo_clk_1.clk
+		.mp_wfifo_clk_1_clk         (clk_divide_8k_0_clock_out_clk),                             //     mp_wfifo_clk_1.clk
 		.mp_wfifo_reset_n_1_reset_n (~jtag_master_master_reset_reset),                           // mp_wfifo_reset_n_1.reset_n
-		.mp_rfifo_clk_2_clk         (clk_clk),                                                   //     mp_rfifo_clk_2.clk
+		.mp_rfifo_clk_2_clk         (clk_divide_8k_0_clock_out_clk),                             //     mp_rfifo_clk_2.clk
 		.mp_rfifo_reset_n_2_reset_n (~jtag_master_master_reset_reset),                           // mp_rfifo_reset_n_2.reset_n
-		.mp_wfifo_clk_2_clk         (clk_clk),                                                   //     mp_wfifo_clk_2.clk
+		.mp_wfifo_clk_2_clk         (clk_divide_8k_0_clock_out_clk),                             //     mp_wfifo_clk_2.clk
 		.mp_wfifo_reset_n_2_reset_n (~jtag_master_master_reset_reset),                           // mp_wfifo_reset_n_2.reset_n
 		.local_init_done            (status_local_init_done),                                    //             status.local_init_done
 		.local_cal_success          (status_local_cal_success),                                  //                   .local_cal_success
@@ -204,7 +223,7 @@ module top_LPC_FPGA (
 		.PLI_PORT    (50000),
 		.FIFO_DEPTHS (2)
 	) jtag_master (
-		.clk_clk              (clk_clk),                          //          clk.clk
+		.clk_clk              (clk_divide_8k_0_clock_out_clk),    //          clk.clk
 		.clk_reset_reset      (jtag_master_master_reset_reset),   //    clk_reset.reset
 		.master_address       (jtag_master_master_address),       //       master.address
 		.master_readdata      (jtag_master_master_readdata),      //             .readdata
@@ -218,7 +237,7 @@ module top_LPC_FPGA (
 	);
 
 	master_avalon_interface avmm_master_interface_0 (
-		.clk                         (clk_clk),                                                                   //                 clock.clk
+		.clk                         (clk_divide_8k_0_clock_out_clk),                                             //                 clock.clk
 		.address                     (mm_interconnect_2_avmm_master_interface_0_avmm_master_interface_address),   // avmm_master_interface.address
 		.write                       (mm_interconnect_2_avmm_master_interface_0_avmm_master_interface_write),     //                      .write
 		.read                        (mm_interconnect_2_avmm_master_interface_0_avmm_master_interface_read),      //                      .read
@@ -237,6 +256,13 @@ module top_LPC_FPGA (
 		.rst                         (rst_controller_reset_out_reset)                                             //                 reset.reset
 	);
 
+	clk_divide clk_divide_8k_0 (
+		.clk         (clk_clk),                            //           clock.clk
+		.clk_out     (clk_divide_8k_0_clock_out_clk),      //       clock_out.clk
+		.clk_rst     (rst_controller_001_reset_out_reset), //     clock_reset.reset
+		.clk_rst_out ()                                    // clock_reset_out.reset
+	);
+
 	custom_master #(
 		.MASTER_DIRECTION    (0),
 		.DATA_WIDTH          (16),
@@ -248,7 +274,7 @@ module top_LPC_FPGA (
 		.FIFO_DEPTH_LOG2     (5),
 		.MEMORY_BASED_FIFO   (1)
 	) read_master (
-		.clk                     (clk_clk),                                 //       clock_reset.clk
+		.clk                     (clk_divide_8k_0_clock_out_clk),           //       clock_reset.clk
 		.reset                   (rst_controller_reset_out_reset),          // clock_reset_reset.reset
 		.master_address          (read_master_avalon_master_address),       //     avalon_master.address
 		.master_read             (read_master_avalon_master_read),          //                  .read
@@ -286,7 +312,7 @@ module top_LPC_FPGA (
 		.FIFO_DEPTH_LOG2     (5),
 		.MEMORY_BASED_FIFO   (1)
 	) write_master (
-		.clk                     (clk_clk),                                //       clock_reset.clk
+		.clk                     (clk_divide_8k_0_clock_out_clk),          //       clock_reset.clk
 		.reset                   (rst_controller_reset_out_reset),         // clock_reset_reset.reset
 		.master_address          (write_master_avalon_master_address),     //     avalon_master.address
 		.master_write            (write_master_avalon_master_write),       //                  .write
@@ -314,7 +340,7 @@ module top_LPC_FPGA (
 	);
 
 	top_LPC_FPGA_mm_interconnect_0 mm_interconnect_0 (
-		.clk_50M_clk_clk                                             (clk_clk),                                                   //                                           clk_50M_clk.clk
+		.clk_divide_8k_0_clock_out_clk                               (clk_divide_8k_0_clock_out_clk),                             //                             clk_divide_8k_0_clock_out.clk
 		.DDR3_interface_mp_cmd_reset_n_1_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),                            // DDR3_interface_mp_cmd_reset_n_1_reset_bridge_in_reset.reset
 		.read_master_clock_reset_reset_reset_bridge_in_reset_reset   (rst_controller_reset_out_reset),                            //   read_master_clock_reset_reset_reset_bridge_in_reset.reset
 		.read_master_avalon_master_address                           (read_master_avalon_master_address),                         //                             read_master_avalon_master.address
@@ -337,7 +363,7 @@ module top_LPC_FPGA (
 	);
 
 	top_LPC_FPGA_mm_interconnect_1 mm_interconnect_1 (
-		.clk_50M_clk_clk                                             (clk_clk),                                                   //                                           clk_50M_clk.clk
+		.clk_divide_8k_0_clock_out_clk                               (clk_divide_8k_0_clock_out_clk),                             //                             clk_divide_8k_0_clock_out.clk
 		.DDR3_interface_mp_cmd_reset_n_2_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),                            // DDR3_interface_mp_cmd_reset_n_2_reset_bridge_in_reset.reset
 		.write_master_clock_reset_reset_reset_bridge_in_reset_reset  (rst_controller_reset_out_reset),                            //  write_master_clock_reset_reset_reset_bridge_in_reset.reset
 		.write_master_avalon_master_address                          (write_master_avalon_master_address),                        //                            write_master_avalon_master.address
@@ -359,7 +385,7 @@ module top_LPC_FPGA (
 	);
 
 	top_LPC_FPGA_mm_interconnect_2 mm_interconnect_2 (
-		.clk_50M_clk_clk                                           (clk_clk),                                                                   //                                         clk_50M_clk.clk
+		.clk_divide_8k_0_clock_out_clk                             (clk_divide_8k_0_clock_out_clk),                                             //                           clk_divide_8k_0_clock_out.clk
 		.avmm_master_interface_0_reset_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),                                            // avmm_master_interface_0_reset_reset_bridge_in_reset.reset
 		.JTAG_master_clk_reset_reset_bridge_in_reset_reset         (rst_controller_reset_out_reset),                                            //         JTAG_master_clk_reset_reset_bridge_in_reset.reset
 		.JTAG_master_master_address                                (jtag_master_master_address),                                                //                                  JTAG_master_master.address
@@ -370,6 +396,11 @@ module top_LPC_FPGA (
 		.JTAG_master_master_readdatavalid                          (jtag_master_master_readdatavalid),                                          //                                                    .readdatavalid
 		.JTAG_master_master_write                                  (jtag_master_master_write),                                                  //                                                    .write
 		.JTAG_master_master_writedata                              (jtag_master_master_writedata),                                              //                                                    .writedata
+		.AlgorithmRun_s1_address                                   (mm_interconnect_2_algorithmrun_s1_address),                                 //                                     AlgorithmRun_s1.address
+		.AlgorithmRun_s1_write                                     (mm_interconnect_2_algorithmrun_s1_write),                                   //                                                    .write
+		.AlgorithmRun_s1_readdata                                  (mm_interconnect_2_algorithmrun_s1_readdata),                                //                                                    .readdata
+		.AlgorithmRun_s1_writedata                                 (mm_interconnect_2_algorithmrun_s1_writedata),                               //                                                    .writedata
+		.AlgorithmRun_s1_chipselect                                (mm_interconnect_2_algorithmrun_s1_chipselect),                              //                                                    .chipselect
 		.avmm_master_interface_0_avmm_master_interface_address     (mm_interconnect_2_avmm_master_interface_0_avmm_master_interface_address),   //       avmm_master_interface_0_avmm_master_interface.address
 		.avmm_master_interface_0_avmm_master_interface_write       (mm_interconnect_2_avmm_master_interface_0_avmm_master_interface_write),     //                                                    .write
 		.avmm_master_interface_0_avmm_master_interface_read        (mm_interconnect_2_avmm_master_interface_0_avmm_master_interface_read),      //                                                    .read
@@ -414,7 +445,7 @@ module top_LPC_FPGA (
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller (
 		.reset_in0      (jtag_master_master_reset_reset), // reset_in0.reset
-		.clk            (clk_clk),                        //       clk.clk
+		.clk            (clk_divide_8k_0_clock_out_clk),  //       clk.clk
 		.reset_out      (rst_controller_reset_out_reset), // reset_out.reset
 		.reset_req      (),                               // (terminated)
 		.reset_req_in0  (1'b0),                           // (terminated)
@@ -448,6 +479,69 @@ module top_LPC_FPGA (
 		.reset_req_in14 (1'b0),                           // (terminated)
 		.reset_in15     (1'b0),                           // (terminated)
 		.reset_req_in15 (1'b0)                            // (terminated)
+	);
+
+	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (1),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller_001 (
+		.reset_in0      (jtag_master_master_reset_reset),     // reset_in0.reset
+		.clk            (clk_clk),                            //       clk.clk
+		.reset_out      (rst_controller_001_reset_out_reset), // reset_out.reset
+		.reset_req      (),                                   // (terminated)
+		.reset_req_in0  (1'b0),                               // (terminated)
+		.reset_in1      (1'b0),                               // (terminated)
+		.reset_req_in1  (1'b0),                               // (terminated)
+		.reset_in2      (1'b0),                               // (terminated)
+		.reset_req_in2  (1'b0),                               // (terminated)
+		.reset_in3      (1'b0),                               // (terminated)
+		.reset_req_in3  (1'b0),                               // (terminated)
+		.reset_in4      (1'b0),                               // (terminated)
+		.reset_req_in4  (1'b0),                               // (terminated)
+		.reset_in5      (1'b0),                               // (terminated)
+		.reset_req_in5  (1'b0),                               // (terminated)
+		.reset_in6      (1'b0),                               // (terminated)
+		.reset_req_in6  (1'b0),                               // (terminated)
+		.reset_in7      (1'b0),                               // (terminated)
+		.reset_req_in7  (1'b0),                               // (terminated)
+		.reset_in8      (1'b0),                               // (terminated)
+		.reset_req_in8  (1'b0),                               // (terminated)
+		.reset_in9      (1'b0),                               // (terminated)
+		.reset_req_in9  (1'b0),                               // (terminated)
+		.reset_in10     (1'b0),                               // (terminated)
+		.reset_req_in10 (1'b0),                               // (terminated)
+		.reset_in11     (1'b0),                               // (terminated)
+		.reset_req_in11 (1'b0),                               // (terminated)
+		.reset_in12     (1'b0),                               // (terminated)
+		.reset_req_in12 (1'b0),                               // (terminated)
+		.reset_in13     (1'b0),                               // (terminated)
+		.reset_req_in13 (1'b0),                               // (terminated)
+		.reset_in14     (1'b0),                               // (terminated)
+		.reset_req_in14 (1'b0),                               // (terminated)
+		.reset_in15     (1'b0),                               // (terminated)
+		.reset_req_in15 (1'b0)                                // (terminated)
 	);
 
 endmodule

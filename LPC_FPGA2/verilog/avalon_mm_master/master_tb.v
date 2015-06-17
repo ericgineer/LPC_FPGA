@@ -46,7 +46,6 @@ module master_tb;
 	reg 	   avmm_read;
 	reg [31:0] avmm_writedata;
 	wire [31:0] avmm_readdata;
-	
 
 	ddr3_mem_sim ddr_read(.ddr_readdata(rm_readdata),
 					      .ddr_readdatavalid(rm_readdatavalid),

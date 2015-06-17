@@ -7,8 +7,7 @@
    <irq preferredWidth="34" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Library/University Program,Library/Basic Functions/Bridges and Adaptors/Clock,Library/Interface Protocols/Ethernet/Reference Design Components,Library/Basic Functions/Simulation; Debug and Verification/Simulation,Library/Interface Protocols/Ethernet,Library/Basic Functions/On Chip Memory,Project,Library/Basic Functions/Bridges and Adaptors,Library/DSP/Video and Image Processing,Library/Qsys Interconnect/Interrupt,Library/Basic Functions/Clocks; PLLs and Resets,Library/Basic Functions/Bridges and Adaptors/Memory Mapped,Library/Interface Protocols/Audio &amp; Video,Library/Qsys Interconnect,Library,Library/Interface Protocols,Library/Basic Functions/Simulation; Debug and Verification,Library/University Program/Clock,Library/DSP,Library/University Program/Audio &amp; Video/Video,Library/Basic Functions,Library/University Program/Audio &amp; Video" />
- <window width="1368" height="749" x="-1" y="-1" />
+ <library expandedCategories="Project,Library" />
+ <window width="1366" height="742" x="0" y="0" />
  <hdlexample language="VHDL" />
 </preferences>

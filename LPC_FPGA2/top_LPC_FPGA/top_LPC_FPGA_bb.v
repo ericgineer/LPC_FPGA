@@ -1,5 +1,6 @@
 
 module top_LPC_FPGA (
+	algorithm_run_export,
 	avmm_master_control_rm_fixed_location,
 	avmm_master_control_rm_read_base,
 	avmm_master_control_rm_read_length,
@@ -48,6 +49,7 @@ module top_LPC_FPGA (
 	write_master_stream_buffer_input_data,
 	write_master_stream_buffer_full);	
 
+	output		algorithm_run_export;
 	output		avmm_master_control_rm_fixed_location;
 	output	[31:0]	avmm_master_control_rm_read_base;
 	output	[31:0]	avmm_master_control_rm_read_length;

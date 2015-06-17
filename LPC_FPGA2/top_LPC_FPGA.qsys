@@ -17,12 +17,33 @@
          type = "String";
       }
    }
+   element AlgorithmRun
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element AlgorithmRun.s1
+   {
+      datum baseAddress
+      {
+         value = "134217792";
+         type = "String";
+      }
+   }
    element DDR3_interface
    {
       datum _sortIndex
       {
-         value = "1";
+         value = "2";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
       }
    }
    element DDR3_interface.avl_0
@@ -53,7 +74,7 @@
    {
       datum _sortIndex
       {
-         value = "2";
+         value = "3";
          type = "int";
       }
    }
@@ -61,7 +82,7 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "6";
          type = "int";
       }
    }
@@ -81,11 +102,19 @@
          type = "int";
       }
    }
+   element clk_divide_8k_0
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
    element read_master
    {
       datum _sortIndex
       {
-         value = "3";
+         value = "4";
          type = "int";
       }
    }
@@ -109,7 +138,7 @@
    {
       datum _sortIndex
       {
-         value = "4";
+         value = "5";
          type = "int";
       }
    }
@@ -134,6 +163,11 @@
  <parameter name="timeStamp" value="0" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
+ <interface
+   name="algorithm_run"
+   internal="AlgorithmRun.external_connection"
+   type="conduit"
+   dir="end" />
  <interface
    name="avmm_master_control"
    internal="avmm_master_interface_0.master_control"
@@ -171,6 +205,24 @@
    internal="write_master.user"
    type="conduit"
    dir="end" />
+ <module
+   name="AlgorithmRun"
+   kind="altera_avalon_pio"
+   version="15.0"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="0" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
  <module
    name="DDR3_interface"
    kind="altera_mem_if_ddr3_emif"
@@ -518,9 +570,10 @@
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
+ <module name="clk_divide_8k_0" kind="clk_divide_8k" version="1.0" enabled="1" />
  <module name="read_master" kind="master_template" version="1.0" enabled="1">
   <parameter name="ADDRESS_WIDTH" value="32" />
-  <parameter name="AUTO_CLOCK_RESET_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_CLOCK_RESET_CLOCK_RATE" value="0" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="BURST_CAPABLE" value="1" />
   <parameter name="BURST_COUNT_WIDTH" value="3" />
@@ -533,7 +586,7 @@
  </module>
  <module name="write_master" kind="master_template" version="1.0" enabled="1">
   <parameter name="ADDRESS_WIDTH" value="32" />
-  <parameter name="AUTO_CLOCK_RESET_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_CLOCK_RESET_CLOCK_RATE" value="0" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="BURST_CAPABLE" value="1" />
   <parameter name="BURST_COUNT_WIDTH" value="3" />
@@ -580,67 +633,95 @@
   <parameter name="baseAddress" value="0x08000000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
- <connection kind="clock" version="15.0" start="clk_50M.clk" end="JTAG_master.clk" />
+ <connection
+   kind="avalon"
+   version="15.0"
+   start="JTAG_master.master"
+   end="AlgorithmRun.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x08000040" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
  <connection
    kind="clock"
    version="15.0"
    start="clk_50M.clk"
-   end="avmm_master_interface_0.clock" />
- <connection
-   kind="clock"
-   version="15.0"
-   start="clk_50M.clk"
-   end="DDR3_interface.mp_cmd_clk_0" />
- <connection
-   kind="clock"
-   version="15.0"
-   start="clk_50M.clk"
-   end="DDR3_interface.mp_cmd_clk_1" />
- <connection
-   kind="clock"
-   version="15.0"
-   start="clk_50M.clk"
-   end="DDR3_interface.mp_cmd_clk_2" />
- <connection
-   kind="clock"
-   version="15.0"
-   start="clk_50M.clk"
-   end="DDR3_interface.mp_rfifo_clk_0" />
- <connection
-   kind="clock"
-   version="15.0"
-   start="clk_50M.clk"
-   end="DDR3_interface.mp_rfifo_clk_1" />
- <connection
-   kind="clock"
-   version="15.0"
-   start="clk_50M.clk"
-   end="DDR3_interface.mp_rfifo_clk_2" />
- <connection
-   kind="clock"
-   version="15.0"
-   start="clk_50M.clk"
-   end="DDR3_interface.mp_wfifo_clk_0" />
- <connection
-   kind="clock"
-   version="15.0"
-   start="clk_50M.clk"
-   end="DDR3_interface.mp_wfifo_clk_1" />
- <connection
-   kind="clock"
-   version="15.0"
-   start="clk_50M.clk"
-   end="DDR3_interface.mp_wfifo_clk_2" />
+   end="clk_divide_8k_0.clock" />
  <connection
    kind="clock"
    version="15.0"
    start="clk_50M.clk"
    end="DDR3_interface.pll_ref_clk" />
  <connection
-   kind="reset"
+   kind="clock"
    version="15.0"
-   start="clk_50M.clk_reset"
-   end="avmm_master_interface_0.reset" />
+   start="clk_divide_8k_0.clock_out"
+   end="JTAG_master.clk" />
+ <connection
+   kind="clock"
+   version="15.0"
+   start="clk_divide_8k_0.clock_out"
+   end="AlgorithmRun.clk" />
+ <connection
+   kind="clock"
+   version="15.0"
+   start="clk_divide_8k_0.clock_out"
+   end="avmm_master_interface_0.clock" />
+ <connection
+   kind="clock"
+   version="15.0"
+   start="clk_divide_8k_0.clock_out"
+   end="read_master.clock_reset" />
+ <connection
+   kind="clock"
+   version="15.0"
+   start="clk_divide_8k_0.clock_out"
+   end="write_master.clock_reset" />
+ <connection
+   kind="clock"
+   version="15.0"
+   start="clk_divide_8k_0.clock_out"
+   end="DDR3_interface.mp_cmd_clk_0" />
+ <connection
+   kind="clock"
+   version="15.0"
+   start="clk_divide_8k_0.clock_out"
+   end="DDR3_interface.mp_cmd_clk_1" />
+ <connection
+   kind="clock"
+   version="15.0"
+   start="clk_divide_8k_0.clock_out"
+   end="DDR3_interface.mp_cmd_clk_2" />
+ <connection
+   kind="clock"
+   version="15.0"
+   start="clk_divide_8k_0.clock_out"
+   end="DDR3_interface.mp_rfifo_clk_0" />
+ <connection
+   kind="clock"
+   version="15.0"
+   start="clk_divide_8k_0.clock_out"
+   end="DDR3_interface.mp_rfifo_clk_1" />
+ <connection
+   kind="clock"
+   version="15.0"
+   start="clk_divide_8k_0.clock_out"
+   end="DDR3_interface.mp_rfifo_clk_2" />
+ <connection
+   kind="clock"
+   version="15.0"
+   start="clk_divide_8k_0.clock_out"
+   end="DDR3_interface.mp_wfifo_clk_0" />
+ <connection
+   kind="clock"
+   version="15.0"
+   start="clk_divide_8k_0.clock_out"
+   end="DDR3_interface.mp_wfifo_clk_1" />
+ <connection
+   kind="clock"
+   version="15.0"
+   start="clk_divide_8k_0.clock_out"
+   end="DDR3_interface.mp_wfifo_clk_2" />
  <connection
    kind="reset"
    version="15.0"
@@ -651,6 +732,21 @@
    version="15.0"
    start="JTAG_master.master_reset"
    end="JTAG_master.clk_reset" />
+ <connection
+   kind="reset"
+   version="15.0"
+   start="JTAG_master.master_reset"
+   end="clk_divide_8k_0.clock_reset" />
+ <connection
+   kind="reset"
+   version="15.0"
+   start="JTAG_master.master_reset"
+   end="read_master.clock_reset_reset" />
+ <connection
+   kind="reset"
+   version="15.0"
+   start="JTAG_master.master_reset"
+   end="write_master.clock_reset_reset" />
  <connection
    kind="reset"
    version="15.0"
@@ -701,6 +797,16 @@
    version="15.0"
    start="JTAG_master.master_reset"
    end="DDR3_interface.mp_wfifo_reset_n_2" />
+ <connection
+   kind="reset"
+   version="15.0"
+   start="JTAG_master.master_reset"
+   end="avmm_master_interface_0.reset" />
+ <connection
+   kind="reset"
+   version="15.0"
+   start="JTAG_master.master_reset"
+   end="AlgorithmRun.reset" />
  <connection
    kind="reset"
    version="15.0"

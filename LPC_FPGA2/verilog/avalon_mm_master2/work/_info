@@ -1,0 +1,143 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/verilog/avalon_mm_master2
+vddr3_mem_sim
+Z1 !s110 1434521880
+!i10b 1
+!s100 KAX7O@QI0F;c4UoUFUj@_3
+ID72o]BHbk_`<18=DWCzHU1
+Z2 V`JN@9S9cnhjKRR_L]QIcM3
+R0
+w1434514813
+8ddr3_mem_sim.v
+Fddr3_mem_sim.v
+L0 3
+Z3 OV;L;10.3d;59
+r1
+!s85 0
+31
+Z4 !s108 1434521880.360723
+Z5 !s107 write_master.v|read_master_tb.v|read_master.v|master_tb.v|dualportram.v|ddr3_mem_sim.v|
+Z6 !s90 -reportprogress|300|ddr3_mem_sim.v|dualportram.v|master_tb.v|read_master.v|read_master_tb.v|write_master.v|
+!i113 1
+vdualportram
+R1
+!i10b 1
+!s100 HXccIg1BT1@iL`7R7Yo=H1
+I]WQ`aKmP1Ho]lX4<BDXLA0
+R2
+R0
+w1434300849
+8dualportram.v
+Fdualportram.v
+L0 5
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vmaster_tb
+R1
+!i10b 1
+!s100 0bEPkQfKo_=5T=mD9kgKY3
+I:E?hHP1l`9i62VHWzK7?F1
+R2
+R0
+w1434518329
+Z7 8master_tb.v
+Z8 Fmaster_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vread_master
+R1
+!i10b 1
+!s100 94`h2LEg3Jb>7^7<09OKR3
+I<EHnW_`Wk5oQBV2jlTCk72
+R2
+R0
+w1434521158
+8read_master.v
+Fread_master.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vstream_tb
+!s110 1434510162
+!i10b 1
+!s100 IgGWU3MKR=F_RzXnAOP5N3
+I9Ml>fOdEhkUVI4obf=:7c0
+R2
+R0
+w1434510014
+R7
+R8
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1434510162.024743
+R5
+R6
+!i113 1
+vstreamfromdram_tb
+R1
+!i10b 1
+!s100 nPCX`[=dC;=_@Y?:l52Ah1
+I5Q7MzYO^Q:aVkIzk[:=@K3
+R2
+R0
+w1434509848
+8read_master_tb.v
+Fread_master_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vwrite_master
+R1
+!i10b 1
+!s100 Z^HUDOBAU2>_WR@eb8`Ed3
+I`Yl@acYzaMfafS4XADLM91
+R2
+R0
+w1434521834
+8write_master.v
+Fwrite_master.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1

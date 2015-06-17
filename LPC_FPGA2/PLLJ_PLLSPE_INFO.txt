@@ -1,0 +1,25 @@
+PLL_Name	top_LPC_FPGA:LPC_FPGA|top_LPC_FPGA_DDR3_interface:ddr3_interface|top_LPC_FPGA_DDR3_interface_pll0:pll0|pll1~FRACTIONAL_PLL
+PLLJITTER	41
+PLLSPEmax	50
+PLLSPEmin	-50
+
+PLL_Name	top_LPC_FPGA:LPC_FPGA|top_LPC_FPGA_DDR3_interface:ddr3_interface|top_LPC_FPGA_DDR3_interface_pll0:pll0|pll1~PLL_OUTPUT_COUNTER
+PLLJITTER	NA
+PLLSPEmax	NA
+PLLSPEmin	NA
+
+PLL_Name	top_LPC_FPGA:LPC_FPGA|top_LPC_FPGA_DDR3_interface:ddr3_interface|top_LPC_FPGA_DDR3_interface_pll0:pll0|pll3~PLL_OUTPUT_COUNTER
+PLLJITTER	NA
+PLLSPEmax	NA
+PLLSPEmin	NA
+
+PLL_Name	top_LPC_FPGA:LPC_FPGA|top_LPC_FPGA_DDR3_interface:ddr3_interface|top_LPC_FPGA_DDR3_interface_pll0:pll0|pll6~PLL_OUTPUT_COUNTER
+PLLJITTER	NA
+PLLSPEmax	NA
+PLLSPEmin	NA
+
+PLL_Name	top_LPC_FPGA:LPC_FPGA|top_LPC_FPGA_DDR3_interface:ddr3_interface|top_LPC_FPGA_DDR3_interface_pll0:pll0|pll7~PLL_OUTPUT_COUNTER
+PLLJITTER	NA
+PLLSPEmax	NA
+PLLSPEmin	NA
+
