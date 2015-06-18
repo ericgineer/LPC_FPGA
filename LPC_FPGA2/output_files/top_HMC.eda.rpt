@@ -1,5 +1,5 @@
 EDA Netlist Writer report for top_HMC
-Mon Jun 15 19:59:55 2015
+Wed Jun 17 21:59:50 2015
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Mon Jun 15 19:59:55 2015 ;
+; EDA Netlist Writer Status ; Successful - Wed Jun 17 21:59:50 2015 ;
 ; Revision Name             ; top_HMC                               ;
 ; Top-level Entity Name     ; LinearPrediction                      ;
 ; Family                    ; Cyclone V                             ;
@@ -82,14 +82,14 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
-    Info: Processing started: Mon Jun 15 19:59:47 2015
+    Info: Processing started: Wed Jun 17 21:59:43 2015
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off top_LPC_FPGA -c top_HMC
 Warning (10905): Generated the EDA functional simulation files although EDA timing simulation option is chosen.
 Info (204019): Generated file top_HMC.vo in folder "/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 1336 megabytes
-    Info: Processing ended: Mon Jun 15 19:59:56 2015
-    Info: Elapsed time: 00:00:09
+    Info: Peak virtual memory: 1326 megabytes
+    Info: Processing ended: Wed Jun 17 21:59:51 2015
+    Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:08
 
 

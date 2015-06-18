@@ -1,5 +1,5 @@
 Flow report for top_HMC
-Tue Jun 16 23:26:30 2015
+Wed Jun 17 21:59:50 2015
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
@@ -38,24 +38,29 @@ agreement for further details.
 
 
 
-+--------------------------------------------------------------------------+
-; Flow Summary                                                             ;
-+-----------------------------+--------------------------------------------+
-; Flow Status                 ; Successful - Tue Jun 16 23:26:29 2015      ;
-; Quartus II 64-Bit Version   ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
-; Revision Name               ; top_HMC                                    ;
-; Top-level Entity Name       ; LinearPrediction                           ;
-; Family                      ; Cyclone V                                  ;
-; Device                      ; 5CEFA2F23C8                                ;
-; Timing Models               ; Final                                      ;
-; Logic utilization (in ALMs) ; N/A until Partition Merge                  ;
-; Total registers             ; N/A until Partition Merge                  ;
-; Total pins                  ; N/A until Partition Merge                  ;
-; Total virtual pins          ; N/A until Partition Merge                  ;
-; Total block memory bits     ; N/A until Partition Merge                  ;
-; Total PLLs                  ; N/A until Partition Merge                  ;
-; Total DLLs                  ; N/A until Partition Merge                  ;
-+-----------------------------+--------------------------------------------+
++------------------------------------------------------------------------------+
+; Flow Summary                                                                 ;
++---------------------------------+--------------------------------------------+
+; Flow Status                     ; Successful - Wed Jun 17 21:59:50 2015      ;
+; Quartus II 64-Bit Version       ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
+; Revision Name                   ; top_HMC                                    ;
+; Top-level Entity Name           ; LinearPrediction                           ;
+; Family                          ; Cyclone V                                  ;
+; Device                          ; 5CEFA2F23C8                                ;
+; Timing Models                   ; Final                                      ;
+; Logic utilization (in ALMs)     ; 2,040 / 9,430 ( 22 % )                     ;
+; Total registers                 ; 2900                                       ;
+; Total pins                      ; 52 / 224 ( 23 % )                          ;
+; Total virtual pins              ; 0                                          ;
+; Total block memory bits         ; 191,488 / 1,802,240 ( 11 % )               ;
+; Total DSP Blocks                ; 0 / 25 ( 0 % )                             ;
+; Total HSSI RX PCSs              ; 0                                          ;
+; Total HSSI PMA RX Deserializers ; 0                                          ;
+; Total HSSI TX PCSs              ; 0                                          ;
+; Total HSSI PMA TX Serializers   ; 0                                          ;
+; Total PLLs                      ; 1 / 4 ( 25 % )                             ;
+; Total DLLs                      ; 1 / 4 ( 25 % )                             ;
++---------------------------------+--------------------------------------------+
 
 
 +-----------------------------------------+
@@ -63,7 +68,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/16/2015 23:25:26 ;
+; Start date & time ; 06/17/2015 21:52:28 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; top_HMC             ;
 +-------------------+---------------------+
@@ -74,7 +79,7 @@ agreement for further details.
 +---------------------------------------+------------------------------------------------------------+---------------+------------------+----------------+
 ; Assignment Name                       ; Value                                                      ; Default Value ; Entity Name      ; Section Id     ;
 +---------------------------------------+------------------------------------------------------------+---------------+------------------+----------------+
-; COMPILER_SIGNATURE_ID                 ; 165027876618.143452232331855                               ; --            ; --               ; --             ;
+; COMPILER_SIGNATURE_ID                 ; 165027876618.143460314407150                               ; --            ; --               ; --             ;
 ; ECO_REGENERATE_REPORT                 ; On                                                         ; Off           ; --               ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT                ; Verilog Hdl                                                ; --            ; --               ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                   ; ModelSim-Altera (Verilog)                                  ; <None>        ; --               ; --             ;
@@ -89,7 +94,7 @@ agreement for further details.
 ; POWER_PRESET_COOLING_SOLUTION         ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                      ; --            ; --               ; --             ;
 ; PROJECT_OUTPUT_DIRECTORY              ; output_files                                               ; --            ; --               ; --             ;
 ; SLD_FILE                              ; LPC_qsys/synthesis/LPC_qsys.debuginfo                      ; --            ; --               ; --             ;
-; SLD_INFO                              ; QSYS_NAME LPC_qsys HAS_SOPCINFO 1 GENERATION_ID 1434521960 ; --            ; LPC_qsys         ; --             ;
+; SLD_INFO                              ; QSYS_NAME LPC_qsys HAS_SOPCINFO 1 GENERATION_ID 1434602911 ; --            ; LPC_qsys         ; --             ;
 ; SOPCINFO_FILE                         ; LPC_qsys/synthesis/../../LPC_qsys.sopcinfo                 ; --            ; --               ; --             ;
 ; SYNTHESIS_ONLY_QIP                    ; On                                                         ; --            ; --               ; --             ;
 ; TOP_LEVEL_ENTITY                      ; LinearPrediction                                           ; top_HMC       ; --               ; --             ;
@@ -97,29 +102,41 @@ agreement for further details.
 +---------------------------------------+------------------------------------------------------------+---------------+------------------+----------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                          ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:01:10     ; 1.0                     ; 1682 MB             ; 00:02:11                           ;
-; Total                  ; 00:01:10     ; --                      ; --                  ; 00:02:11                           ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:01:27     ; 1.0                     ; 1383 MB             ; 00:02:29                           ;
+; Fitter                    ; 00:03:32     ; 1.0                     ; 3319 MB             ; 00:03:56                           ;
+; Assembler                 ; 00:00:13     ; 1.0                     ; 1009 MB             ; 00:00:13                           ;
+; TimeQuest Timing Analyzer ; 00:01:43     ; 1.0                     ; 2384 MB             ; 00:01:43                           ;
+; EDA Netlist Writer        ; 00:00:07     ; 1.0                     ; 1326 MB             ; 00:00:08                           ;
+; Total                     ; 00:07:02     ; --                      ; --                  ; 00:08:29                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                          ;
-+------------------------+------------------+----------------+------------+----------------+
-; Module Name            ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
-+------------------------+------------------+----------------+------------+----------------+
-; Analysis & Elaboration ; Eric-Ubuntu      ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
-+------------------------+------------------+----------------+------------+----------------+
++---------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                             ;
++---------------------------+------------------+----------------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
++---------------------------+------------------+----------------+------------+----------------+
+; Analysis & Synthesis      ; Eric-Ubuntu      ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
+; Fitter                    ; Eric-Ubuntu      ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
+; Assembler                 ; Eric-Ubuntu      ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
+; TimeQuest Timing Analyzer ; Eric-Ubuntu      ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
+; EDA Netlist Writer        ; Eric-Ubuntu      ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
++---------------------------+------------------+----------------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
-quartus_map --read_settings_files=on --write_settings_files=off top_LPC_FPGA -c top_HMC --analysis_and_elaboration
+quartus_map --read_settings_files=on --write_settings_files=off top_LPC_FPGA -c top_HMC
+quartus_fit --read_settings_files=off --write_settings_files=off top_LPC_FPGA -c top_HMC
+quartus_asm --read_settings_files=off --write_settings_files=off top_LPC_FPGA -c top_HMC
+quartus_sta top_LPC_FPGA -c top_HMC
+quartus_eda --read_settings_files=off --write_settings_files=off top_LPC_FPGA -c top_HMC
 
 
 

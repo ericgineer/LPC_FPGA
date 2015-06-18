@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="LPC_qsys" kind="LPC_qsys" version="1.0" fabric="QSYS">
  <!-- Format version 15.0 145 (Future versions may contain additional information.) -->
- <!-- 2015.06.16.23:19:21 -->
+ <!-- 2015.06.17.21:48:32 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1434521960</value>
+  <value>1434602911</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>

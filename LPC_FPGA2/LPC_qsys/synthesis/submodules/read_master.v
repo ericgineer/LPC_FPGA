@@ -43,14 +43,15 @@ module read_master(//DDR3 Avalon-MM interface
 		
 		reg [31:0] null;
 		
-		reg [1:0] state;
+		reg [2:0] state;
 		
-		reg [31:0] count;
 		
-		reg 	   vout_tmp;
-		reg [31:0] ddr_addr1, ddr_addr2;
+		reg [31:0] count, d_clk_count;
 		
-		parameter S0 = 0, S1 = 1, S2 = 2;
+		reg d_clk_enable;
+		
+		
+		parameter S0 = 0, S1 = 1, S2 = 2, S3 = 3, S4 = 4, S5 = 5, S6 = 6;
 		
 		
 		assign start = ((addr == 3'h4) && (write == 1)) ? 1 : 0;
@@ -62,16 +63,12 @@ module read_master(//DDR3 Avalon-MM interface
 			if (reset)
 			begin
 				readdata   <= 32'b0;
-				vout 	   <= 1'b0; 
 				addr_step  <= 16'b1;
 				addr_init <= 32'b0;
 				stream_length <= 32'b0;
 			end
 			else
 			begin
-				vout  <= vout_tmp;
-				ddr_addr1 <= ddr_addr;
-				ddr_addr2 <= ddr_addr1;
 				if (read)
 				begin
 					case (addr)
@@ -109,14 +106,24 @@ module read_master(//DDR3 Avalon-MM interface
 							state <= S1;
 						else
 							state <= S0;
-					1:  if (ddr_addr2 >= stream_length)
+					1:  if (S1)
 							state <= S2;
 						else
 							state <= S1;
-					2:  if (rst)
-							state <= S0;
+					2:  if (S2)
+							state <= S3;
 						else
 							state <= S2;
+					3:	if ((count >= rate - 1) && (ddr_addr <= stream_length))
+							state <= S1;
+						else if (ddr_addr > stream_length)
+							state <= S4;
+						else
+							state <= S3;
+					4:  if (reset)
+							state <= S0;
+						else
+							state <= S4;
 				endcase
 			end
 		end
@@ -130,43 +137,58 @@ module read_master(//DDR3 Avalon-MM interface
 						done     <= 1'b0;
 						count    <= 32'b1;
 						d_out 	 <= 16'b0;
-						d_clk 	 <= 1'b0;
-				   end
+						d_clk_enable <= 1'b0;
+				   end  
 				1: begin
-						if (count == rate)
-						begin
-							ddr_addr <= ddr_addr + addr_step;
-							vout_tmp <= 1'b1;
-							count <= 32'b1;
-							d_out <= ddr_readdata;
-							d_clk <= ~d_clk;
-						end else
-						begin
-							ddr_addr <= ddr_addr;
-							vout_tmp <= 1'b0;
-							count    <= count + 1;
-							d_out <= d_out;
-						end
-						if ((count == rate - 1) && (ddr_addr2 <= stream_length - 2))
-							ddr_read <= 1'b1;
-						else
-							ddr_read <= 1'b0;
-						done 	 <= 1'b0;
-					end
-				2:  begin
-						done <= 1'b1;
-						d_out <= d_out;
+						ddr_read <= 1'b1;
+						count <= 1'b1;
+						vout <= 1'b0;
+				   end
+				2: begin
 						ddr_read <= 1'b0;
-						d_clk <= 1'b0;
-					end
-				default: begin
-							ddr_addr <= ddr_addr;
-							ddr_read <= 1'b0;
-							done 	 <= 1'b0;
-							count    <= 32'b1;
-							d_out 	 <= 0;
-						 end
+						d_out <= ddr_readdata;
+						ddr_addr <= ddr_addr + 1;
+						count <= count + 1;
+						if (ddr_addr >= 32'd1)
+						begin
+							vout <= 1'b1;
+							d_clk_enable <= 1'b1;
+						end else
+							vout <= 1'b0;
+				   end
+				3: begin
+						count <= count + 1;
+						vout <= 1'b0;
+				   end
+				4: begin
+						done  <= 1'b1;
+						d_clk_enable <= 1'b0;
+				   end
 			endcase
 		end
+		
+		// Data clock counter
+		always @(posedge clk)
+		begin
+			if (reset)
+			begin
+				d_clk_count <= 32'b1;
+				d_clk 	 <= 1'b0;
+			end else
+			begin
+				if (d_clk_enable)
+				begin
+					if (d_clk_count == rate >> 1)
+					begin
+						d_clk_count <= 32'b1;
+						d_clk <= ~d_clk;
+					end else
+					begin
+						d_clk_count <= d_clk_count + 1;
+					end
+				end
+			end
+		end
+		
 endmodule
 				

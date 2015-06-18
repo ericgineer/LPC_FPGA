@@ -33,12 +33,10 @@ module write_master(//DDR3 Avalon-MM interface
 		reg [31:0] addr_init; 	  // Initial starting address
 		reg [31:0] stream_length; // Number of samples to stream
 		reg [31:0] addr_step;     // address step
-		reg [31:0] addr_count;
 		reg [31:0] tmp;
 		
-		reg [15:0] ddr_write_tmp;
 		
-		parameter S0 = 0, S1 = 1, S2 = 2;
+		parameter S0 = 0, S1 = 1, S2 = 2, S3 = 3, S4 = 4;
 		
 		reg [2:0] state;
 		
@@ -52,16 +50,11 @@ module write_master(//DDR3 Avalon-MM interface
 		begin
 			if (reset)
 			begin
-				ddr_writedata <= 32'b0;
 				addr_init <= 32'b0;
 				stream_length <= 32'b0;
 				addr_step <= 32'b1;
-				ddr_addr <= 32'b0;
 			end else
 			begin
-				ddr_addr 	  <= addr_count;
-			    ddr_write_tmp <= d_in;
-				ddr_writedata <= ddr_write_tmp;
 				// writetodram Avalon-MM interface
 				if (read)
 				begin
@@ -93,18 +86,26 @@ module write_master(//DDR3 Avalon-MM interface
 			else
 			begin
 				case (state)
-					0:  if (v)
+					0:  if (start)
 							state <= S1;
 						else
 							state <= S0;
-					1:  if (ddr_addr >= stream_length)
+					1:  if (v)
 							state <= S2;
 						else
 							state <= S1;
-					2:  if (rst)
-							state <= S0;
+					2:  if (S2)
+							state <= S3;
 						else
 							state <= S2;
+					3: if (ddr_addr < stream_length)
+							state <= S1;
+					   else
+							state <= S4;
+					4: if (reset)
+							state <= S0;
+					   else
+							state <= S4;
 				endcase
 			end
 		end
@@ -113,26 +114,19 @@ module write_master(//DDR3 Avalon-MM interface
 		begin
 			case (state)
 				0: begin
-						addr_count <= addr_init;
+						ddr_addr   <= addr_init;
 						ddr_write  <= 1'b0;
 						done       <= 1'b0;
 				   end
-				1: begin
-						if (v)
-						begin
-							addr_count <= addr_count + addr_step;
-							ddr_write <= 1'b1;
-						end else
-						begin
-							addr_count <= addr_count;
-							ddr_write <= 1'b0;
-						end
-					end
-				 2: done <= 1'b1;
-				default: begin
-							addr_count <= addr_count;
-							ddr_write <= 1'b0;
-						 end
+				2: begin
+						ddr_write 	   <= 1'b1;
+						ddr_writedata <= d_in;
+				   end 
+				3: begin
+						ddr_write <= 1'b0;
+						ddr_addr  <= ddr_addr + 1;
+				   end
+				4: done <= 1'b1;
 			endcase
 		end
 endmodule

@@ -22,6 +22,8 @@ add wave -noupdate -group read /master_tb/read/read
 add wave -noupdate -group read /master_tb/read/write
 add wave -noupdate -group read /master_tb/read/d_out
 add wave -noupdate -group read /master_tb/read/d_clk
+add wave -noupdate -group read /master_tb/read/d_clk_count
+add wave -noupdate -group read /master_tb/read/d_clk_enable
 add wave -noupdate -group read /master_tb/read/vout
 add wave -noupdate -group read /master_tb/read/clk
 add wave -noupdate -group read /master_tb/read/rst
@@ -34,7 +36,6 @@ add wave -noupdate -group read /master_tb/read/done
 add wave -noupdate -group read /master_tb/read/null
 add wave -noupdate -group read /master_tb/read/state
 add wave -noupdate -group read /master_tb/read/count
-add wave -noupdate -group read /master_tb/read/vout_tmp
 add wave -noupdate -group read /master_tb/read/reset
 add wave -noupdate -divider write_master
 add wave -noupdate -group write /master_tb/write/ddr_waitrequest
@@ -53,9 +54,7 @@ add wave -noupdate -group write /master_tb/write/rst
 add wave -noupdate -group write /master_tb/write/addr_init
 add wave -noupdate -group write /master_tb/write/stream_length
 add wave -noupdate -group write /master_tb/write/addr_step
-add wave -noupdate -group write /master_tb/write/addr_count
 add wave -noupdate -group write /master_tb/write/tmp
-add wave -noupdate -group write /master_tb/write/ddr_write_tmp
 add wave -noupdate -group write /master_tb/write/state
 add wave -noupdate -group write /master_tb/write/done
 add wave -noupdate -group write /master_tb/write/start
@@ -86,4 +85,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {15215 ns}
+WaveRestoreZoom {31925 ns} {32520 ns}

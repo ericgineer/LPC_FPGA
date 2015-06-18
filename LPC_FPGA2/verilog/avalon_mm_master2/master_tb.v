@@ -117,7 +117,7 @@ module master_tb;
 		master_read_avmm_write(3'h0,0);    // Set initial address to 0
 		master_read_avmm_write(3'h1,256);  // Set number of samples
 		master_read_avmm_write(3'h2,1);    // Set step size
-		master_read_avmm_write(3'h3,2);	   // Set rate
+		master_read_avmm_write(3'h3,4);	   // Set rate
 		
 		
 		//Setup ddr master_write
@@ -129,7 +129,7 @@ module master_tb;
 		master_write_avmm_write(3'h4,1);    // Start
 		master_read_avmm_write(3'h4,1);    // Start
 		
-		repeat(600) @(posedge clk);
+		repeat(1500) @(posedge clk);
 		master_read_avmm_write(3'h6,1);   // Reset read master
 		master_write_avmm_write(3'h6,1);  // Reset write master
 		repeat(100) @(posedge clk);
