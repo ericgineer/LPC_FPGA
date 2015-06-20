@@ -1,0 +1,82 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+# Your use of Altera Corporation's design tools, logic functions
+# and other software and tools, and its AMPP partner logic
+# functions, and any output files from any of the foregoing
+# (including device programming or simulation files), and any
+# associated documentation or information are expressly subject
+# to the terms and conditions of the Altera Program License
+# Subscription Agreement, the Altera Quartus II License Agreement,
+# the Altera MegaCore Function License Agreement, or other
+# applicable license agreement, including, without limitation,
+# that your use is for the sole purpose of programming logic
+# devices manufactured by Altera and sold by Altera or its
+# authorized distributors.  Please refer to the applicable
+# agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
+# Date created = 11:39:44  May 31, 2015
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		LinearPrediction_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE 5CEFA2F23C8
+set_global_assignment -name TOP_LEVEL_ENTITY LinearPrediction
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 15.0.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:01:56  JUNE 18, 2015"
+set_global_assignment -name LAST_QUARTUS_VERSION 15.0.0
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 484
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 8
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_location_assignment PIN_H13 -to clk_clk
+set_global_assignment -name USE_DLL_FREQUENCY_FOR_DQS_DELAY_CHAIN ON
+set_global_assignment -name UNIPHY_SEQUENCER_DQS_CONFIG_ENABLE ON
+set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING ON
+set_global_assignment -name ECO_REGENERATE_REPORT ON
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name IO_STANDARD "SSTL-15" -to clk_clk -tag __top_HMC_DDR3_interface_p0
+set_instance_assignment -name GLOBAL_SIGNAL "DUAL-REGIONAL CLOCK" -to ddr3_interface|pll0|pll_avl_clk -tag __top_HMC_DDR3_interface_p0
+set_instance_assignment -name GLOBAL_SIGNAL "DUAL-REGIONAL CLOCK" -to ddr3_interface|pll0|pll_config_clk -tag __top_HMC_DDR3_interface_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to ddr3_interface|p0|umemphy|ureset|phy_reset_mem_stable_n -tag __top_HMC_DDR3_interface_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to ddr3_interface|p0|umemphy|ureset|phy_reset_n -tag __top_HMC_DDR3_interface_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to ddr3_interface|s0|sequencer_rw_mgr_inst|rw_mgr_inst|rw_mgr_core_inst|rw_soft_reset_n -tag __top_HMC_DDR3_interface_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to ddr3_interface|p0|umemphy|uio_pads|dq_ddio[0].read_capture_clk_buffer -tag __top_HMC_DDR3_interface_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to ddr3_interface|p0|umemphy|uread_datapath|reset_n_fifo_write_side[0] -tag __top_HMC_DDR3_interface_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to ddr3_interface|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[0] -tag __top_HMC_DDR3_interface_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to ddr3_interface|p0|umemphy|uio_pads|dq_ddio[1].read_capture_clk_buffer -tag __top_HMC_DDR3_interface_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to ddr3_interface|p0|umemphy|uread_datapath|reset_n_fifo_write_side[1] -tag __top_HMC_DDR3_interface_p0
+set_instance_assignment -name GLOBAL_SIGNAL OFF -to ddr3_interface|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[1] -tag __top_HMC_DDR3_interface_p0
+set_instance_assignment -name ENABLE_BENEFICIAL_SKEW_OPTIMIZATION_FOR_NON_GLOBAL_CLOCKS ON -to ddr3_interface -tag __top_HMC_DDR3_interface_p0
+set_instance_assignment -name PLL_COMPENSATION_MODE DIRECT -to ddr3_interface|pll0|fbout -tag __top_HMC_DDR3_interface_p0
+set_global_assignment -name QIP_FILE LPC_qsys/synthesis/LPC_qsys.qip
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction.v
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

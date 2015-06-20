@@ -103,6 +103,8 @@ module master_tb;
 	begin
 		clk <= 1'b0;
 		rst <= 1'b0;
+		master_read_read <= 1'b0;
+		master_write_read <= 1'b0;
 	end
 	
 	initial
@@ -128,11 +130,14 @@ module master_tb;
 		// Start streams
 		master_write_avmm_write(3'h4,1);    // Start
 		master_read_avmm_write(3'h4,1);    // Start
-		
-		repeat(1500) @(posedge clk);
+		while (master_read_readdata == 32'b0)
+		begin
+			master_read_avmm_read(3'h5); // Read master read done address untill asserted
+		end
+		repeat(50) @(posedge clk);
 		master_read_avmm_write(3'h6,1);   // Reset read master
 		master_write_avmm_write(3'h6,1);  // Reset write master
-		repeat(100) @(posedge clk);
+		repeat(50) @(posedge clk);
 		$stop;
 	end
 

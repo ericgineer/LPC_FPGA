@@ -5,178 +5,71 @@
 `timescale 1 ps / 1 ps
 module LPC_qsys (
 		input  wire        clk_clk,                  //                 clk.clk
-		output wire [12:0] memory_mem_a,             //              memory.mem_a
-		output wire [2:0]  memory_mem_ba,            //                    .mem_ba
-		output wire [0:0]  memory_mem_ck,            //                    .mem_ck
-		output wire [0:0]  memory_mem_ck_n,          //                    .mem_ck_n
-		output wire [0:0]  memory_mem_cke,           //                    .mem_cke
-		output wire [0:0]  memory_mem_cs_n,          //                    .mem_cs_n
-		output wire [1:0]  memory_mem_dm,            //                    .mem_dm
-		output wire [0:0]  memory_mem_ras_n,         //                    .mem_ras_n
-		output wire [0:0]  memory_mem_cas_n,         //                    .mem_cas_n
-		output wire [0:0]  memory_mem_we_n,          //                    .mem_we_n
-		output wire        memory_mem_reset_n,       //                    .mem_reset_n
-		inout  wire [15:0] memory_mem_dq,            //                    .mem_dq
-		inout  wire [1:0]  memory_mem_dqs,           //                    .mem_dqs
-		inout  wire [1:0]  memory_mem_dqs_n,         //                    .mem_dqs_n
-		output wire [0:0]  memory_mem_odt,           //                    .mem_odt
-		input  wire        oct_rzqin,                //                 oct.rzqin
 		output wire [15:0] read_master_stream_d_out, //  read_master_stream.d_out
 		output wire        read_master_stream_d_clk, //                    .d_clk
 		output wire        read_master_stream_vout,  //                    .vout
-		output wire        status_local_init_done,   //              status.local_init_done
-		output wire        status_local_cal_success, //                    .local_cal_success
-		output wire        status_local_cal_fail,    //                    .local_cal_fail
 		input  wire [15:0] write_master_stream_d_in, // write_master_stream.d_in
 		input  wire        write_master_stream_v     //                    .v
 	);
 
-	wire         jtag_master_master_reset_reset;                               // JTAG_master:master_reset_reset -> [DDR3_interface:global_reset_n, DDR3_interface:mp_cmd_reset_n_0_reset_n, DDR3_interface:mp_cmd_reset_n_1_reset_n, DDR3_interface:mp_cmd_reset_n_2_reset_n, DDR3_interface:mp_rfifo_reset_n_0_reset_n, DDR3_interface:mp_rfifo_reset_n_1_reset_n, DDR3_interface:mp_rfifo_reset_n_2_reset_n, DDR3_interface:mp_wfifo_reset_n_0_reset_n, DDR3_interface:mp_wfifo_reset_n_1_reset_n, DDR3_interface:mp_wfifo_reset_n_2_reset_n, DDR3_interface:soft_reset_n, JTAG_master:clk_reset_reset, rst_controller:reset_in0]
-	wire  [15:0] ddr3_read_master_ddr3_avalon_master_readdata;                 // mm_interconnect_0:ddr3_read_master_ddr3_avalon_master_readdata -> ddr3_read_master:ddr_readdata
-	wire         ddr3_read_master_ddr3_avalon_master_waitrequest;              // mm_interconnect_0:ddr3_read_master_ddr3_avalon_master_waitrequest -> ddr3_read_master:ddr_waitrequest
-	wire  [31:0] ddr3_read_master_ddr3_avalon_master_address;                  // ddr3_read_master:ddr_addr -> mm_interconnect_0:ddr3_read_master_ddr3_avalon_master_address
-	wire         ddr3_read_master_ddr3_avalon_master_read;                     // ddr3_read_master:ddr_read -> mm_interconnect_0:ddr3_read_master_ddr3_avalon_master_read
-	wire         ddr3_read_master_ddr3_avalon_master_readdatavalid;            // mm_interconnect_0:ddr3_read_master_ddr3_avalon_master_readdatavalid -> ddr3_read_master:ddr_readdatavalid
-	wire         mm_interconnect_0_ddr3_interface_avl_1_beginbursttransfer;    // mm_interconnect_0:DDR3_interface_avl_1_beginbursttransfer -> DDR3_interface:avl_burstbegin_1
-	wire  [31:0] mm_interconnect_0_ddr3_interface_avl_1_readdata;              // DDR3_interface:avl_rdata_1 -> mm_interconnect_0:DDR3_interface_avl_1_readdata
-	wire         mm_interconnect_0_ddr3_interface_avl_1_waitrequest;           // DDR3_interface:avl_ready_1 -> mm_interconnect_0:DDR3_interface_avl_1_waitrequest
-	wire  [24:0] mm_interconnect_0_ddr3_interface_avl_1_address;               // mm_interconnect_0:DDR3_interface_avl_1_address -> DDR3_interface:avl_addr_1
-	wire         mm_interconnect_0_ddr3_interface_avl_1_read;                  // mm_interconnect_0:DDR3_interface_avl_1_read -> DDR3_interface:avl_read_req_1
-	wire   [3:0] mm_interconnect_0_ddr3_interface_avl_1_byteenable;            // mm_interconnect_0:DDR3_interface_avl_1_byteenable -> DDR3_interface:avl_be_1
-	wire         mm_interconnect_0_ddr3_interface_avl_1_readdatavalid;         // DDR3_interface:avl_rdata_valid_1 -> mm_interconnect_0:DDR3_interface_avl_1_readdatavalid
-	wire         mm_interconnect_0_ddr3_interface_avl_1_write;                 // mm_interconnect_0:DDR3_interface_avl_1_write -> DDR3_interface:avl_write_req_1
-	wire  [31:0] mm_interconnect_0_ddr3_interface_avl_1_writedata;             // mm_interconnect_0:DDR3_interface_avl_1_writedata -> DDR3_interface:avl_wdata_1
-	wire   [2:0] mm_interconnect_0_ddr3_interface_avl_1_burstcount;            // mm_interconnect_0:DDR3_interface_avl_1_burstcount -> DDR3_interface:avl_size_1
-	wire         ddr3_write_master_ddr3_avalon_master_waitrequest;             // mm_interconnect_1:ddr3_write_master_ddr3_avalon_master_waitrequest -> ddr3_write_master:ddr_waitrequest
-	wire  [31:0] ddr3_write_master_ddr3_avalon_master_address;                 // ddr3_write_master:ddr_addr -> mm_interconnect_1:ddr3_write_master_ddr3_avalon_master_address
-	wire         ddr3_write_master_ddr3_avalon_master_write;                   // ddr3_write_master:ddr_write -> mm_interconnect_1:ddr3_write_master_ddr3_avalon_master_write
-	wire  [15:0] ddr3_write_master_ddr3_avalon_master_writedata;               // ddr3_write_master:ddr_writedata -> mm_interconnect_1:ddr3_write_master_ddr3_avalon_master_writedata
-	wire         mm_interconnect_1_ddr3_interface_avl_2_beginbursttransfer;    // mm_interconnect_1:DDR3_interface_avl_2_beginbursttransfer -> DDR3_interface:avl_burstbegin_2
-	wire  [31:0] mm_interconnect_1_ddr3_interface_avl_2_readdata;              // DDR3_interface:avl_rdata_2 -> mm_interconnect_1:DDR3_interface_avl_2_readdata
-	wire         mm_interconnect_1_ddr3_interface_avl_2_waitrequest;           // DDR3_interface:avl_ready_2 -> mm_interconnect_1:DDR3_interface_avl_2_waitrequest
-	wire  [24:0] mm_interconnect_1_ddr3_interface_avl_2_address;               // mm_interconnect_1:DDR3_interface_avl_2_address -> DDR3_interface:avl_addr_2
-	wire         mm_interconnect_1_ddr3_interface_avl_2_read;                  // mm_interconnect_1:DDR3_interface_avl_2_read -> DDR3_interface:avl_read_req_2
-	wire   [3:0] mm_interconnect_1_ddr3_interface_avl_2_byteenable;            // mm_interconnect_1:DDR3_interface_avl_2_byteenable -> DDR3_interface:avl_be_2
-	wire         mm_interconnect_1_ddr3_interface_avl_2_readdatavalid;         // DDR3_interface:avl_rdata_valid_2 -> mm_interconnect_1:DDR3_interface_avl_2_readdatavalid
-	wire         mm_interconnect_1_ddr3_interface_avl_2_write;                 // mm_interconnect_1:DDR3_interface_avl_2_write -> DDR3_interface:avl_write_req_2
-	wire  [31:0] mm_interconnect_1_ddr3_interface_avl_2_writedata;             // mm_interconnect_1:DDR3_interface_avl_2_writedata -> DDR3_interface:avl_wdata_2
-	wire   [2:0] mm_interconnect_1_ddr3_interface_avl_2_burstcount;            // mm_interconnect_1:DDR3_interface_avl_2_burstcount -> DDR3_interface:avl_size_2
-	wire  [31:0] jtag_master_master_readdata;                                  // mm_interconnect_2:JTAG_master_master_readdata -> JTAG_master:master_readdata
-	wire         jtag_master_master_waitrequest;                               // mm_interconnect_2:JTAG_master_master_waitrequest -> JTAG_master:master_waitrequest
-	wire  [31:0] jtag_master_master_address;                                   // JTAG_master:master_address -> mm_interconnect_2:JTAG_master_master_address
-	wire         jtag_master_master_read;                                      // JTAG_master:master_read -> mm_interconnect_2:JTAG_master_master_read
-	wire   [3:0] jtag_master_master_byteenable;                                // JTAG_master:master_byteenable -> mm_interconnect_2:JTAG_master_master_byteenable
-	wire         jtag_master_master_readdatavalid;                             // mm_interconnect_2:JTAG_master_master_readdatavalid -> JTAG_master:master_readdatavalid
-	wire         jtag_master_master_write;                                     // JTAG_master:master_write -> mm_interconnect_2:JTAG_master_master_write
-	wire  [31:0] jtag_master_master_writedata;                                 // JTAG_master:master_writedata -> mm_interconnect_2:JTAG_master_master_writedata
-	wire  [31:0] mm_interconnect_2_ddr3_read_master_avalon_slave_0_readdata;   // ddr3_read_master:readdata -> mm_interconnect_2:ddr3_read_master_avalon_slave_0_readdata
-	wire   [2:0] mm_interconnect_2_ddr3_read_master_avalon_slave_0_address;    // mm_interconnect_2:ddr3_read_master_avalon_slave_0_address -> ddr3_read_master:addr
-	wire         mm_interconnect_2_ddr3_read_master_avalon_slave_0_read;       // mm_interconnect_2:ddr3_read_master_avalon_slave_0_read -> ddr3_read_master:read
-	wire         mm_interconnect_2_ddr3_read_master_avalon_slave_0_write;      // mm_interconnect_2:ddr3_read_master_avalon_slave_0_write -> ddr3_read_master:write
-	wire  [31:0] mm_interconnect_2_ddr3_read_master_avalon_slave_0_writedata;  // mm_interconnect_2:ddr3_read_master_avalon_slave_0_writedata -> ddr3_read_master:writedata
-	wire  [31:0] mm_interconnect_2_ddr3_write_master_avalon_slave_0_readdata;  // ddr3_write_master:readdata -> mm_interconnect_2:ddr3_write_master_avalon_slave_0_readdata
-	wire   [2:0] mm_interconnect_2_ddr3_write_master_avalon_slave_0_address;   // mm_interconnect_2:ddr3_write_master_avalon_slave_0_address -> ddr3_write_master:addr
-	wire         mm_interconnect_2_ddr3_write_master_avalon_slave_0_read;      // mm_interconnect_2:ddr3_write_master_avalon_slave_0_read -> ddr3_write_master:read
-	wire         mm_interconnect_2_ddr3_write_master_avalon_slave_0_write;     // mm_interconnect_2:ddr3_write_master_avalon_slave_0_write -> ddr3_write_master:write
-	wire  [31:0] mm_interconnect_2_ddr3_write_master_avalon_slave_0_writedata; // mm_interconnect_2:ddr3_write_master_avalon_slave_0_writedata -> ddr3_write_master:writedata
-	wire         mm_interconnect_2_ddr3_interface_avl_0_beginbursttransfer;    // mm_interconnect_2:DDR3_interface_avl_0_beginbursttransfer -> DDR3_interface:avl_burstbegin_0
-	wire  [31:0] mm_interconnect_2_ddr3_interface_avl_0_readdata;              // DDR3_interface:avl_rdata_0 -> mm_interconnect_2:DDR3_interface_avl_0_readdata
-	wire         mm_interconnect_2_ddr3_interface_avl_0_waitrequest;           // DDR3_interface:avl_ready_0 -> mm_interconnect_2:DDR3_interface_avl_0_waitrequest
-	wire  [24:0] mm_interconnect_2_ddr3_interface_avl_0_address;               // mm_interconnect_2:DDR3_interface_avl_0_address -> DDR3_interface:avl_addr_0
-	wire         mm_interconnect_2_ddr3_interface_avl_0_read;                  // mm_interconnect_2:DDR3_interface_avl_0_read -> DDR3_interface:avl_read_req_0
-	wire   [3:0] mm_interconnect_2_ddr3_interface_avl_0_byteenable;            // mm_interconnect_2:DDR3_interface_avl_0_byteenable -> DDR3_interface:avl_be_0
-	wire         mm_interconnect_2_ddr3_interface_avl_0_readdatavalid;         // DDR3_interface:avl_rdata_valid_0 -> mm_interconnect_2:DDR3_interface_avl_0_readdatavalid
-	wire         mm_interconnect_2_ddr3_interface_avl_0_write;                 // mm_interconnect_2:DDR3_interface_avl_0_write -> DDR3_interface:avl_write_req_0
-	wire  [31:0] mm_interconnect_2_ddr3_interface_avl_0_writedata;             // mm_interconnect_2:DDR3_interface_avl_0_writedata -> DDR3_interface:avl_wdata_0
-	wire   [2:0] mm_interconnect_2_ddr3_interface_avl_0_burstcount;            // mm_interconnect_2:DDR3_interface_avl_0_burstcount -> DDR3_interface:avl_size_0
-	wire         rst_controller_reset_out_reset;                               // rst_controller:reset_out -> [ddr3_read_master:rst, ddr3_write_master:rst, mm_interconnect_0:DDR3_interface_mp_cmd_reset_n_1_reset_bridge_in_reset_reset, mm_interconnect_0:ddr3_read_master_reset_sink_reset_bridge_in_reset_reset, mm_interconnect_1:DDR3_interface_mp_cmd_reset_n_2_reset_bridge_in_reset_reset, mm_interconnect_1:ddr3_write_master_reset_sink_reset_bridge_in_reset_reset, mm_interconnect_2:JTAG_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:ddr3_read_master_reset_sink_reset_bridge_in_reset_reset]
-
-	LPC_qsys_DDR3_interface ddr3_interface (
-		.pll_ref_clk                (clk_clk),                                                   //        pll_ref_clk.clk
-		.global_reset_n             (~jtag_master_master_reset_reset),                           //       global_reset.reset_n
-		.soft_reset_n               (~jtag_master_master_reset_reset),                           //         soft_reset.reset_n
-		.afi_clk                    (),                                                          //            afi_clk.clk
-		.afi_half_clk               (),                                                          //       afi_half_clk.clk
-		.afi_reset_n                (),                                                          //          afi_reset.reset_n
-		.afi_reset_export_n         (),                                                          //   afi_reset_export.reset_n
-		.mem_a                      (memory_mem_a),                                              //             memory.mem_a
-		.mem_ba                     (memory_mem_ba),                                             //                   .mem_ba
-		.mem_ck                     (memory_mem_ck),                                             //                   .mem_ck
-		.mem_ck_n                   (memory_mem_ck_n),                                           //                   .mem_ck_n
-		.mem_cke                    (memory_mem_cke),                                            //                   .mem_cke
-		.mem_cs_n                   (memory_mem_cs_n),                                           //                   .mem_cs_n
-		.mem_dm                     (memory_mem_dm),                                             //                   .mem_dm
-		.mem_ras_n                  (memory_mem_ras_n),                                          //                   .mem_ras_n
-		.mem_cas_n                  (memory_mem_cas_n),                                          //                   .mem_cas_n
-		.mem_we_n                   (memory_mem_we_n),                                           //                   .mem_we_n
-		.mem_reset_n                (memory_mem_reset_n),                                        //                   .mem_reset_n
-		.mem_dq                     (memory_mem_dq),                                             //                   .mem_dq
-		.mem_dqs                    (memory_mem_dqs),                                            //                   .mem_dqs
-		.mem_dqs_n                  (memory_mem_dqs_n),                                          //                   .mem_dqs_n
-		.mem_odt                    (memory_mem_odt),                                            //                   .mem_odt
-		.avl_ready_0                (mm_interconnect_2_ddr3_interface_avl_0_waitrequest),        //              avl_0.waitrequest_n
-		.avl_burstbegin_0           (mm_interconnect_2_ddr3_interface_avl_0_beginbursttransfer), //                   .beginbursttransfer
-		.avl_addr_0                 (mm_interconnect_2_ddr3_interface_avl_0_address),            //                   .address
-		.avl_rdata_valid_0          (mm_interconnect_2_ddr3_interface_avl_0_readdatavalid),      //                   .readdatavalid
-		.avl_rdata_0                (mm_interconnect_2_ddr3_interface_avl_0_readdata),           //                   .readdata
-		.avl_wdata_0                (mm_interconnect_2_ddr3_interface_avl_0_writedata),          //                   .writedata
-		.avl_be_0                   (mm_interconnect_2_ddr3_interface_avl_0_byteenable),         //                   .byteenable
-		.avl_read_req_0             (mm_interconnect_2_ddr3_interface_avl_0_read),               //                   .read
-		.avl_write_req_0            (mm_interconnect_2_ddr3_interface_avl_0_write),              //                   .write
-		.avl_size_0                 (mm_interconnect_2_ddr3_interface_avl_0_burstcount),         //                   .burstcount
-		.avl_ready_1                (mm_interconnect_0_ddr3_interface_avl_1_waitrequest),        //              avl_1.waitrequest_n
-		.avl_burstbegin_1           (mm_interconnect_0_ddr3_interface_avl_1_beginbursttransfer), //                   .beginbursttransfer
-		.avl_addr_1                 (mm_interconnect_0_ddr3_interface_avl_1_address),            //                   .address
-		.avl_rdata_valid_1          (mm_interconnect_0_ddr3_interface_avl_1_readdatavalid),      //                   .readdatavalid
-		.avl_rdata_1                (mm_interconnect_0_ddr3_interface_avl_1_readdata),           //                   .readdata
-		.avl_wdata_1                (mm_interconnect_0_ddr3_interface_avl_1_writedata),          //                   .writedata
-		.avl_be_1                   (mm_interconnect_0_ddr3_interface_avl_1_byteenable),         //                   .byteenable
-		.avl_read_req_1             (mm_interconnect_0_ddr3_interface_avl_1_read),               //                   .read
-		.avl_write_req_1            (mm_interconnect_0_ddr3_interface_avl_1_write),              //                   .write
-		.avl_size_1                 (mm_interconnect_0_ddr3_interface_avl_1_burstcount),         //                   .burstcount
-		.avl_ready_2                (mm_interconnect_1_ddr3_interface_avl_2_waitrequest),        //              avl_2.waitrequest_n
-		.avl_burstbegin_2           (mm_interconnect_1_ddr3_interface_avl_2_beginbursttransfer), //                   .beginbursttransfer
-		.avl_addr_2                 (mm_interconnect_1_ddr3_interface_avl_2_address),            //                   .address
-		.avl_rdata_valid_2          (mm_interconnect_1_ddr3_interface_avl_2_readdatavalid),      //                   .readdatavalid
-		.avl_rdata_2                (mm_interconnect_1_ddr3_interface_avl_2_readdata),           //                   .readdata
-		.avl_wdata_2                (mm_interconnect_1_ddr3_interface_avl_2_writedata),          //                   .writedata
-		.avl_be_2                   (mm_interconnect_1_ddr3_interface_avl_2_byteenable),         //                   .byteenable
-		.avl_read_req_2             (mm_interconnect_1_ddr3_interface_avl_2_read),               //                   .read
-		.avl_write_req_2            (mm_interconnect_1_ddr3_interface_avl_2_write),              //                   .write
-		.avl_size_2                 (mm_interconnect_1_ddr3_interface_avl_2_burstcount),         //                   .burstcount
-		.mp_cmd_clk_0_clk           (clk_clk),                                                   //       mp_cmd_clk_0.clk
-		.mp_cmd_reset_n_0_reset_n   (~jtag_master_master_reset_reset),                           //   mp_cmd_reset_n_0.reset_n
-		.mp_cmd_clk_1_clk           (clk_clk),                                                   //       mp_cmd_clk_1.clk
-		.mp_cmd_reset_n_1_reset_n   (~jtag_master_master_reset_reset),                           //   mp_cmd_reset_n_1.reset_n
-		.mp_cmd_clk_2_clk           (clk_clk),                                                   //       mp_cmd_clk_2.clk
-		.mp_cmd_reset_n_2_reset_n   (~jtag_master_master_reset_reset),                           //   mp_cmd_reset_n_2.reset_n
-		.mp_rfifo_clk_0_clk         (clk_clk),                                                   //     mp_rfifo_clk_0.clk
-		.mp_rfifo_reset_n_0_reset_n (~jtag_master_master_reset_reset),                           // mp_rfifo_reset_n_0.reset_n
-		.mp_wfifo_clk_0_clk         (clk_clk),                                                   //     mp_wfifo_clk_0.clk
-		.mp_wfifo_reset_n_0_reset_n (~jtag_master_master_reset_reset),                           // mp_wfifo_reset_n_0.reset_n
-		.mp_rfifo_clk_1_clk         (clk_clk),                                                   //     mp_rfifo_clk_1.clk
-		.mp_rfifo_reset_n_1_reset_n (~jtag_master_master_reset_reset),                           // mp_rfifo_reset_n_1.reset_n
-		.mp_wfifo_clk_1_clk         (clk_clk),                                                   //     mp_wfifo_clk_1.clk
-		.mp_wfifo_reset_n_1_reset_n (~jtag_master_master_reset_reset),                           // mp_wfifo_reset_n_1.reset_n
-		.mp_rfifo_clk_2_clk         (clk_clk),                                                   //     mp_rfifo_clk_2.clk
-		.mp_rfifo_reset_n_2_reset_n (~jtag_master_master_reset_reset),                           // mp_rfifo_reset_n_2.reset_n
-		.mp_wfifo_clk_2_clk         (clk_clk),                                                   //     mp_wfifo_clk_2.clk
-		.mp_wfifo_reset_n_2_reset_n (~jtag_master_master_reset_reset),                           // mp_wfifo_reset_n_2.reset_n
-		.local_init_done            (status_local_init_done),                                    //             status.local_init_done
-		.local_cal_success          (status_local_cal_success),                                  //                   .local_cal_success
-		.local_cal_fail             (status_local_cal_fail),                                     //                   .local_cal_fail
-		.oct_rzqin                  (oct_rzqin),                                                 //                oct.rzqin
-		.pll_mem_clk                (),                                                          //        pll_sharing.pll_mem_clk
-		.pll_write_clk              (),                                                          //                   .pll_write_clk
-		.pll_locked                 (),                                                          //                   .pll_locked
-		.pll_write_clk_pre_phy_clk  (),                                                          //                   .pll_write_clk_pre_phy_clk
-		.pll_addr_cmd_clk           (),                                                          //                   .pll_addr_cmd_clk
-		.pll_avl_clk                (),                                                          //                   .pll_avl_clk
-		.pll_config_clk             (),                                                          //                   .pll_config_clk
-		.pll_mem_phy_clk            (),                                                          //                   .pll_mem_phy_clk
-		.afi_phy_clk                (),                                                          //                   .afi_phy_clk
-		.pll_avl_phy_clk            ()                                                           //                   .pll_avl_phy_clk
-	);
+	wire         jtag_master_master_reset_reset;                                  // JTAG_master:master_reset_reset -> [JTAG_master:clk_reset_reset, rst_controller:reset_in0]
+	wire         ddr3_write_master_ddr3_avalon_master_waitrequest;                // mm_interconnect_0:ddr3_write_master_ddr3_avalon_master_waitrequest -> ddr3_write_master:ddr_waitrequest
+	wire  [15:0] ddr3_write_master_ddr3_avalon_master_address;                    // ddr3_write_master:ddr_addr -> mm_interconnect_0:ddr3_write_master_ddr3_avalon_master_address
+	wire         ddr3_write_master_ddr3_avalon_master_write;                      // ddr3_write_master:ddr_write -> mm_interconnect_0:ddr3_write_master_ddr3_avalon_master_write
+	wire  [15:0] ddr3_write_master_ddr3_avalon_master_writedata;                  // ddr3_write_master:ddr_writedata -> mm_interconnect_0:ddr3_write_master_ddr3_avalon_master_writedata
+	wire         mm_interconnect_0_sink_ram_s2_chipselect;                        // mm_interconnect_0:sink_ram_s2_chipselect -> sink_ram:chipselect2
+	wire  [15:0] mm_interconnect_0_sink_ram_s2_readdata;                          // sink_ram:readdata2 -> mm_interconnect_0:sink_ram_s2_readdata
+	wire  [10:0] mm_interconnect_0_sink_ram_s2_address;                           // mm_interconnect_0:sink_ram_s2_address -> sink_ram:address2
+	wire   [1:0] mm_interconnect_0_sink_ram_s2_byteenable;                        // mm_interconnect_0:sink_ram_s2_byteenable -> sink_ram:byteenable2
+	wire         mm_interconnect_0_sink_ram_s2_write;                             // mm_interconnect_0:sink_ram_s2_write -> sink_ram:write2
+	wire  [15:0] mm_interconnect_0_sink_ram_s2_writedata;                         // mm_interconnect_0:sink_ram_s2_writedata -> sink_ram:writedata2
+	wire         mm_interconnect_0_sink_ram_s2_clken;                             // mm_interconnect_0:sink_ram_s2_clken -> sink_ram:clken2
+	wire  [15:0] ddr3_read_master_ddr3_avalon_master_readdata;                    // mm_interconnect_1:ddr3_read_master_ddr3_avalon_master_readdata -> ddr3_read_master:ddr_readdata
+	wire         ddr3_read_master_ddr3_avalon_master_waitrequest;                 // mm_interconnect_1:ddr3_read_master_ddr3_avalon_master_waitrequest -> ddr3_read_master:ddr_waitrequest
+	wire  [15:0] ddr3_read_master_ddr3_avalon_master_address;                     // ddr3_read_master:ddr_addr -> mm_interconnect_1:ddr3_read_master_ddr3_avalon_master_address
+	wire         ddr3_read_master_ddr3_avalon_master_read;                        // ddr3_read_master:ddr_read -> mm_interconnect_1:ddr3_read_master_ddr3_avalon_master_read
+	wire         ddr3_read_master_ddr3_avalon_master_readdatavalid;               // mm_interconnect_1:ddr3_read_master_ddr3_avalon_master_readdatavalid -> ddr3_read_master:ddr_readdatavalid
+	wire         mm_interconnect_1_read_memory_s2_chipselect;                     // mm_interconnect_1:read_memory_s2_chipselect -> read_memory:chipselect2
+	wire  [15:0] mm_interconnect_1_read_memory_s2_readdata;                       // read_memory:readdata2 -> mm_interconnect_1:read_memory_s2_readdata
+	wire  [10:0] mm_interconnect_1_read_memory_s2_address;                        // mm_interconnect_1:read_memory_s2_address -> read_memory:address2
+	wire   [1:0] mm_interconnect_1_read_memory_s2_byteenable;                     // mm_interconnect_1:read_memory_s2_byteenable -> read_memory:byteenable2
+	wire         mm_interconnect_1_read_memory_s2_write;                          // mm_interconnect_1:read_memory_s2_write -> read_memory:write2
+	wire  [15:0] mm_interconnect_1_read_memory_s2_writedata;                      // mm_interconnect_1:read_memory_s2_writedata -> read_memory:writedata2
+	wire         mm_interconnect_1_read_memory_s2_clken;                          // mm_interconnect_1:read_memory_s2_clken -> read_memory:clken2
+	wire  [31:0] jtag_master_master_readdata;                                     // mm_interconnect_2:JTAG_master_master_readdata -> JTAG_master:master_readdata
+	wire         jtag_master_master_waitrequest;                                  // mm_interconnect_2:JTAG_master_master_waitrequest -> JTAG_master:master_waitrequest
+	wire  [31:0] jtag_master_master_address;                                      // JTAG_master:master_address -> mm_interconnect_2:JTAG_master_master_address
+	wire         jtag_master_master_read;                                         // JTAG_master:master_read -> mm_interconnect_2:JTAG_master_master_read
+	wire   [3:0] jtag_master_master_byteenable;                                   // JTAG_master:master_byteenable -> mm_interconnect_2:JTAG_master_master_byteenable
+	wire         jtag_master_master_readdatavalid;                                // mm_interconnect_2:JTAG_master_master_readdatavalid -> JTAG_master:master_readdatavalid
+	wire         jtag_master_master_write;                                        // JTAG_master:master_write -> mm_interconnect_2:JTAG_master_master_write
+	wire  [31:0] jtag_master_master_writedata;                                    // JTAG_master:master_writedata -> mm_interconnect_2:JTAG_master_master_writedata
+	wire  [15:0] mm_interconnect_2_ddr3_write_master_avalon_mm_control_readdata;  // ddr3_write_master:readdata -> mm_interconnect_2:ddr3_write_master_avalon_mm_control_readdata
+	wire   [2:0] mm_interconnect_2_ddr3_write_master_avalon_mm_control_address;   // mm_interconnect_2:ddr3_write_master_avalon_mm_control_address -> ddr3_write_master:addr
+	wire         mm_interconnect_2_ddr3_write_master_avalon_mm_control_read;      // mm_interconnect_2:ddr3_write_master_avalon_mm_control_read -> ddr3_write_master:read
+	wire         mm_interconnect_2_ddr3_write_master_avalon_mm_control_write;     // mm_interconnect_2:ddr3_write_master_avalon_mm_control_write -> ddr3_write_master:write
+	wire  [15:0] mm_interconnect_2_ddr3_write_master_avalon_mm_control_writedata; // mm_interconnect_2:ddr3_write_master_avalon_mm_control_writedata -> ddr3_write_master:writedata
+	wire  [15:0] mm_interconnect_2_ddr3_read_master_avalon_mm_control_readdata;   // ddr3_read_master:readdata -> mm_interconnect_2:ddr3_read_master_avalon_mm_control_readdata
+	wire   [2:0] mm_interconnect_2_ddr3_read_master_avalon_mm_control_address;    // mm_interconnect_2:ddr3_read_master_avalon_mm_control_address -> ddr3_read_master:addr
+	wire         mm_interconnect_2_ddr3_read_master_avalon_mm_control_read;       // mm_interconnect_2:ddr3_read_master_avalon_mm_control_read -> ddr3_read_master:read
+	wire         mm_interconnect_2_ddr3_read_master_avalon_mm_control_write;      // mm_interconnect_2:ddr3_read_master_avalon_mm_control_write -> ddr3_read_master:write
+	wire  [15:0] mm_interconnect_2_ddr3_read_master_avalon_mm_control_writedata;  // mm_interconnect_2:ddr3_read_master_avalon_mm_control_writedata -> ddr3_read_master:writedata
+	wire         mm_interconnect_2_sink_ram_s1_chipselect;                        // mm_interconnect_2:sink_ram_s1_chipselect -> sink_ram:chipselect
+	wire  [15:0] mm_interconnect_2_sink_ram_s1_readdata;                          // sink_ram:readdata -> mm_interconnect_2:sink_ram_s1_readdata
+	wire  [10:0] mm_interconnect_2_sink_ram_s1_address;                           // mm_interconnect_2:sink_ram_s1_address -> sink_ram:address
+	wire   [1:0] mm_interconnect_2_sink_ram_s1_byteenable;                        // mm_interconnect_2:sink_ram_s1_byteenable -> sink_ram:byteenable
+	wire         mm_interconnect_2_sink_ram_s1_write;                             // mm_interconnect_2:sink_ram_s1_write -> sink_ram:write
+	wire  [15:0] mm_interconnect_2_sink_ram_s1_writedata;                         // mm_interconnect_2:sink_ram_s1_writedata -> sink_ram:writedata
+	wire         mm_interconnect_2_sink_ram_s1_clken;                             // mm_interconnect_2:sink_ram_s1_clken -> sink_ram:clken
+	wire         mm_interconnect_2_read_memory_s1_chipselect;                     // mm_interconnect_2:read_memory_s1_chipselect -> read_memory:chipselect
+	wire  [15:0] mm_interconnect_2_read_memory_s1_readdata;                       // read_memory:readdata -> mm_interconnect_2:read_memory_s1_readdata
+	wire  [10:0] mm_interconnect_2_read_memory_s1_address;                        // mm_interconnect_2:read_memory_s1_address -> read_memory:address
+	wire   [1:0] mm_interconnect_2_read_memory_s1_byteenable;                     // mm_interconnect_2:read_memory_s1_byteenable -> read_memory:byteenable
+	wire         mm_interconnect_2_read_memory_s1_write;                          // mm_interconnect_2:read_memory_s1_write -> read_memory:write
+	wire  [15:0] mm_interconnect_2_read_memory_s1_writedata;                      // mm_interconnect_2:read_memory_s1_writedata -> read_memory:writedata
+	wire         mm_interconnect_2_read_memory_s1_clken;                          // mm_interconnect_2:read_memory_s1_clken -> read_memory:clken
+	wire         rst_controller_reset_out_reset;                                  // rst_controller:reset_out -> [ddr3_read_master:rst, ddr3_write_master:rst, mm_interconnect_0:ddr3_write_master_reset_sink_reset_bridge_in_reset_reset, mm_interconnect_1:ddr3_read_master_reset_sink_reset_bridge_in_reset_reset, mm_interconnect_2:JTAG_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:ddr3_write_master_reset_sink_reset_bridge_in_reset_reset, read_memory:reset, read_memory:reset2, rst_translator:in_reset, sink_ram:reset, sink_ram:reset2]
+	wire         rst_controller_reset_out_reset_req;                              // rst_controller:reset_req -> [read_memory:reset_req, read_memory:reset_req2, rst_translator:reset_req_in, sink_ram:reset_req, sink_ram:reset_req2]
 
 	LPC_qsys_JTAG_master #(
 		.USE_PLI     (0),
@@ -199,125 +92,173 @@ module LPC_qsys (
 	read_master #(
 		.S0 (0),
 		.S1 (1),
-		.S2 (2)
+		.S2 (2),
+		.S3 (3),
+		.S4 (4),
+		.S5 (5),
+		.S6 (6)
 	) ddr3_read_master (
-		.writedata         (mm_interconnect_2_ddr3_read_master_avalon_slave_0_writedata), //     avalon_slave_0.writedata
-		.readdata          (mm_interconnect_2_ddr3_read_master_avalon_slave_0_readdata),  //                   .readdata
-		.addr              (mm_interconnect_2_ddr3_read_master_avalon_slave_0_address),   //                   .address
-		.read              (mm_interconnect_2_ddr3_read_master_avalon_slave_0_read),      //                   .read
-		.write             (mm_interconnect_2_ddr3_read_master_avalon_slave_0_write),     //                   .write
-		.clk               (clk_clk),                                                     //              clock.clk
-		.rst               (rst_controller_reset_out_reset),                              //         reset_sink.reset
-		.ddr_readdata      (ddr3_read_master_ddr3_avalon_master_readdata),                // ddr3_avalon_master.readdata
-		.ddr_readdatavalid (ddr3_read_master_ddr3_avalon_master_readdatavalid),           //                   .readdatavalid
-		.ddr_waitrequest   (ddr3_read_master_ddr3_avalon_master_waitrequest),             //                   .waitrequest
-		.ddr_addr          (ddr3_read_master_ddr3_avalon_master_address),                 //                   .address
-		.ddr_read          (ddr3_read_master_ddr3_avalon_master_read),                    //                   .read
-		.d_out             (read_master_stream_d_out),                                    //   stream_interface.d_out
-		.d_clk             (read_master_stream_d_clk),                                    //                   .d_clk
-		.vout              (read_master_stream_vout)                                      //                   .vout
+		.clk               (clk_clk),                                                        //              clock.clk
+		.rst               (rst_controller_reset_out_reset),                                 //         reset_sink.reset
+		.ddr_readdata      (ddr3_read_master_ddr3_avalon_master_readdata),                   // ddr3_avalon_master.readdata
+		.ddr_readdatavalid (ddr3_read_master_ddr3_avalon_master_readdatavalid),              //                   .readdatavalid
+		.ddr_waitrequest   (ddr3_read_master_ddr3_avalon_master_waitrequest),                //                   .waitrequest
+		.ddr_addr          (ddr3_read_master_ddr3_avalon_master_address),                    //                   .address
+		.ddr_read          (ddr3_read_master_ddr3_avalon_master_read),                       //                   .read
+		.d_out             (read_master_stream_d_out),                                       //   stream_interface.d_out
+		.d_clk             (read_master_stream_d_clk),                                       //                   .d_clk
+		.vout              (read_master_stream_vout),                                        //                   .vout
+		.writedata         (mm_interconnect_2_ddr3_read_master_avalon_mm_control_writedata), //  avalon_mm_control.writedata
+		.readdata          (mm_interconnect_2_ddr3_read_master_avalon_mm_control_readdata),  //                   .readdata
+		.addr              (mm_interconnect_2_ddr3_read_master_avalon_mm_control_address),   //                   .address
+		.read              (mm_interconnect_2_ddr3_read_master_avalon_mm_control_read),      //                   .read
+		.write             (mm_interconnect_2_ddr3_read_master_avalon_mm_control_write)      //                   .write
 	);
 
 	write_master #(
 		.S0 (0),
 		.S1 (1),
-		.S2 (2)
+		.S2 (2),
+		.S3 (3),
+		.S4 (4)
 	) ddr3_write_master (
-		.addr            (mm_interconnect_2_ddr3_write_master_avalon_slave_0_address),   //     avalon_slave_0.address
-		.read            (mm_interconnect_2_ddr3_write_master_avalon_slave_0_read),      //                   .read
-		.write           (mm_interconnect_2_ddr3_write_master_avalon_slave_0_write),     //                   .write
-		.writedata       (mm_interconnect_2_ddr3_write_master_avalon_slave_0_writedata), //                   .writedata
-		.readdata        (mm_interconnect_2_ddr3_write_master_avalon_slave_0_readdata),  //                   .readdata
-		.clk             (clk_clk),                                                      //              clock.clk
-		.rst             (rst_controller_reset_out_reset),                               //         reset_sink.reset
-		.ddr_waitrequest (ddr3_write_master_ddr3_avalon_master_waitrequest),             // ddr3_avalon_master.waitrequest
-		.ddr_addr        (ddr3_write_master_ddr3_avalon_master_address),                 //                   .address
-		.ddr_write       (ddr3_write_master_ddr3_avalon_master_write),                   //                   .write
-		.ddr_writedata   (ddr3_write_master_ddr3_avalon_master_writedata),               //                   .writedata
-		.d_in            (write_master_stream_d_in),                                     //   stream_interface.d_in
-		.v               (write_master_stream_v)                                         //                   .v
+		.clk             (clk_clk),                                                         //              clock.clk
+		.rst             (rst_controller_reset_out_reset),                                  //         reset_sink.reset
+		.ddr_waitrequest (ddr3_write_master_ddr3_avalon_master_waitrequest),                // ddr3_avalon_master.waitrequest
+		.ddr_addr        (ddr3_write_master_ddr3_avalon_master_address),                    //                   .address
+		.ddr_write       (ddr3_write_master_ddr3_avalon_master_write),                      //                   .write
+		.ddr_writedata   (ddr3_write_master_ddr3_avalon_master_writedata),                  //                   .writedata
+		.d_in            (write_master_stream_d_in),                                        //   stream_interface.d_in
+		.v               (write_master_stream_v),                                           //                   .v
+		.addr            (mm_interconnect_2_ddr3_write_master_avalon_mm_control_address),   //  avalon_mm_control.address
+		.read            (mm_interconnect_2_ddr3_write_master_avalon_mm_control_read),      //                   .read
+		.write           (mm_interconnect_2_ddr3_write_master_avalon_mm_control_write),     //                   .write
+		.writedata       (mm_interconnect_2_ddr3_write_master_avalon_mm_control_writedata), //                   .writedata
+		.readdata        (mm_interconnect_2_ddr3_write_master_avalon_mm_control_readdata)   //                   .readdata
+	);
+
+	LPC_qsys_read_memory read_memory (
+		.clk         (clk_clk),                                     //   clk1.clk
+		.address     (mm_interconnect_2_read_memory_s1_address),    //     s1.address
+		.clken       (mm_interconnect_2_read_memory_s1_clken),      //       .clken
+		.chipselect  (mm_interconnect_2_read_memory_s1_chipselect), //       .chipselect
+		.write       (mm_interconnect_2_read_memory_s1_write),      //       .write
+		.readdata    (mm_interconnect_2_read_memory_s1_readdata),   //       .readdata
+		.writedata   (mm_interconnect_2_read_memory_s1_writedata),  //       .writedata
+		.byteenable  (mm_interconnect_2_read_memory_s1_byteenable), //       .byteenable
+		.reset       (rst_controller_reset_out_reset),              // reset1.reset
+		.reset_req   (rst_controller_reset_out_reset_req),          //       .reset_req
+		.address2    (mm_interconnect_1_read_memory_s2_address),    //     s2.address
+		.chipselect2 (mm_interconnect_1_read_memory_s2_chipselect), //       .chipselect
+		.clken2      (mm_interconnect_1_read_memory_s2_clken),      //       .clken
+		.write2      (mm_interconnect_1_read_memory_s2_write),      //       .write
+		.readdata2   (mm_interconnect_1_read_memory_s2_readdata),   //       .readdata
+		.writedata2  (mm_interconnect_1_read_memory_s2_writedata),  //       .writedata
+		.byteenable2 (mm_interconnect_1_read_memory_s2_byteenable), //       .byteenable
+		.clk2        (clk_clk),                                     //   clk2.clk
+		.reset2      (rst_controller_reset_out_reset),              // reset2.reset
+		.reset_req2  (rst_controller_reset_out_reset_req)           //       .reset_req
+	);
+
+	LPC_qsys_sink_ram sink_ram (
+		.clk         (clk_clk),                                  //   clk1.clk
+		.address     (mm_interconnect_2_sink_ram_s1_address),    //     s1.address
+		.clken       (mm_interconnect_2_sink_ram_s1_clken),      //       .clken
+		.chipselect  (mm_interconnect_2_sink_ram_s1_chipselect), //       .chipselect
+		.write       (mm_interconnect_2_sink_ram_s1_write),      //       .write
+		.readdata    (mm_interconnect_2_sink_ram_s1_readdata),   //       .readdata
+		.writedata   (mm_interconnect_2_sink_ram_s1_writedata),  //       .writedata
+		.byteenable  (mm_interconnect_2_sink_ram_s1_byteenable), //       .byteenable
+		.reset       (rst_controller_reset_out_reset),           // reset1.reset
+		.reset_req   (rst_controller_reset_out_reset_req),       //       .reset_req
+		.address2    (mm_interconnect_0_sink_ram_s2_address),    //     s2.address
+		.chipselect2 (mm_interconnect_0_sink_ram_s2_chipselect), //       .chipselect
+		.clken2      (mm_interconnect_0_sink_ram_s2_clken),      //       .clken
+		.write2      (mm_interconnect_0_sink_ram_s2_write),      //       .write
+		.readdata2   (mm_interconnect_0_sink_ram_s2_readdata),   //       .readdata
+		.writedata2  (mm_interconnect_0_sink_ram_s2_writedata),  //       .writedata
+		.byteenable2 (mm_interconnect_0_sink_ram_s2_byteenable), //       .byteenable
+		.clk2        (clk_clk),                                  //   clk2.clk
+		.reset2      (rst_controller_reset_out_reset),           // reset2.reset
+		.reset_req2  (rst_controller_reset_out_reset_req)        //       .reset_req
 	);
 
 	LPC_qsys_mm_interconnect_0 mm_interconnect_0 (
-		.clk_50M_clk_clk                                             (clk_clk),                                                   //                                           clk_50M_clk.clk
-		.DDR3_interface_mp_cmd_reset_n_1_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),                            // DDR3_interface_mp_cmd_reset_n_1_reset_bridge_in_reset.reset
-		.ddr3_read_master_reset_sink_reset_bridge_in_reset_reset     (rst_controller_reset_out_reset),                            //     ddr3_read_master_reset_sink_reset_bridge_in_reset.reset
-		.ddr3_read_master_ddr3_avalon_master_address                 (ddr3_read_master_ddr3_avalon_master_address),               //                   ddr3_read_master_ddr3_avalon_master.address
-		.ddr3_read_master_ddr3_avalon_master_waitrequest             (ddr3_read_master_ddr3_avalon_master_waitrequest),           //                                                      .waitrequest
-		.ddr3_read_master_ddr3_avalon_master_read                    (ddr3_read_master_ddr3_avalon_master_read),                  //                                                      .read
-		.ddr3_read_master_ddr3_avalon_master_readdata                (ddr3_read_master_ddr3_avalon_master_readdata),              //                                                      .readdata
-		.ddr3_read_master_ddr3_avalon_master_readdatavalid           (ddr3_read_master_ddr3_avalon_master_readdatavalid),         //                                                      .readdatavalid
-		.DDR3_interface_avl_1_address                                (mm_interconnect_0_ddr3_interface_avl_1_address),            //                                  DDR3_interface_avl_1.address
-		.DDR3_interface_avl_1_write                                  (mm_interconnect_0_ddr3_interface_avl_1_write),              //                                                      .write
-		.DDR3_interface_avl_1_read                                   (mm_interconnect_0_ddr3_interface_avl_1_read),               //                                                      .read
-		.DDR3_interface_avl_1_readdata                               (mm_interconnect_0_ddr3_interface_avl_1_readdata),           //                                                      .readdata
-		.DDR3_interface_avl_1_writedata                              (mm_interconnect_0_ddr3_interface_avl_1_writedata),          //                                                      .writedata
-		.DDR3_interface_avl_1_beginbursttransfer                     (mm_interconnect_0_ddr3_interface_avl_1_beginbursttransfer), //                                                      .beginbursttransfer
-		.DDR3_interface_avl_1_burstcount                             (mm_interconnect_0_ddr3_interface_avl_1_burstcount),         //                                                      .burstcount
-		.DDR3_interface_avl_1_byteenable                             (mm_interconnect_0_ddr3_interface_avl_1_byteenable),         //                                                      .byteenable
-		.DDR3_interface_avl_1_readdatavalid                          (mm_interconnect_0_ddr3_interface_avl_1_readdatavalid),      //                                                      .readdatavalid
-		.DDR3_interface_avl_1_waitrequest                            (~mm_interconnect_0_ddr3_interface_avl_1_waitrequest)        //                                                      .waitrequest
+		.clk_50M_clk_clk                                          (clk_clk),                                          //                                        clk_50M_clk.clk
+		.ddr3_write_master_reset_sink_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),                   // ddr3_write_master_reset_sink_reset_bridge_in_reset.reset
+		.ddr3_write_master_ddr3_avalon_master_address             (ddr3_write_master_ddr3_avalon_master_address),     //               ddr3_write_master_ddr3_avalon_master.address
+		.ddr3_write_master_ddr3_avalon_master_waitrequest         (ddr3_write_master_ddr3_avalon_master_waitrequest), //                                                   .waitrequest
+		.ddr3_write_master_ddr3_avalon_master_write               (ddr3_write_master_ddr3_avalon_master_write),       //                                                   .write
+		.ddr3_write_master_ddr3_avalon_master_writedata           (ddr3_write_master_ddr3_avalon_master_writedata),   //                                                   .writedata
+		.sink_ram_s2_address                                      (mm_interconnect_0_sink_ram_s2_address),            //                                        sink_ram_s2.address
+		.sink_ram_s2_write                                        (mm_interconnect_0_sink_ram_s2_write),              //                                                   .write
+		.sink_ram_s2_readdata                                     (mm_interconnect_0_sink_ram_s2_readdata),           //                                                   .readdata
+		.sink_ram_s2_writedata                                    (mm_interconnect_0_sink_ram_s2_writedata),          //                                                   .writedata
+		.sink_ram_s2_byteenable                                   (mm_interconnect_0_sink_ram_s2_byteenable),         //                                                   .byteenable
+		.sink_ram_s2_chipselect                                   (mm_interconnect_0_sink_ram_s2_chipselect),         //                                                   .chipselect
+		.sink_ram_s2_clken                                        (mm_interconnect_0_sink_ram_s2_clken)               //                                                   .clken
 	);
 
 	LPC_qsys_mm_interconnect_1 mm_interconnect_1 (
-		.clk_50M_clk_clk                                             (clk_clk),                                                   //                                           clk_50M_clk.clk
-		.DDR3_interface_mp_cmd_reset_n_2_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),                            // DDR3_interface_mp_cmd_reset_n_2_reset_bridge_in_reset.reset
-		.ddr3_write_master_reset_sink_reset_bridge_in_reset_reset    (rst_controller_reset_out_reset),                            //    ddr3_write_master_reset_sink_reset_bridge_in_reset.reset
-		.ddr3_write_master_ddr3_avalon_master_address                (ddr3_write_master_ddr3_avalon_master_address),              //                  ddr3_write_master_ddr3_avalon_master.address
-		.ddr3_write_master_ddr3_avalon_master_waitrequest            (ddr3_write_master_ddr3_avalon_master_waitrequest),          //                                                      .waitrequest
-		.ddr3_write_master_ddr3_avalon_master_write                  (ddr3_write_master_ddr3_avalon_master_write),                //                                                      .write
-		.ddr3_write_master_ddr3_avalon_master_writedata              (ddr3_write_master_ddr3_avalon_master_writedata),            //                                                      .writedata
-		.DDR3_interface_avl_2_address                                (mm_interconnect_1_ddr3_interface_avl_2_address),            //                                  DDR3_interface_avl_2.address
-		.DDR3_interface_avl_2_write                                  (mm_interconnect_1_ddr3_interface_avl_2_write),              //                                                      .write
-		.DDR3_interface_avl_2_read                                   (mm_interconnect_1_ddr3_interface_avl_2_read),               //                                                      .read
-		.DDR3_interface_avl_2_readdata                               (mm_interconnect_1_ddr3_interface_avl_2_readdata),           //                                                      .readdata
-		.DDR3_interface_avl_2_writedata                              (mm_interconnect_1_ddr3_interface_avl_2_writedata),          //                                                      .writedata
-		.DDR3_interface_avl_2_beginbursttransfer                     (mm_interconnect_1_ddr3_interface_avl_2_beginbursttransfer), //                                                      .beginbursttransfer
-		.DDR3_interface_avl_2_burstcount                             (mm_interconnect_1_ddr3_interface_avl_2_burstcount),         //                                                      .burstcount
-		.DDR3_interface_avl_2_byteenable                             (mm_interconnect_1_ddr3_interface_avl_2_byteenable),         //                                                      .byteenable
-		.DDR3_interface_avl_2_readdatavalid                          (mm_interconnect_1_ddr3_interface_avl_2_readdatavalid),      //                                                      .readdatavalid
-		.DDR3_interface_avl_2_waitrequest                            (~mm_interconnect_1_ddr3_interface_avl_2_waitrequest)        //                                                      .waitrequest
+		.clk_50M_clk_clk                                         (clk_clk),                                           //                                       clk_50M_clk.clk
+		.ddr3_read_master_reset_sink_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),                    // ddr3_read_master_reset_sink_reset_bridge_in_reset.reset
+		.ddr3_read_master_ddr3_avalon_master_address             (ddr3_read_master_ddr3_avalon_master_address),       //               ddr3_read_master_ddr3_avalon_master.address
+		.ddr3_read_master_ddr3_avalon_master_waitrequest         (ddr3_read_master_ddr3_avalon_master_waitrequest),   //                                                  .waitrequest
+		.ddr3_read_master_ddr3_avalon_master_read                (ddr3_read_master_ddr3_avalon_master_read),          //                                                  .read
+		.ddr3_read_master_ddr3_avalon_master_readdata            (ddr3_read_master_ddr3_avalon_master_readdata),      //                                                  .readdata
+		.ddr3_read_master_ddr3_avalon_master_readdatavalid       (ddr3_read_master_ddr3_avalon_master_readdatavalid), //                                                  .readdatavalid
+		.read_memory_s2_address                                  (mm_interconnect_1_read_memory_s2_address),          //                                    read_memory_s2.address
+		.read_memory_s2_write                                    (mm_interconnect_1_read_memory_s2_write),            //                                                  .write
+		.read_memory_s2_readdata                                 (mm_interconnect_1_read_memory_s2_readdata),         //                                                  .readdata
+		.read_memory_s2_writedata                                (mm_interconnect_1_read_memory_s2_writedata),        //                                                  .writedata
+		.read_memory_s2_byteenable                               (mm_interconnect_1_read_memory_s2_byteenable),       //                                                  .byteenable
+		.read_memory_s2_chipselect                               (mm_interconnect_1_read_memory_s2_chipselect),       //                                                  .chipselect
+		.read_memory_s2_clken                                    (mm_interconnect_1_read_memory_s2_clken)             //                                                  .clken
 	);
 
 	LPC_qsys_mm_interconnect_2 mm_interconnect_2 (
-		.clk_50M_clk_clk                                         (clk_clk),                                                      //                                       clk_50M_clk.clk
-		.ddr3_read_master_reset_sink_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),                               // ddr3_read_master_reset_sink_reset_bridge_in_reset.reset
-		.JTAG_master_clk_reset_reset_bridge_in_reset_reset       (rst_controller_reset_out_reset),                               //       JTAG_master_clk_reset_reset_bridge_in_reset.reset
-		.JTAG_master_master_address                              (jtag_master_master_address),                                   //                                JTAG_master_master.address
-		.JTAG_master_master_waitrequest                          (jtag_master_master_waitrequest),                               //                                                  .waitrequest
-		.JTAG_master_master_byteenable                           (jtag_master_master_byteenable),                                //                                                  .byteenable
-		.JTAG_master_master_read                                 (jtag_master_master_read),                                      //                                                  .read
-		.JTAG_master_master_readdata                             (jtag_master_master_readdata),                                  //                                                  .readdata
-		.JTAG_master_master_readdatavalid                        (jtag_master_master_readdatavalid),                             //                                                  .readdatavalid
-		.JTAG_master_master_write                                (jtag_master_master_write),                                     //                                                  .write
-		.JTAG_master_master_writedata                            (jtag_master_master_writedata),                                 //                                                  .writedata
-		.DDR3_interface_avl_0_address                            (mm_interconnect_2_ddr3_interface_avl_0_address),               //                              DDR3_interface_avl_0.address
-		.DDR3_interface_avl_0_write                              (mm_interconnect_2_ddr3_interface_avl_0_write),                 //                                                  .write
-		.DDR3_interface_avl_0_read                               (mm_interconnect_2_ddr3_interface_avl_0_read),                  //                                                  .read
-		.DDR3_interface_avl_0_readdata                           (mm_interconnect_2_ddr3_interface_avl_0_readdata),              //                                                  .readdata
-		.DDR3_interface_avl_0_writedata                          (mm_interconnect_2_ddr3_interface_avl_0_writedata),             //                                                  .writedata
-		.DDR3_interface_avl_0_beginbursttransfer                 (mm_interconnect_2_ddr3_interface_avl_0_beginbursttransfer),    //                                                  .beginbursttransfer
-		.DDR3_interface_avl_0_burstcount                         (mm_interconnect_2_ddr3_interface_avl_0_burstcount),            //                                                  .burstcount
-		.DDR3_interface_avl_0_byteenable                         (mm_interconnect_2_ddr3_interface_avl_0_byteenable),            //                                                  .byteenable
-		.DDR3_interface_avl_0_readdatavalid                      (mm_interconnect_2_ddr3_interface_avl_0_readdatavalid),         //                                                  .readdatavalid
-		.DDR3_interface_avl_0_waitrequest                        (~mm_interconnect_2_ddr3_interface_avl_0_waitrequest),          //                                                  .waitrequest
-		.ddr3_read_master_avalon_slave_0_address                 (mm_interconnect_2_ddr3_read_master_avalon_slave_0_address),    //                   ddr3_read_master_avalon_slave_0.address
-		.ddr3_read_master_avalon_slave_0_write                   (mm_interconnect_2_ddr3_read_master_avalon_slave_0_write),      //                                                  .write
-		.ddr3_read_master_avalon_slave_0_read                    (mm_interconnect_2_ddr3_read_master_avalon_slave_0_read),       //                                                  .read
-		.ddr3_read_master_avalon_slave_0_readdata                (mm_interconnect_2_ddr3_read_master_avalon_slave_0_readdata),   //                                                  .readdata
-		.ddr3_read_master_avalon_slave_0_writedata               (mm_interconnect_2_ddr3_read_master_avalon_slave_0_writedata),  //                                                  .writedata
-		.ddr3_write_master_avalon_slave_0_address                (mm_interconnect_2_ddr3_write_master_avalon_slave_0_address),   //                  ddr3_write_master_avalon_slave_0.address
-		.ddr3_write_master_avalon_slave_0_write                  (mm_interconnect_2_ddr3_write_master_avalon_slave_0_write),     //                                                  .write
-		.ddr3_write_master_avalon_slave_0_read                   (mm_interconnect_2_ddr3_write_master_avalon_slave_0_read),      //                                                  .read
-		.ddr3_write_master_avalon_slave_0_readdata               (mm_interconnect_2_ddr3_write_master_avalon_slave_0_readdata),  //                                                  .readdata
-		.ddr3_write_master_avalon_slave_0_writedata              (mm_interconnect_2_ddr3_write_master_avalon_slave_0_writedata)  //                                                  .writedata
+		.clk_50M_clk_clk                                          (clk_clk),                                                         //                                        clk_50M_clk.clk
+		.ddr3_write_master_reset_sink_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),                                  // ddr3_write_master_reset_sink_reset_bridge_in_reset.reset
+		.JTAG_master_clk_reset_reset_bridge_in_reset_reset        (rst_controller_reset_out_reset),                                  //        JTAG_master_clk_reset_reset_bridge_in_reset.reset
+		.JTAG_master_master_address                               (jtag_master_master_address),                                      //                                 JTAG_master_master.address
+		.JTAG_master_master_waitrequest                           (jtag_master_master_waitrequest),                                  //                                                   .waitrequest
+		.JTAG_master_master_byteenable                            (jtag_master_master_byteenable),                                   //                                                   .byteenable
+		.JTAG_master_master_read                                  (jtag_master_master_read),                                         //                                                   .read
+		.JTAG_master_master_readdata                              (jtag_master_master_readdata),                                     //                                                   .readdata
+		.JTAG_master_master_readdatavalid                         (jtag_master_master_readdatavalid),                                //                                                   .readdatavalid
+		.JTAG_master_master_write                                 (jtag_master_master_write),                                        //                                                   .write
+		.JTAG_master_master_writedata                             (jtag_master_master_writedata),                                    //                                                   .writedata
+		.ddr3_read_master_avalon_mm_control_address               (mm_interconnect_2_ddr3_read_master_avalon_mm_control_address),    //                 ddr3_read_master_avalon_mm_control.address
+		.ddr3_read_master_avalon_mm_control_write                 (mm_interconnect_2_ddr3_read_master_avalon_mm_control_write),      //                                                   .write
+		.ddr3_read_master_avalon_mm_control_read                  (mm_interconnect_2_ddr3_read_master_avalon_mm_control_read),       //                                                   .read
+		.ddr3_read_master_avalon_mm_control_readdata              (mm_interconnect_2_ddr3_read_master_avalon_mm_control_readdata),   //                                                   .readdata
+		.ddr3_read_master_avalon_mm_control_writedata             (mm_interconnect_2_ddr3_read_master_avalon_mm_control_writedata),  //                                                   .writedata
+		.ddr3_write_master_avalon_mm_control_address              (mm_interconnect_2_ddr3_write_master_avalon_mm_control_address),   //                ddr3_write_master_avalon_mm_control.address
+		.ddr3_write_master_avalon_mm_control_write                (mm_interconnect_2_ddr3_write_master_avalon_mm_control_write),     //                                                   .write
+		.ddr3_write_master_avalon_mm_control_read                 (mm_interconnect_2_ddr3_write_master_avalon_mm_control_read),      //                                                   .read
+		.ddr3_write_master_avalon_mm_control_readdata             (mm_interconnect_2_ddr3_write_master_avalon_mm_control_readdata),  //                                                   .readdata
+		.ddr3_write_master_avalon_mm_control_writedata            (mm_interconnect_2_ddr3_write_master_avalon_mm_control_writedata), //                                                   .writedata
+		.read_memory_s1_address                                   (mm_interconnect_2_read_memory_s1_address),                        //                                     read_memory_s1.address
+		.read_memory_s1_write                                     (mm_interconnect_2_read_memory_s1_write),                          //                                                   .write
+		.read_memory_s1_readdata                                  (mm_interconnect_2_read_memory_s1_readdata),                       //                                                   .readdata
+		.read_memory_s1_writedata                                 (mm_interconnect_2_read_memory_s1_writedata),                      //                                                   .writedata
+		.read_memory_s1_byteenable                                (mm_interconnect_2_read_memory_s1_byteenable),                     //                                                   .byteenable
+		.read_memory_s1_chipselect                                (mm_interconnect_2_read_memory_s1_chipselect),                     //                                                   .chipselect
+		.read_memory_s1_clken                                     (mm_interconnect_2_read_memory_s1_clken),                          //                                                   .clken
+		.sink_ram_s1_address                                      (mm_interconnect_2_sink_ram_s1_address),                           //                                        sink_ram_s1.address
+		.sink_ram_s1_write                                        (mm_interconnect_2_sink_ram_s1_write),                             //                                                   .write
+		.sink_ram_s1_readdata                                     (mm_interconnect_2_sink_ram_s1_readdata),                          //                                                   .readdata
+		.sink_ram_s1_writedata                                    (mm_interconnect_2_sink_ram_s1_writedata),                         //                                                   .writedata
+		.sink_ram_s1_byteenable                                   (mm_interconnect_2_sink_ram_s1_byteenable),                        //                                                   .byteenable
+		.sink_ram_s1_chipselect                                   (mm_interconnect_2_sink_ram_s1_chipselect),                        //                                                   .chipselect
+		.sink_ram_s1_clken                                        (mm_interconnect_2_sink_ram_s1_clken)                              //                                                   .clken
 	);
 
 	altera_reset_controller #(
 		.NUM_RESET_INPUTS          (1),
 		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
 		.SYNC_DEPTH                (2),
-		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQUEST_PRESENT     (1),
 		.RESET_REQ_WAIT_TIME       (1),
 		.MIN_RST_ASSERTION_TIME    (3),
 		.RESET_REQ_EARLY_DSRT_TIME (1),
@@ -339,41 +280,41 @@ module LPC_qsys (
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller (
-		.reset_in0      (jtag_master_master_reset_reset), // reset_in0.reset
-		.clk            (clk_clk),                        //       clk.clk
-		.reset_out      (rst_controller_reset_out_reset), // reset_out.reset
-		.reset_req      (),                               // (terminated)
-		.reset_req_in0  (1'b0),                           // (terminated)
-		.reset_in1      (1'b0),                           // (terminated)
-		.reset_req_in1  (1'b0),                           // (terminated)
-		.reset_in2      (1'b0),                           // (terminated)
-		.reset_req_in2  (1'b0),                           // (terminated)
-		.reset_in3      (1'b0),                           // (terminated)
-		.reset_req_in3  (1'b0),                           // (terminated)
-		.reset_in4      (1'b0),                           // (terminated)
-		.reset_req_in4  (1'b0),                           // (terminated)
-		.reset_in5      (1'b0),                           // (terminated)
-		.reset_req_in5  (1'b0),                           // (terminated)
-		.reset_in6      (1'b0),                           // (terminated)
-		.reset_req_in6  (1'b0),                           // (terminated)
-		.reset_in7      (1'b0),                           // (terminated)
-		.reset_req_in7  (1'b0),                           // (terminated)
-		.reset_in8      (1'b0),                           // (terminated)
-		.reset_req_in8  (1'b0),                           // (terminated)
-		.reset_in9      (1'b0),                           // (terminated)
-		.reset_req_in9  (1'b0),                           // (terminated)
-		.reset_in10     (1'b0),                           // (terminated)
-		.reset_req_in10 (1'b0),                           // (terminated)
-		.reset_in11     (1'b0),                           // (terminated)
-		.reset_req_in11 (1'b0),                           // (terminated)
-		.reset_in12     (1'b0),                           // (terminated)
-		.reset_req_in12 (1'b0),                           // (terminated)
-		.reset_in13     (1'b0),                           // (terminated)
-		.reset_req_in13 (1'b0),                           // (terminated)
-		.reset_in14     (1'b0),                           // (terminated)
-		.reset_req_in14 (1'b0),                           // (terminated)
-		.reset_in15     (1'b0),                           // (terminated)
-		.reset_req_in15 (1'b0)                            // (terminated)
+		.reset_in0      (jtag_master_master_reset_reset),     // reset_in0.reset
+		.clk            (clk_clk),                            //       clk.clk
+		.reset_out      (rst_controller_reset_out_reset),     // reset_out.reset
+		.reset_req      (rst_controller_reset_out_reset_req), //          .reset_req
+		.reset_req_in0  (1'b0),                               // (terminated)
+		.reset_in1      (1'b0),                               // (terminated)
+		.reset_req_in1  (1'b0),                               // (terminated)
+		.reset_in2      (1'b0),                               // (terminated)
+		.reset_req_in2  (1'b0),                               // (terminated)
+		.reset_in3      (1'b0),                               // (terminated)
+		.reset_req_in3  (1'b0),                               // (terminated)
+		.reset_in4      (1'b0),                               // (terminated)
+		.reset_req_in4  (1'b0),                               // (terminated)
+		.reset_in5      (1'b0),                               // (terminated)
+		.reset_req_in5  (1'b0),                               // (terminated)
+		.reset_in6      (1'b0),                               // (terminated)
+		.reset_req_in6  (1'b0),                               // (terminated)
+		.reset_in7      (1'b0),                               // (terminated)
+		.reset_req_in7  (1'b0),                               // (terminated)
+		.reset_in8      (1'b0),                               // (terminated)
+		.reset_req_in8  (1'b0),                               // (terminated)
+		.reset_in9      (1'b0),                               // (terminated)
+		.reset_req_in9  (1'b0),                               // (terminated)
+		.reset_in10     (1'b0),                               // (terminated)
+		.reset_req_in10 (1'b0),                               // (terminated)
+		.reset_in11     (1'b0),                               // (terminated)
+		.reset_req_in11 (1'b0),                               // (terminated)
+		.reset_in12     (1'b0),                               // (terminated)
+		.reset_req_in12 (1'b0),                               // (terminated)
+		.reset_in13     (1'b0),                               // (terminated)
+		.reset_req_in13 (1'b0),                               // (terminated)
+		.reset_in14     (1'b0),                               // (terminated)
+		.reset_req_in14 (1'b0),                               // (terminated)
+		.reset_in15     (1'b0),                               // (terminated)
+		.reset_req_in15 (1'b0)                                // (terminated)
 	);
 
 endmodule

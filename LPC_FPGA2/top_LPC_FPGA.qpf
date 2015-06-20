@@ -1,6 +1,6 @@
 # -------------------------------------------------------------------------- #
 #
-# Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+# Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
 # Your use of Altera Corporation's design tools, logic functions 
 # and other software and tools, and its AMPP partner logic 
 # functions, and any output files from any of the foregoing 
@@ -18,14 +18,15 @@
 # -------------------------------------------------------------------------- #
 #
 # Quartus II 64-Bit
-# Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
-# Date created = 12:57:11  May 31, 2015
+# Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
+# Date created = 20:02:30  June 18, 2015
 #
 # -------------------------------------------------------------------------- #
 
-QUARTUS_VERSION = "14.1"
-DATE = "12:57:11  May 31, 2015"
+QUARTUS_VERSION = "15.0"
+DATE = "20:02:30  June 18, 2015"
 
 # Revisions
 
+PROJECT_REVISION = "LinearPrediction"
 PROJECT_REVISION = "top_HMC"

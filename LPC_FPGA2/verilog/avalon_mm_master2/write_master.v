@@ -2,13 +2,13 @@
 
 module write_master(//DDR3 Avalon-MM interface
 					input wire 			     ddr_waitrequest,
-					output reg 		  [31:0] ddr_addr,
+					output reg 		  [15:0] ddr_addr,
 					output reg 			     ddr_write,
 					output reg signed [15:0] ddr_writedata,
 					
 					//writetodram Avalon-MM interface
-					input wire signed [31:0] writedata,
-					output reg signed [31:0] readdata,
+					input wire signed [15:0] writedata,
+					output reg signed [15:0] readdata,
 					input wire 		  [2:0]  addr,
 					input wire 		  	     read,
 					input wire 			     write,
@@ -53,6 +53,7 @@ module write_master(//DDR3 Avalon-MM interface
 				addr_init <= 32'b0;
 				stream_length <= 32'b0;
 				addr_step <= 32'b1;
+				readdata <= 32'b0;
 			end else
 			begin
 				// writetodram Avalon-MM interface

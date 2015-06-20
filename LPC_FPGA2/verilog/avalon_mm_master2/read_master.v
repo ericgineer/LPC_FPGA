@@ -4,12 +4,12 @@ module read_master(//DDR3 Avalon-MM interface
 					  input wire signed [15:0] ddr_readdata,
 					  input wire 			   ddr_readdatavalid,
 					  input wire 			   ddr_waitrequest,
-					  output reg 		[31:0] ddr_addr,
+					  output reg 		[15:0] ddr_addr,
 					  output reg 			   ddr_read,
 					  
 					  // Streamfromdram Avalon-MM interface
-					  input wire signed [31:0] writedata,
-					  output reg signed [31:0] readdata,
+					  input wire signed [15:0] writedata,
+					  output reg signed [15:0] readdata,
 					  input wire 		[2:0]  addr,
 					  input wire 		  	   read,
 					  input wire 			   write,
@@ -32,6 +32,7 @@ module read_master(//DDR3 Avalon-MM interface
 		// 0x4: start
 		// 0x5: done
 		// 0x6: reset
+		// 0x7: test register
 					  
 		
 		reg [31:0] addr_init; 	  // Initial starting address
@@ -66,6 +67,7 @@ module read_master(//DDR3 Avalon-MM interface
 				addr_step  <= 16'b1;
 				addr_init <= 32'b0;
 				stream_length <= 32'b0;
+				readdata  <= 32'b0;
 			end
 			else
 			begin
@@ -77,9 +79,11 @@ module read_master(//DDR3 Avalon-MM interface
 						3'h2: readdata <= addr_step;
 						3'h3: readdata <= rate;
 						3'h5: readdata <= done;
+						3'h7: readdata <= addr;
 						default: readdata <= 32'hdeadbeef;
 					endcase
-				end
+				end else
+					readdata <= 32'b0;
 				if (write)
 				begin
 					case (addr)

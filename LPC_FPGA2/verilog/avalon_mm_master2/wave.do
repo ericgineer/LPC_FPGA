@@ -68,6 +68,33 @@ add wave -noupdate -group writetoram /master_tb/writetoram/ddr_read
 add wave -noupdate -group writetoram /master_tb/writetoram/ddr_write
 add wave -noupdate -group writetoram /master_tb/writetoram/ddr_writedata
 add wave -noupdate -group writetoram /master_tb/writetoram/clk
+add wave -noupdate -divider master_tb
+add wave -noupdate -group master_tb /master_tb/clk
+add wave -noupdate -group master_tb /master_tb/rst
+add wave -noupdate -group master_tb /master_tb/source_readdata
+add wave -noupdate -group master_tb /master_tb/source_readdatavalid
+add wave -noupdate -group master_tb /master_tb/source_waitrequest
+add wave -noupdate -group master_tb /master_tb/source_addr
+add wave -noupdate -group master_tb /master_tb/source_read
+add wave -noupdate -group master_tb /master_tb/sink_writedata
+add wave -noupdate -group master_tb /master_tb/sink_waitrequest
+add wave -noupdate -group master_tb /master_tb/sink_addr
+add wave -noupdate -group master_tb /master_tb/sink_write
+add wave -noupdate -group master_tb /master_tb/master_read_writedata
+add wave -noupdate -group master_tb /master_tb/master_read_readdata
+add wave -noupdate -group master_tb /master_tb/master_read_addr
+add wave -noupdate -group master_tb /master_tb/master_read_read
+add wave -noupdate -group master_tb /master_tb/master_read_write
+add wave -noupdate -group master_tb /master_tb/master_write_writedata
+add wave -noupdate -group master_tb /master_tb/master_write_readdata
+add wave -noupdate -group master_tb /master_tb/master_write_addr
+add wave -noupdate -group master_tb /master_tb/master_write_read
+add wave -noupdate -group master_tb /master_tb/master_write_write
+add wave -noupdate -group master_tb /master_tb/d_out
+add wave -noupdate -group master_tb /master_tb/d_clk
+add wave -noupdate -group master_tb /master_tb/vout
+add wave -noupdate -group master_tb /master_tb/ddr_wait
+add wave -noupdate -group master_tb /master_tb/i
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {10710 ns} 0}
 quietly wave cursor active 1
@@ -85,4 +112,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {31925 ns} {32520 ns}
+WaveRestoreZoom {0 ns} {2615 ns}

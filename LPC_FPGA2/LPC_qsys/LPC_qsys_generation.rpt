@@ -2,8 +2,6 @@ Info: Starting: Create block symbol file (.bsf)
 Info: qsys-generate /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys.qsys --block-symbol-file --output-directory=/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys --family="Cyclone V" --part=5CEFA2F23C8
 Progress: Loading LPC_FPGA2/LPC_qsys.qsys
 Progress: Reading input file
-Progress: Adding DDR3_interface [altera_mem_if_ddr3_emif 15.0]
-Progress: Parameterizing module DDR3_interface
 Progress: Adding JTAG_master [altera_jtag_avalon_master 15.0]
 Progress: Parameterizing module JTAG_master
 Progress: Adding clk_50M [clock_source 15.0]
@@ -12,14 +10,14 @@ Progress: Adding ddr3_read_master [read_master 1.0]
 Progress: Parameterizing module ddr3_read_master
 Progress: Adding ddr3_write_master [write_master 1.0]
 Progress: Parameterizing module ddr3_write_master
+Progress: Adding read_memory [altera_avalon_onchip_memory2 15.0]
+Progress: Parameterizing module read_memory
+Progress: Adding sink_ram [altera_avalon_onchip_memory2 15.0]
+Progress: Parameterizing module sink_ram
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
-Warning: LPC_qsys.DDR3_interface: ODT is disabled. Enabling ODT (Mode Register 1) may improve signal integrity
-Warning: LPC_qsys.DDR3_interface: 'Quick' simulation modes are NOT timing accurate. Some simulation memory models may issue warnings or errors
-Warning: LPC_qsys.DDR3_interface.pll_bridge: pll_bridge.pll_sharing cannot be both connected and exported
-Warning: LPC_qsys.DDR3_interface: DDR3_interface.pll_sharing must be exported, or connected to a matching conduit.
 Info: ip-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
@@ -27,8 +25,6 @@ Info: Starting: Create HDL design files for synthesis
 Info: qsys-generate /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys.qsys --synthesis=VERILOG --output-directory=/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis --family="Cyclone V" --part=5CEFA2F23C8
 Progress: Loading LPC_FPGA2/LPC_qsys.qsys
 Progress: Reading input file
-Progress: Adding DDR3_interface [altera_mem_if_ddr3_emif 15.0]
-Progress: Parameterizing module DDR3_interface
 Progress: Adding JTAG_master [altera_jtag_avalon_master 15.0]
 Progress: Parameterizing module JTAG_master
 Progress: Adding clk_50M [clock_source 15.0]
@@ -37,51 +33,40 @@ Progress: Adding ddr3_read_master [read_master 1.0]
 Progress: Parameterizing module ddr3_read_master
 Progress: Adding ddr3_write_master [write_master 1.0]
 Progress: Parameterizing module ddr3_write_master
+Progress: Adding read_memory [altera_avalon_onchip_memory2 15.0]
+Progress: Parameterizing module read_memory
+Progress: Adding sink_ram [altera_avalon_onchip_memory2 15.0]
+Progress: Parameterizing module sink_ram
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
-Warning: LPC_qsys.DDR3_interface: ODT is disabled. Enabling ODT (Mode Register 1) may improve signal integrity
-Warning: LPC_qsys.DDR3_interface: 'Quick' simulation modes are NOT timing accurate. Some simulation memory models may issue warnings or errors
-Warning: LPC_qsys.DDR3_interface.pll_bridge: pll_bridge.pll_sharing cannot be both connected and exported
-Warning: LPC_qsys.DDR3_interface: DDR3_interface.pll_sharing must be exported, or connected to a matching conduit.
 Info: LPC_qsys: Generating LPC_qsys "LPC_qsys" for QUARTUS_SYNTH
-Info: Interconnect is inserted between master ddr3_read_master.ddr3_avalon_master and slave DDR3_interface.avl_1 because the master has readdata signal 16 bit wide, but the slave is 32 bit wide.
-Info: Interconnect is inserted between master ddr3_read_master.ddr3_avalon_master and slave DDR3_interface.avl_1 because the master has address signal 32 bit wide, but the slave is 25 bit wide.
-Info: Interconnect is inserted between master ddr3_write_master.ddr3_avalon_master and slave DDR3_interface.avl_2 because the master has address signal 32 bit wide, but the slave is 25 bit wide.
-Info: Interconnect is inserted between master ddr3_write_master.ddr3_avalon_master and slave DDR3_interface.avl_2 because the master has writedata signal 16 bit wide, but the slave is 32 bit wide.
-Info: DDR3_interface: "LPC_qsys" instantiated altera_mem_if_ddr3_emif "DDR3_interface"
+Info: Interconnect is inserted between master ddr3_write_master.ddr3_avalon_master and slave sink_ram.s2 because the master has waitrequest signal 1 bit wide, but the slave is 0 bit wide.
+Info: Interconnect is inserted between master ddr3_write_master.ddr3_avalon_master and slave sink_ram.s2 because the master has address signal 16 bit wide, but the slave is 11 bit wide.
+Info: Interconnect is inserted between master ddr3_read_master.ddr3_avalon_master and slave read_memory.s2 because the master has readdatavalid signal 1 bit wide, but the slave is 0 bit wide.
+Info: Interconnect is inserted between master ddr3_read_master.ddr3_avalon_master and slave read_memory.s2 because the master has waitrequest signal 1 bit wide, but the slave is 0 bit wide.
+Info: Interconnect is inserted between master ddr3_read_master.ddr3_avalon_master and slave read_memory.s2 because the master has address signal 16 bit wide, but the slave is 11 bit wide.
+Info: Interconnect is inserted between master ddr3_read_master.ddr3_avalon_master and slave read_memory.s2 because the master has read signal 1 bit wide, but the slave is 0 bit wide.
 Info: JTAG_master: "LPC_qsys" instantiated altera_jtag_avalon_master "JTAG_master"
 Info: ddr3_read_master: "LPC_qsys" instantiated read_master "ddr3_read_master"
 Info: ddr3_write_master: "LPC_qsys" instantiated write_master "ddr3_write_master"
-Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: read_memory: Starting RTL generation for module 'LPC_qsys_read_memory'
+Info: read_memory:   Generation command is [exec /home/eric/altera/15.0/quartus/linux64/perl/bin/perl -I /home/eric/altera/15.0/quartus/linux64/perl/lib -I /home/eric/altera/15.0/quartus/sopc_builder/bin/europa -I /home/eric/altera/15.0/quartus/sopc_builder/bin/perl_lib -I /home/eric/altera/15.0/quartus/sopc_builder/bin -I /home/eric/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I /home/eric/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /home/eric/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=LPC_qsys_read_memory --dir=/tmp/alt6606_1289269011906321812.dir/0037_read_memory_gen/ --quartus_dir=/home/eric/altera/15.0/quartus --verilog --config=/tmp/alt6606_1289269011906321812.dir/0037_read_memory_gen//LPC_qsys_read_memory_component_configuration.pl  --do_build_sim=0  ]
+Info: read_memory: Done RTL generation for module 'LPC_qsys_read_memory'
+Info: read_memory: "LPC_qsys" instantiated altera_avalon_onchip_memory2 "read_memory"
+Info: sink_ram: Starting RTL generation for module 'LPC_qsys_sink_ram'
+Info: sink_ram:   Generation command is [exec /home/eric/altera/15.0/quartus/linux64/perl/bin/perl -I /home/eric/altera/15.0/quartus/linux64/perl/lib -I /home/eric/altera/15.0/quartus/sopc_builder/bin/europa -I /home/eric/altera/15.0/quartus/sopc_builder/bin/perl_lib -I /home/eric/altera/15.0/quartus/sopc_builder/bin -I /home/eric/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I /home/eric/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /home/eric/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=LPC_qsys_sink_ram --dir=/tmp/alt6606_1289269011906321812.dir/0038_sink_ram_gen/ --quartus_dir=/home/eric/altera/15.0/quartus --verilog --config=/tmp/alt6606_1289269011906321812.dir/0038_sink_ram_gen//LPC_qsys_sink_ram_component_configuration.pl  --do_build_sim=0  ]
+Info: sink_ram: Done RTL generation for module 'LPC_qsys_sink_ram'
+Info: sink_ram: "LPC_qsys" instantiated altera_avalon_onchip_memory2 "sink_ram"
 Info: mm_interconnect_0: "LPC_qsys" instantiated altera_mm_interconnect "mm_interconnect_0"
-Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_1: "LPC_qsys" instantiated altera_mm_interconnect "mm_interconnect_1"
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_2: "LPC_qsys" instantiated altera_mm_interconnect "mm_interconnect_2"
 Info: rst_controller: "LPC_qsys" instantiated altera_reset_controller "rst_controller"
-Info: pll0: "DDR3_interface" instantiated altera_mem_if_ddr3_pll "pll0"
-Info: p0: Generating clock pair generator
-Info: p0: Generating LPC_qsys_DDR3_interface_p0_altdqdqs
-Info: p0: 
-Info: p0: *****************************
-Info: p0: 
-Info: p0: Remember to run the LPC_qsys_DDR3_interface_p0_pin_assignments.tcl
-Info: p0: script after running Synthesis and before Fitting.
-Info: p0: 
-Info: p0: *****************************
-Info: p0: 
-Info: p0: "DDR3_interface" instantiated altera_mem_if_ddr3_hard_phy_core "p0"
-Info: s0: Generating Qsys sequencer system
-Info: s0: QSYS sequencer system generated successfully
-Info: s0: "DDR3_interface" instantiated altera_mem_if_ddr3_qseq "s0"
-Info: c0: "DDR3_interface" instantiated altera_mem_if_ddr3_hard_memory_controller "c0"
-Info: oct0: "DDR3_interface" instantiated altera_mem_if_oct "oct0"
-Info: dll0: "DDR3_interface" instantiated altera_mem_if_dll "dll0"
-Info: mm_interconnect_1: "DDR3_interface" instantiated altera_mm_interconnect "mm_interconnect_1"
 Info: jtag_phy_embedded_in_jtag_master: "JTAG_master" instantiated altera_jtag_dc_streaming "jtag_phy_embedded_in_jtag_master"
 Info: timing_adt: "JTAG_master" instantiated timing_adapter "timing_adt"
 Info: fifo: "JTAG_master" instantiated altera_avalon_sc_fifo "fifo"
@@ -90,38 +75,28 @@ Info: p2b: "JTAG_master" instantiated altera_avalon_st_packets_to_bytes "p2b"
 Info: transacto: "JTAG_master" instantiated altera_avalon_packets_to_master "transacto"
 Info: b2p_adapter: "JTAG_master" instantiated channel_adapter "b2p_adapter"
 Info: p2b_adapter: "JTAG_master" instantiated channel_adapter "p2b_adapter"
-Info: ddr3_read_master_ddr3_avalon_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "ddr3_read_master_ddr3_avalon_master_translator"
-Info: DDR3_interface_avl_1_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "DDR3_interface_avl_1_translator"
-Info: ddr3_read_master_ddr3_avalon_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "ddr3_read_master_ddr3_avalon_master_agent"
-Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_merlin_master_agent.sv
-Info: DDR3_interface_avl_1_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "DDR3_interface_avl_1_agent"
-Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_merlin_slave_agent.sv
-Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_merlin_burst_uncompressor.sv
-Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
-Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
-Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
-Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
-Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_merlin_arbitrator.sv
-Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
-Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_merlin_arbitrator.sv
-Info: DDR3_interface_avl_1_cmd_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "DDR3_interface_avl_1_cmd_width_adapter"
-Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_merlin_burst_uncompressor.sv
-Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
-Info: router_001: "mm_interconnect_1" instantiated altera_merlin_router "router_001"
+Info: ddr3_write_master_ddr3_avalon_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "ddr3_write_master_ddr3_avalon_master_translator"
+Info: sink_ram_s2_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "sink_ram_s2_translator"
+Info: JTAG_master_master_agent: "mm_interconnect_2" instantiated altera_merlin_master_agent "JTAG_master_master_agent"
+Info: ddr3_write_master_avalon_mm_control_agent: "mm_interconnect_2" instantiated altera_merlin_slave_agent "ddr3_write_master_avalon_mm_control_agent"
 Info: router: "mm_interconnect_2" instantiated altera_merlin_router "router"
 Info: router_001: "mm_interconnect_2" instantiated altera_merlin_router "router_001"
 Info: JTAG_master_master_limiter: "mm_interconnect_2" instantiated altera_merlin_traffic_limiter "JTAG_master_master_limiter"
-Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_merlin_traffic_limiter.sv
-Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_merlin_reorder_memory.sv
 Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: ddr3_write_master_avalon_mm_control_burst_adapter: "mm_interconnect_2" instantiated altera_merlin_burst_adapter "ddr3_write_master_avalon_mm_control_burst_adapter"
+Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_avalon_st_pipeline_stage.sv
 Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_avalon_st_pipeline_base.v
 Info: cmd_demux: "mm_interconnect_2" instantiated altera_merlin_demultiplexer "cmd_demux"
 Info: cmd_mux: "mm_interconnect_2" instantiated altera_merlin_multiplexer "cmd_mux"
-Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: rsp_demux: "mm_interconnect_2" instantiated altera_merlin_demultiplexer "rsp_demux"
 Info: rsp_mux: "mm_interconnect_2" instantiated altera_merlin_multiplexer "rsp_mux"
 Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: ddr3_write_master_avalon_mm_control_rsp_width_adapter: "mm_interconnect_2" instantiated altera_merlin_width_adapter "ddr3_write_master_avalon_mm_control_rsp_width_adapter"
+Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/LPC_qsys/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: avalon_st_adapter: "mm_interconnect_2" instantiated altera_avalon_st_adapter "avalon_st_adapter"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
-Info: LPC_qsys: Done "LPC_qsys" with 44 modules, 122 files
+Info: LPC_qsys: Done "LPC_qsys" with 33 modules, 56 files
 Info: ip-generate succeeded.
 Info: Finished: Create HDL design files for synthesis
