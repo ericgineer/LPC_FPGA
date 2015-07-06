@@ -1,0 +1,438 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/Eric/Documents/Altera/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction
+vcoeff_update
+Z0 !s110 1433302811
+!i10b 1
+!s100 dK2>ZCGV?oP:;dT4OL8>K0
+IB8AV]^LYX5TaVnoCg02a<0
+Z1 V`JN@9S9cnhjKRR_L]QIcM3
+Z2 d/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction
+w1430798610
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/coeff_update.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/coeff_update.v
+L0 3
+Z3 OV;L;10.3d;59
+r1
+!s85 0
+31
+!s108 1433302811.320515
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/coeff_update.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/coeff_update.v|
+!i113 1
+Z4 o-work work
+vcorrelation
+R0
+!i10b 1
+!s100 JF;DgARTd6:R0a@IQOBC61
+IODLh?6D;RYNZl_2NhO<=63
+R1
+R2
+w1433302780
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/correlation.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/correlation.v
+L0 5
+R3
+r1
+!s85 0
+31
+!s108 1433302811.370294
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/correlation.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/correlation.v|
+!i113 1
+R4
+vdivide
+R0
+!i10b 1
+!s100 4@UPK;>UZG^TX4CHFXJd[0
+I5DbH5e4eldg1H0gM9me0e2
+R1
+R2
+w1430697251
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/divide.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/divide.v
+L0 5
+R3
+r1
+!s85 0
+31
+!s108 1433302811.418113
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/divide.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/divide.v|
+!i113 1
+R4
+vdivide_stage
+R0
+!i10b 1
+!s100 LJ74N^h9f?C7;i<^ZbQQm2
+I[Z_DbMO^RZWIjSb=;0oK@3
+R1
+R2
+w1431322319
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/divide_stage.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/divide_stage.v
+L0 4
+R3
+r1
+!s85 0
+31
+!s108 1433302811.478231
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/divide_stage.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/divide_stage.v|
+!i113 1
+R4
+vdualportram
+R0
+!i10b 1
+!s100 <MPD^c_=9MPV5e[T?2H6O1
+Ih2CH>9^nG]j[CRe9NkVB=2
+R1
+R2
+w1433302793
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/dualportram.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/dualportram.v
+L0 6
+R3
+r1
+!s85 0
+31
+!s108 1433302811.525493
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/dualportram.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/dualportram.v|
+!i113 1
+R4
+vfreq_est
+R0
+!i10b 1
+!s100 N^_f8z?eVeD2>]zXW[hN72
+I;kXRaokza6jW:HQB?BC^@3
+R1
+R2
+w1433302783
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/freq_est.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/freq_est.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1433302811.572325
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/freq_est.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/freq_est.v|
+!i113 1
+R4
+vfreq_est_tb
+R0
+!i10b 1
+!s100 7FT2n6nFozDQSA_dgQeYj0
+IbO8RzKQ:a3c2OSB3FdQ5I0
+R1
+R2
+w1433302786
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/freq_est_tb.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/freq_est_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1433302811.619242
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/freq_est_tb.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/freq_est_tb.v|
+!i113 1
+R4
+vLDR
+R0
+!i10b 1
+!s100 :8Pd_86R6LA<f]:BWG0Ca1
+IV;;;M`0Vl1KDg=3R=SczQ1
+R1
+R2
+w1431321790
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LDR.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LDR.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1433302811.909136
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LDR.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LDR.v|
+!i113 1
+R4
+n@l@d@r
+vLFSR
+!s110 1433722395
+!i10b 1
+!s100 iE3H4[1F^Vn7gZlUZ`bA=1
+IFTW^2fFAcYLB<Cb`Tg`AH1
+R1
+R2
+w1433722388
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LFSR.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LFSR.v
+L0 5
+R3
+r1
+!s85 0
+31
+!s108 1433722395.675835
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LFSR.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LFSR.v|
+!i113 1
+R4
+n@l@f@s@r
+vLFSR_tb
+!s110 1433720712
+!i10b 1
+!s100 ?mcSNX=4Z=fIzf0ZIkcMo3
+I9McJ7UD9LllHhGeE0=8lI0
+R1
+R2
+w1433720704
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LFSR_tb.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LFSR_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1433720712.043851
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LFSR_tb.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LFSR_tb.v|
+!i113 1
+R4
+n@l@f@s@r_tb
+vLPC_tb
+!s110 1433820910
+!i10b 1
+!s100 ;2EOiV96NNWCFHP3=bECg1
+I<YB419igjnfO65m4=WIQA2
+R1
+R2
+w1433819442
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPC_tb.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPC_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1433820910.873165
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPC_tb.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPC_tb.v|
+!i113 1
+R4
+n@l@p@c_tb
+vLPCdec
+!s110 1433820906
+!i10b 1
+!s100 NCHWBgAc<_Cg7;J1Z@KB50
+I9I`S6lJP]YGmnMH8h0XSU2
+R1
+R2
+w1433820902
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCdec.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCdec.v
+L0 5
+R3
+r1
+!s85 0
+31
+!s108 1433820906.049100
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCdec.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCdec.v|
+!i113 1
+R4
+n@l@p@cdec
+vLPCenc
+!s110 1433818897
+!i10b 1
+!s100 58Pj8<C4odFCkji`f@]TQ2
+I1QlHMJhnmN[BBSnCV9JNm1
+R1
+R2
+w1433736891
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc.v
+L0 8
+R3
+r1
+!s85 0
+31
+!s108 1433818897.169534
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc.v|
+!i113 1
+R4
+n@l@p@cenc
+vLPCenc_tb
+!s110 1433480536
+!i10b 1
+!s100 ;L26;:f2KT;F4c=7RjNQ_0
+I43CZCSTTNSE>2[I]RF3N:1
+R1
+R2
+w1433480520
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc_tb.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1433480536.930212
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc_tb.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/LPCenc_tb.v|
+!i113 1
+R4
+n@l@p@cenc_tb
+vNumDen
+R0
+!i10b 1
+!s100 mPP8Faml@:JzE1BU`Le5l0
+IH?ZcKmMnSj`FaCP:eO3NK3
+R1
+R2
+w1432781190
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/NumDen.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/NumDen.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1433302811.762459
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/NumDen.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/NumDen.v|
+!i113 1
+R4
+n@num@den
+vpeak_find
+R0
+!i10b 1
+!s100 7c@7i6`=BeNmZbW9g52G90
+IQGWiWGY:Z[9?_d33ba@L>0
+R1
+R2
+w1433302789
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/peak_find.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/peak_find.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1433302811.716934
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/peak_find.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/peak_find.v|
+!i113 1
+R4
+vpulsegen
+!s110 1433821407
+!i10b 1
+!s100 j6IC?g9?]_9@UCL<ml6:V1
+I]gMRn9E=7jcYH4[?aZok83
+R1
+R2
+w1433821389
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/pulsegen.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/pulsegen.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1433821407.733647
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/pulsegen.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/pulsegen.v|
+!i113 1
+R4
+vpulsegen_tb
+!s110 1433820818
+!i10b 1
+!s100 BDJ<2LSf_EBOn?dThJ9fD0
+IWZMLDVz_0L^aXjbHj6on?1
+R1
+R2
+w1433820814
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/pulsegen_tb.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/pulsegen_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1433820818.191397
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/pulsegen_tb.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/pulsegen_tb.v|
+!i113 1
+R4
+vreflect_coeff
+R0
+!i10b 1
+!s100 8G``NALlFH]86SGFL9E4z0
+IHz9YcgCXCW;:i^m[7cG=^0
+R1
+R2
+w1431320111
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/reflect_coeff.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/reflect_coeff.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1433302811.667228
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/reflect_coeff.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/reflect_coeff.v|
+!i113 1
+R4
+vsynthfilt
+!s110 1433822858
+!i10b 1
+!s100 5Z21=g_B;=DMYaAOb;7:D0
+Ii;<6AM11`llQROz=cXk^03
+R1
+R2
+w1433822850
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/synthfilt.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/synthfilt.v
+L0 5
+R3
+r1
+!s85 0
+31
+!s108 1433822858.395979
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/synthfilt.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/synthfilt.v|
+!i113 1
+R4
+vsynthfilt_tb
+!s110 1433821935
+!i10b 1
+!s100 hU21Y2hj>;VeRgCOI`U<n0
+IC_9]6JZ1I>]CaZG?B^1aF1
+R1
+R2
+w1433821924
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/synthfilt_tb.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/synthfilt_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1433821935.738506
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/synthfilt_tb.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC/LinearPrediction/synthfilt_tb.v|
+!i113 1
+R4

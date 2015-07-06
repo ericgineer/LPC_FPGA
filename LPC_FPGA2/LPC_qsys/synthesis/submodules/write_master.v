@@ -15,6 +15,7 @@ module write_master(//DDR3 Avalon-MM interface
 					
 					//Streaming input
 					input wire signed [15:0] d_in,
+					input wire 				 d_in_clk,
 					input wire  			 v,
 					  
 					//Clock and reset
@@ -25,7 +26,7 @@ module write_master(//DDR3 Avalon-MM interface
 		// 0x0: write base
 		// 0x1: write length
 		// 0x2: step
-		// 0x3: not used
+		// 0x3: write rate
 		// 0x4: start
 		// 0x5: done
 		// 0x6: reset
@@ -34,6 +35,8 @@ module write_master(//DDR3 Avalon-MM interface
 		reg [31:0] stream_length; // Number of samples to stream
 		reg [31:0] addr_step;     // address step
 		reg [31:0] tmp;
+		reg [31:0] rate; 		  // Data stream rate (relative to input clock period)
+		reg [31:0] rate_count;
 		
 		
 		parameter S0 = 0, S1 = 1, S2 = 2, S3 = 3, S4 = 4;
@@ -45,6 +48,20 @@ module write_master(//DDR3 Avalon-MM interface
 		assign start = ((addr == 3'h4) && (write == 1)) ? 1 : 0;
 		
 		assign reset = (((addr == 3'h6) && (write == 1)) || rst) ? 1 : 0;
+		
+		// rate counter
+		
+		always @(posedge clk)
+		begin
+			if (reset || (reset && v))
+				rate_count <= 32'b0;
+			if (v)
+				if (rate_count <= rate)
+					rate_count <= rate_count + 1;
+				else
+					rate_count <= 32'b0;
+		end
+			
 					
 		always @(posedge clk)
 		begin
@@ -63,16 +80,19 @@ module write_master(//DDR3 Avalon-MM interface
 						0: readdata <= addr_init;
 						1: readdata <= stream_length;
 						2: readdata <= addr_step;
+						3: readdata <= rate;
 						5: readdata <= done;
 						default: readdata <= 32'hdeadbeef;
 					endcase
-				end
+				end else
+					readdata <= 32'b0;
 				if (write)
 				begin
 					case (addr)
 						0: addr_init <= writedata;
 						1: stream_length <= writedata;
 						2: addr_step <= writedata;
+						3: rate <= writedata;
 						default: tmp <= writedata;
 					endcase
 				end
@@ -91,7 +111,7 @@ module write_master(//DDR3 Avalon-MM interface
 							state <= S1;
 						else
 							state <= S0;
-					1:  if (v)
+					1:  if (v && (rate_count == 0))
 							state <= S2;
 						else
 							state <= S1;
@@ -119,6 +139,10 @@ module write_master(//DDR3 Avalon-MM interface
 						ddr_write  <= 1'b0;
 						done       <= 1'b0;
 				   end
+				1: if (ddr_addr == stream_length - 1)
+						done <= 1'b1;
+				   else
+						done <= 1'b0;
 				2: begin
 						ddr_write 	   <= 1'b1;
 						ddr_writedata <= d_in;

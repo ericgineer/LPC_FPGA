@@ -105,6 +105,38 @@
          type = "String";
       }
    }
+   element LPC_qsys
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element LPCdec_0
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element LPCenc_0
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element LPCenc_0.avalon_control_slave
+   {
+      datum baseAddress
+      {
+         value = "16400";
+         type = "String";
+      }
+   }
    element clk_50M
    {
       datum _sortIndex
@@ -125,7 +157,7 @@
    {
       datum baseAddress
       {
-         value = "4096";
+         value = "16384";
          type = "String";
       }
    }
@@ -133,7 +165,7 @@
    {
       datum _sortIndex
       {
-         value = "4";
+         value = "6";
          type = "int";
       }
    }
@@ -141,7 +173,7 @@
    {
       datum baseAddress
       {
-         value = "8192";
+         value = "20480";
          type = "String";
       }
    }
@@ -173,7 +205,7 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "7";
          type = "int";
       }
    }
@@ -181,7 +213,7 @@
    {
       datum baseAddress
       {
-         value = "12288";
+         value = "49152";
          type = "String";
       }
    }
@@ -189,7 +221,7 @@
    {
       datum baseAddress
       {
-         value = "12288";
+         value = "0";
          type = "String";
       }
    }
@@ -231,6 +263,8 @@
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_50M.clk_in" type="clock" dir="end" />
+ <interface name="lpcdec" internal="LPCdec_0.signals" type="conduit" dir="end" />
+ <interface name="lpcenc" internal="LPCenc_0.signals" type="conduit" dir="end" />
  <interface
    name="read_master_stream"
    internal="ddr3_read_master.stream_interface"
@@ -254,6 +288,15 @@
   <parameter name="FIFO_DEPTHS" value="2" />
   <parameter name="PLI_PORT" value="50000" />
   <parameter name="USE_PLI" value="0" />
+ </module>
+ <module name="LPCdec_0" kind="LPCdec" version="1.0" enabled="1" />
+ <module name="LPCenc_0" kind="LPCenc" version="1.0" enabled="1">
+  <parameter name="S0" value="0" />
+  <parameter name="S1" value="1" />
+  <parameter name="S2" value="2" />
+  <parameter name="S3" value="3" />
+  <parameter name="S4" value="4" />
+  <parameter name="S5" value="5" />
  </module>
  <module name="clk_50M" kind="clock_source" version="15.0" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
@@ -298,7 +341,7 @@
   <parameter name="initMemContent" value="true" />
   <parameter name="initializationFileName" value="onchip_mem.hex" />
   <parameter name="instanceID" value="NONE" />
-  <parameter name="memorySize" value="4096" />
+  <parameter name="memorySize" value="16383" />
   <parameter name="readDuringWriteMode" value="DONT_CARE" />
   <parameter name="resetrequest_enabled" value="true" />
   <parameter name="simAllowMRAMContentsFile" value="false" />
@@ -327,7 +370,7 @@
   <parameter name="initMemContent" value="true" />
   <parameter name="initializationFileName" value="onchip_mem.hex" />
   <parameter name="instanceID" value="NONE" />
-  <parameter name="memorySize" value="4096" />
+  <parameter name="memorySize" value="16383" />
   <parameter name="readDuringWriteMode" value="DONT_CARE" />
   <parameter name="resetrequest_enabled" value="true" />
   <parameter name="simAllowMRAMContentsFile" value="false" />
@@ -345,7 +388,7 @@
    start="ddr3_write_master.ddr3_avalon_master"
    end="sink_ram.s2">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3000" />
+  <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -361,9 +404,18 @@
    kind="avalon"
    version="15.0"
    start="JTAG_master.master"
+   end="LPCenc_0.avalon_control_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x4010" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="15.0"
+   start="JTAG_master.master"
    end="ddr3_write_master.avalon_mm_control">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2000" />
+  <parameter name="baseAddress" value="0x5000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -372,7 +424,7 @@
    start="JTAG_master.master"
    end="ddr3_read_master.avalon_mm_control">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x1000" />
+  <parameter name="baseAddress" value="0x4000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -381,7 +433,7 @@
    start="JTAG_master.master"
    end="sink_ram.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3000" />
+  <parameter name="baseAddress" value="0xc000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -416,6 +468,8 @@
    version="15.0"
    start="clk_50M.clk"
    end="ddr3_write_master.clock" />
+ <connection kind="clock" version="15.0" start="clk_50M.clk" end="LPCenc_0.clock" />
+ <connection kind="clock" version="15.0" start="clk_50M.clk" end="LPCdec_0.clock" />
  <connection
    kind="reset"
    version="15.0"
@@ -456,6 +510,16 @@
    version="15.0"
    start="JTAG_master.master_reset"
    end="ddr3_write_master.reset_sink" />
+ <connection
+   kind="reset"
+   version="15.0"
+   start="JTAG_master.master_reset"
+   end="LPCenc_0.reset_sink" />
+ <connection
+   kind="reset"
+   version="15.0"
+   start="JTAG_master.master_reset"
+   end="LPCdec_0.reset_sink" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />

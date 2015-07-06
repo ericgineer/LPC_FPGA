@@ -1,5 +1,39 @@
 	LPC_qsys u0 (
 		.clk_clk                  (<connected-to-clk_clk>),                  //                 clk.clk
+		.lpcdec_v                 (<connected-to-lpcdec_v>),                 //              lpcdec.v
+		.lpcdec_voiced            (<connected-to-lpcdec_voiced>),            //                    .voiced
+		.lpcdec_pulserate         (<connected-to-lpcdec_pulserate>),         //                    .pulserate
+		.lpcdec_lpcrate           (<connected-to-lpcdec_lpcrate>),           //                    .lpcrate
+		.lpcdec_a0                (<connected-to-lpcdec_a0>),                //                    .a0
+		.lpcdec_a1                (<connected-to-lpcdec_a1>),                //                    .a1
+		.lpcdec_a2                (<connected-to-lpcdec_a2>),                //                    .a2
+		.lpcdec_a3                (<connected-to-lpcdec_a3>),                //                    .a3
+		.lpcdec_a4                (<connected-to-lpcdec_a4>),                //                    .a4
+		.lpcdec_a5                (<connected-to-lpcdec_a5>),                //                    .a5
+		.lpcdec_a6                (<connected-to-lpcdec_a6>),                //                    .a6
+		.lpcdec_a7                (<connected-to-lpcdec_a7>),                //                    .a7
+		.lpcdec_a8                (<connected-to-lpcdec_a8>),                //                    .a8
+		.lpcdec_a9                (<connected-to-lpcdec_a9>),                //                    .a9
+		.lpcdec_a10               (<connected-to-lpcdec_a10>),               //                    .a10
+		.lpcdec_synth             (<connected-to-lpcdec_synth>),             //                    .synth
+		.lpcdec_vout              (<connected-to-lpcdec_vout>),              //                    .vout
+		.lpcenc_v                 (<connected-to-lpcenc_v>),                 //              lpcenc.v
+		.lpcenc_voiced            (<connected-to-lpcenc_voiced>),            //                    .voiced
+		.lpcenc_a0                (<connected-to-lpcenc_a0>),                //                    .a0
+		.lpcenc_a1                (<connected-to-lpcenc_a1>),                //                    .a1
+		.lpcenc_a2                (<connected-to-lpcenc_a2>),                //                    .a2
+		.lpcenc_a3                (<connected-to-lpcenc_a3>),                //                    .a3
+		.lpcenc_a4                (<connected-to-lpcenc_a4>),                //                    .a4
+		.lpcenc_a5                (<connected-to-lpcenc_a5>),                //                    .a5
+		.lpcenc_a6                (<connected-to-lpcenc_a6>),                //                    .a6
+		.lpcenc_a7                (<connected-to-lpcenc_a7>),                //                    .a7
+		.lpcenc_a8                (<connected-to-lpcenc_a8>),                //                    .a8
+		.lpcenc_a9                (<connected-to-lpcenc_a9>),                //                    .a9
+		.lpcenc_a10               (<connected-to-lpcenc_a10>),               //                    .a10
+		.lpcenc_vout              (<connected-to-lpcenc_vout>),              //                    .vout
+		.lpcenc_x                 (<connected-to-lpcenc_x>),                 //                    .x
+		.lpcenc_d_clk             (<connected-to-lpcenc_d_clk>),             //                    .d_clk
+		.lpcenc_readdata          (<connected-to-lpcenc_readdata>),          //                    .readdata
 		.read_master_stream_d_out (<connected-to-read_master_stream_d_out>), //  read_master_stream.d_out
 		.read_master_stream_d_clk (<connected-to-read_master_stream_d_clk>), //                    .d_clk
 		.read_master_stream_vout  (<connected-to-read_master_stream_vout>),  //                    .vout

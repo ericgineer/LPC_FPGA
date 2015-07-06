@@ -276,7 +276,7 @@ master_write_16 $claim_path 0x1006 0x186a
 
 #Configure DDR3 write master
 
-master_write_16 $claim_path 0x20000 0x3000
+master_write_16 $claim_path 0x2000 0x0
 master_write_16 $claim_path 0x2002 0x100
 master_write_16 $claim_path 0x2004 0x2
 
@@ -284,10 +284,8 @@ master_write_16 $claim_path 0x2004 0x2
 #Start write master
 
 master_write_16 $claim_path 0x2008 0x1
-master_write_16 $claim_path 0x2008 0x0
 
 
 #Start read master
 
 master_write_16 $claim_path 0x1008 0x1
-master_write_16 $claim_path 0x1008 0x0

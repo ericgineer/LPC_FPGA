@@ -7,22 +7,22 @@ module master_tb;
 	wire signed [15:0] source_readdata;
 	wire 			   source_readdatavalid;
 	wire			   source_waitrequest;
-	wire 		[31:0] source_addr;
+	wire 		[15:0] source_addr;
 	wire 			   source_read;
 	
 	wire signed [15:0] sink_writedata;
 	wire			   sink_waitrequest;
-	wire 		[31:0] sink_addr;
+	wire 		[15:0] sink_addr;
 	wire 			   sink_write;
 	
-	reg signed  [31:0] master_read_writedata;
-	wire signed [31:0] master_read_readdata;
+	reg signed  [15:0] master_read_writedata;
+	wire signed [15:0] master_read_readdata;
 	reg			[2:0]  master_read_addr;
 	reg				   master_read_read;
 	reg				   master_read_write;
 	
-	reg signed 	[31:0] master_write_writedata;
-	wire signed [31:0] master_write_readdata;
+	reg signed 	[15:0] master_write_writedata;
+	wire signed [15:0] master_write_readdata;
 	reg			[2:0]  master_write_addr;
 	reg				   master_write_read;
 	reg				   master_write_write;
@@ -85,8 +85,8 @@ module master_tb;
 					  .v(vout),
 					  
 					  //Clock and reset
-					  .clk,
-					  .rst);
+					  .clk(clk),
+					  .rst(rst));
 							
 	ddr3_mem_sim   writetoram(.ddr_readdata(),
 							 .ddr_readdatavalid(),
@@ -128,7 +128,7 @@ module master_tb;
 		master_write_avmm_write(3'h2,1);    // Set step size
 		
 		// Start streams
-		master_write_avmm_write(3'h4,1);    // Start
+		master_write_avmm_write(3'h4,1);   // Start
 		master_read_avmm_write(3'h4,1);    // Start
 		while (master_read_readdata == 32'b0)
 		begin

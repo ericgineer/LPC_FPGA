@@ -3,7 +3,7 @@
 module ddr3_mem_sim(output reg signed [15:0] ddr_readdata,
 					output reg  			 ddr_readdatavalid,
 					output reg 			     ddr_waitrequest,
-					input wire        [31:0] ddr_addr,
+					input wire        [15:0] ddr_addr,
 					input wire 				 ddr_read,
 					input wire 				 ddr_write,
 					input wire signed [15:0] ddr_writedata,

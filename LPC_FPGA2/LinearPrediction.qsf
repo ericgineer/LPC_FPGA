@@ -77,6 +77,21 @@ set_instance_assignment -name GLOBAL_SIGNAL OFF -to ddr3_interface|p0|umemphy|ur
 set_instance_assignment -name GLOBAL_SIGNAL OFF -to ddr3_interface|p0|umemphy|uread_datapath|reset_n_fifo_wraddress[1] -tag __top_HMC_DDR3_interface_p0
 set_instance_assignment -name ENABLE_BENEFICIAL_SKEW_OPTIMIZATION_FOR_NON_GLOBAL_CLOCKS ON -to ddr3_interface -tag __top_HMC_DDR3_interface_p0
 set_instance_assignment -name PLL_COMPENSATION_MODE DIRECT -to ddr3_interface|pll0|fbout -tag __top_HMC_DDR3_interface_p0
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/reflect_coeff.v
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/synthfilt.v
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/pulsegen.v
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/peak_find.v
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/NumDen.v
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/LPCenc.v
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/LPCdec.v
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/LFSR.v
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/LDR.v
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/freq_est.v
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/dualportram.v
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/divide_stage.v
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/divide.v
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/correlation.v
+set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/coeff_update.v
 set_global_assignment -name QIP_FILE LPC_qsys/synthesis/LPC_qsys.qip
 set_global_assignment -name VERILOG_FILE verilog/LinearPrediction.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

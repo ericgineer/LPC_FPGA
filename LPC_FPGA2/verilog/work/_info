@@ -1,0 +1,551 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/verilog
+vcoeff_update
+Z1 !s110 1436152356
+!i10b 1
+!s100 dK2>ZCGV?oP:;dT4OL8>K0
+I3o=fjVL8V:dX`ad:BOB8N0
+Z2 V`JN@9S9cnhjKRR_L]QIcM3
+R0
+w1430798610
+8./LinearPrediction/coeff_update.v
+F./LinearPrediction/coeff_update.v
+L0 3
+Z3 OV;L;10.3d;59
+r1
+!s85 0
+31
+Z4 !s108 1436152356.120190
+Z5 !s107 ./LinearPrediction/synthfilt_tb.v|./LinearPrediction/synthfilt.v|./LinearPrediction/reflect_coeff.v|./LinearPrediction/pulsegen_tb.v|./LinearPrediction/pulsegen.v|./LinearPrediction/peak_find.v|./LinearPrediction/freq_est_tb.v|./LinearPrediction/freq_est.v|./LinearPrediction/dualportram.v|./LinearPrediction/divide_stage.v|./LinearPrediction/divide.v|./LinearPrediction/correlation.v|./LinearPrediction/coeff_update.v|./LinearPrediction/NumDen.v|./LinearPrediction/LPCenc_tb.v|./LinearPrediction/LPCenc.v|./LinearPrediction/LPCdec.v|./LinearPrediction/LPC_tb.v|./LinearPrediction/LFSR_tb.v|./LinearPrediction/LFSR.v|./LinearPrediction/LDR.v|
+Z6 !s90 -reportprogress|300|./LinearPrediction/LDR.v|./LinearPrediction/LFSR.v|./LinearPrediction/LFSR_tb.v|./LinearPrediction/LPC_tb.v|./LinearPrediction/LPCdec.v|./LinearPrediction/LPCenc.v|./LinearPrediction/LPCenc_tb.v|./LinearPrediction/NumDen.v|./LinearPrediction/coeff_update.v|./LinearPrediction/correlation.v|./LinearPrediction/divide.v|./LinearPrediction/divide_stage.v|./LinearPrediction/dualportram.v|./LinearPrediction/freq_est.v|./LinearPrediction/freq_est_tb.v|./LinearPrediction/peak_find.v|./LinearPrediction/pulsegen.v|./LinearPrediction/pulsegen_tb.v|./LinearPrediction/reflect_coeff.v|./LinearPrediction/synthfilt.v|./LinearPrediction/synthfilt_tb.v|
+!i113 1
+vcorrelation
+R1
+!i10b 1
+!s100 JF;DgARTd6:R0a@IQOBC61
+I5<2Oa@Gk?P`h5j>fUdf4D2
+R2
+R0
+w1433302780
+8./LinearPrediction/correlation.v
+F./LinearPrediction/correlation.v
+L0 5
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vddr3_mem_sim
+R1
+!i10b 1
+!s100 3cIUIz[D=TXg2Co5hZ07<1
+IGRfaVBIZjA^YK83l:eKI52
+R2
+R0
+w1435976033
+8./avalon_mm_master2/ddr3_mem_sim.v
+F./avalon_mm_master2/ddr3_mem_sim.v
+L0 3
+R3
+r1
+!s85 0
+31
+Z7 !s108 1436152356.019317
+Z8 !s107 ./avalon_mm_master2/write_master.v|./avalon_mm_master2/regtest.v|./avalon_mm_master2/read_master_tb.v|./avalon_mm_master2/read_master.v|./avalon_mm_master2/master_tb.v|./avalon_mm_master2/dualportram.v|./avalon_mm_master2/ddr3_mem_sim.v|
+Z9 !s90 -reportprogress|300|./avalon_mm_master2/ddr3_mem_sim.v|./avalon_mm_master2/dualportram.v|./avalon_mm_master2/master_tb.v|./avalon_mm_master2/read_master.v|./avalon_mm_master2/read_master_tb.v|./avalon_mm_master2/regtest.v|./avalon_mm_master2/write_master.v|
+!i113 1
+vdivide
+R1
+!i10b 1
+!s100 4@UPK;>UZG^TX4CHFXJd[0
+IF3LXWo]VkXaglKzAAkF;^0
+R2
+R0
+w1430697251
+8./LinearPrediction/divide.v
+F./LinearPrediction/divide.v
+L0 5
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vdivide_stage
+R1
+!i10b 1
+!s100 LJ74N^h9f?C7;i<^ZbQQm2
+IbD6RzmiM6Q3OAWH@Mgo651
+R2
+R0
+w1431322319
+8./LinearPrediction/divide_stage.v
+F./LinearPrediction/divide_stage.v
+L0 4
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vdualportram
+R1
+!i10b 1
+!s100 <MPD^c_=9MPV5e[T?2H6O1
+IEbYg1GSUo@`OcILEH7;3R2
+R2
+R0
+w1433302793
+8./LinearPrediction/dualportram.v
+F./LinearPrediction/dualportram.v
+L0 6
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vfreq_est
+R1
+!i10b 1
+!s100 N^_f8z?eVeD2>]zXW[hN72
+IO0HC<e?oTec_T`kT`aHNZ1
+R2
+R0
+w1433302783
+8./LinearPrediction/freq_est.v
+F./LinearPrediction/freq_est.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vfreq_est_tb
+R1
+!i10b 1
+!s100 7FT2n6nFozDQSA_dgQeYj0
+IPNXlFM:8JjAIPBb_zbN:n0
+R2
+R0
+w1433302786
+8./LinearPrediction/freq_est_tb.v
+F./LinearPrediction/freq_est_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vLDR
+R1
+!i10b 1
+!s100 :8Pd_86R6LA<f]:BWG0Ca1
+I0eecBLnIE`bA?3F`8C;@:2
+R2
+R0
+w1431321790
+8./LinearPrediction/LDR.v
+F./LinearPrediction/LDR.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+n@l@d@r
+vLFSR
+R1
+!i10b 1
+!s100 iE3H4[1F^Vn7gZlUZ`bA=1
+I^GKAJPnF5HANd^XFZe2:k3
+R2
+R0
+w1433722388
+8./LinearPrediction/LFSR.v
+F./LinearPrediction/LFSR.v
+L0 5
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+n@l@f@s@r
+vLFSR_tb
+R1
+!i10b 1
+!s100 ?mcSNX=4Z=fIzf0ZIkcMo3
+IN`h21Z2827f?78CznbSn50
+R2
+R0
+w1433720704
+8./LinearPrediction/LFSR_tb.v
+F./LinearPrediction/LFSR_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+n@l@f@s@r_tb
+vLPC_master_tb
+R1
+!i10b 1
+!s100 dm0oD_NWDZUfR5fNzmi[;0
+Ia8579ldmV?R07iW]f>Bcg2
+R2
+R0
+w1436130484
+8LPC_master_tb.v
+FLPC_master_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1436152356.271224
+!s107 LPC_master_tb.v|
+!s90 -reportprogress|300|LPC_master_tb.v|
+!i113 1
+n@l@p@c_master_tb
+vLPC_tb
+R1
+!i10b 1
+!s100 ;2EOiV96NNWCFHP3=bECg1
+IM]3XBU8Hm9aAPe<2b1HRb1
+R2
+R0
+w1433819442
+8./LinearPrediction/LPC_tb.v
+F./LinearPrediction/LPC_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+n@l@p@c_tb
+vLPCdec
+R1
+!i10b 1
+!s100 NJmJ7>^BM_zRNJ;V`?JPb1
+IG8dY]5KU80>Wg@od8FOFZ1
+R2
+R0
+w1436126960
+8./LinearPrediction/LPCdec.v
+F./LinearPrediction/LPCdec.v
+L0 5
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+n@l@p@cdec
+vLPCenc
+R1
+!i10b 1
+!s100 58Pj8<C4odFCkji`f@]TQ2
+IWH4cK64L^>=B`<4T@S]A33
+R2
+R0
+w1433736891
+8./LinearPrediction/LPCenc.v
+F./LinearPrediction/LPCenc.v
+L0 8
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+n@l@p@cenc
+vLPCenc_tb
+R1
+!i10b 1
+!s100 cScLgT_U@d8^i9]_D9SFU2
+IFTa[^O7IK6Pd5aWF`5K980
+R2
+R0
+w1436116909
+8./LinearPrediction/LPCenc_tb.v
+F./LinearPrediction/LPCenc_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+n@l@p@cenc_tb
+vmaster_tb
+R1
+!i10b 1
+!s100 Yoj:;P7UD@NHI4oi_9Y_>2
+IMZ[f@><^I0AS4<ZcVn<fg1
+R2
+R0
+w1436115679
+8./avalon_mm_master2/master_tb.v
+F./avalon_mm_master2/master_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+vNumDen
+R1
+!i10b 1
+!s100 mPP8Faml@:JzE1BU`Le5l0
+I2cKl?h^^g@;^h[PO9>=QN2
+R2
+R0
+w1432781190
+8./LinearPrediction/NumDen.v
+F./LinearPrediction/NumDen.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+n@num@den
+vpeak_find
+R1
+!i10b 1
+!s100 7c@7i6`=BeNmZbW9g52G90
+I^RnoR_LMXkgjIaeG7Jcam0
+R2
+R0
+w1433302789
+8./LinearPrediction/peak_find.v
+F./LinearPrediction/peak_find.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vpulsegen
+R1
+!i10b 1
+!s100 j6IC?g9?]_9@UCL<ml6:V1
+IC>Go2ThCLm^U8VzX6Wmj@3
+R2
+R0
+w1436127715
+8./LinearPrediction/pulsegen.v
+F./LinearPrediction/pulsegen.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vpulsegen_tb
+R1
+!i10b 1
+!s100 BDJ<2LSf_EBOn?dThJ9fD0
+I]F[FFYSf@BH8g>ng]1Ez52
+R2
+R0
+w1433820814
+8./LinearPrediction/pulsegen_tb.v
+F./LinearPrediction/pulsegen_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vread_master
+R1
+!i10b 1
+!s100 l;AVo=ZTiJ6]k2fEY71Kj0
+IX[iI8HHK:kiS[]GY<2Zf[3
+R2
+R0
+w1436121172
+8./avalon_mm_master2/read_master.v
+F./avalon_mm_master2/read_master.v
+L0 3
+R3
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+vreflect_coeff
+R1
+!i10b 1
+!s100 8G``NALlFH]86SGFL9E4z0
+I7VSG7K4nE1ok2926I6GP30
+R2
+R0
+w1431320111
+8./LinearPrediction/reflect_coeff.v
+F./LinearPrediction/reflect_coeff.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vregtest
+R1
+!i10b 1
+!s100 A<WBC^>Hg^kJZFEkfRd490
+IJW3izYAQoPl>g_Vo245k[0
+R2
+R0
+w1434690641
+8./avalon_mm_master2/regtest.v
+F./avalon_mm_master2/regtest.v
+L0 3
+R3
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+vstreamfromdram_tb
+R1
+!i10b 1
+!s100 nPCX`[=dC;=_@Y?:l52Ah1
+I>TUKBiG??JWgDE>=UK6];2
+R2
+R0
+w1434509848
+8./avalon_mm_master2/read_master_tb.v
+F./avalon_mm_master2/read_master_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+vsynthfilt
+R1
+!i10b 1
+!s100 5Z21=g_B;=DMYaAOb;7:D0
+IKmAd^kD6RP^@n415:m>1]0
+R2
+R0
+w1433822919
+8./LinearPrediction/synthfilt.v
+F./LinearPrediction/synthfilt.v
+L0 5
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vsynthfilt_tb
+R1
+!i10b 1
+!s100 hU21Y2hj>;VeRgCOI`U<n0
+I[[b_Xa7UY9]>0nmFMAeOi1
+R2
+R0
+w1433821924
+8./LinearPrediction/synthfilt_tb.v
+F./LinearPrediction/synthfilt_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vwrite_master
+R1
+!i10b 1
+!s100 ?3C@;zP5]R`J0W0OlQ==i3
+Ij7b23i@FQCoPf<bKeJ]b?3
+R2
+R0
+w1436130067
+8./avalon_mm_master2/write_master.v
+F./avalon_mm_master2/write_master.v
+L0 3
+R3
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1

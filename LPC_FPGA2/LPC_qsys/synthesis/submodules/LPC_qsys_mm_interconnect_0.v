@@ -13,7 +13,7 @@ module LPC_qsys_mm_interconnect_0 (
 		output wire        ddr3_write_master_ddr3_avalon_master_waitrequest,         //                                                   .waitrequest
 		input  wire        ddr3_write_master_ddr3_avalon_master_write,               //                                                   .write
 		input  wire [15:0] ddr3_write_master_ddr3_avalon_master_writedata,           //                                                   .writedata
-		output wire [10:0] sink_ram_s2_address,                                      //                                        sink_ram_s2.address
+		output wire [12:0] sink_ram_s2_address,                                      //                                        sink_ram_s2.address
 		output wire        sink_ram_s2_write,                                        //                                                   .write
 		input  wire [15:0] sink_ram_s2_readdata,                                     //                                                   .readdata
 		output wire [15:0] sink_ram_s2_writedata,                                    //                                                   .writedata
@@ -95,7 +95,7 @@ module LPC_qsys_mm_interconnect_0 (
 	);
 
 	altera_merlin_slave_translator #(
-		.AV_ADDRESS_W                   (11),
+		.AV_ADDRESS_W                   (13),
 		.AV_DATA_W                      (16),
 		.UAV_DATA_W                     (16),
 		.AV_BURSTCOUNT_W                (1),

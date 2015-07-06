@@ -1,3 +1,15 @@
+Info (10281): Verilog HDL Declaration information at LDR.v(17): object "A0" differs only in case from object "a0" in the same scope
+Info (10281): Verilog HDL Declaration information at LDR.v(18): object "A1" differs only in case from object "a1" in the same scope
+Info (10281): Verilog HDL Declaration information at LDR.v(19): object "A2" differs only in case from object "a2" in the same scope
+Info (10281): Verilog HDL Declaration information at LDR.v(20): object "A3" differs only in case from object "a3" in the same scope
+Info (10281): Verilog HDL Declaration information at LDR.v(21): object "A4" differs only in case from object "a4" in the same scope
+Info (10281): Verilog HDL Declaration information at LDR.v(22): object "A5" differs only in case from object "a5" in the same scope
+Info (10281): Verilog HDL Declaration information at LDR.v(23): object "A6" differs only in case from object "a6" in the same scope
+Info (10281): Verilog HDL Declaration information at LDR.v(24): object "A7" differs only in case from object "a7" in the same scope
+Info (10281): Verilog HDL Declaration information at LDR.v(25): object "A8" differs only in case from object "a8" in the same scope
+Info (10281): Verilog HDL Declaration information at LDR.v(26): object "A9" differs only in case from object "a9" in the same scope
+Info (10281): Verilog HDL Declaration information at LDR.v(27): object "A10" differs only in case from object "a10" in the same scope
+Info (10281): Verilog HDL Declaration information at LDR.v(42): object "B" differs only in case from object "b" in the same scope
 Info (10281): Verilog HDL Declaration information at altera_merlin_burst_adapter_new.sv(139): object "BYTE_TO_WORD_SHIFT" differs only in case from object "byte_to_word_shift" in the same scope
 Info (10281): Verilog HDL Declaration information at altera_wrap_burst_converter.sv(279): object "addr_incr" differs only in case from object "ADDR_INCR" in the same scope
 Info (10281): Verilog HDL Declaration information at LPC_qsys_mm_interconnect_2_router_001.sv(48): object "DEFAULT_WR_CHANNEL" differs only in case from object "default_wr_channel" in the same scope

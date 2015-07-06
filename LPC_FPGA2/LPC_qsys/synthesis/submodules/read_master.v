@@ -8,8 +8,8 @@ module read_master(//DDR3 Avalon-MM interface
 					  output reg 			   ddr_read,
 					  
 					  // Streamfromdram Avalon-MM interface
-					  input wire signed [15:0] writedata,
-					  output reg signed [15:0] readdata,
+					  input wire        [15:0] writedata,
+					  output reg        [15:0] readdata,
 					  input wire 		[2:0]  addr,
 					  input wire 		  	   read,
 					  input wire 			   write,
@@ -18,6 +18,7 @@ module read_master(//DDR3 Avalon-MM interface
 					  output reg signed [15:0]  d_out,
 					  output reg 				d_clk,
 					  output reg 				vout,
+					  output reg 				d_rst,
 					  
 					  //Clock and reset
 					  input wire 				clk,
@@ -141,12 +142,11 @@ module read_master(//DDR3 Avalon-MM interface
 						done     <= 1'b0;
 						count    <= 32'b1;
 						d_out 	 <= 16'b0;
-						d_clk_enable <= 1'b0;
 				   end  
 				1: begin
 						ddr_read <= 1'b1;
 						count <= 1'b1;
-						vout <= 1'b0;
+						//vout <= 1'b0;
 				   end
 				2: begin
 						ddr_read <= 1'b0;
@@ -156,17 +156,20 @@ module read_master(//DDR3 Avalon-MM interface
 						if (ddr_addr >= 32'd1)
 						begin
 							vout <= 1'b1;
-							d_clk_enable <= 1'b1;
 						end else
 							vout <= 1'b0;
+						if (ddr_addr == addr_init)
+							d_rst <= 1'b1;
+						else
+							d_rst <= 1'b0;
 				   end
 				3: begin
 						count <= count + 1;
-						vout <= 1'b0;
+						//vout <= 1'b0;
 				   end
 				4: begin
 						done  <= 1'b1;
-						d_clk_enable <= 1'b0;
+						vout <= 1'b0;
 				   end
 			endcase
 		end
@@ -180,16 +183,13 @@ module read_master(//DDR3 Avalon-MM interface
 				d_clk 	 <= 1'b0;
 			end else
 			begin
-				if (d_clk_enable)
+				if (d_clk_count == rate >> 1)
 				begin
-					if (d_clk_count == rate >> 1)
-					begin
-						d_clk_count <= 32'b1;
-						d_clk <= ~d_clk;
-					end else
-					begin
-						d_clk_count <= d_clk_count + 1;
-					end
+					d_clk_count <= 32'b1;
+					d_clk <= ~d_clk;
+				end else
+				begin
+					d_clk_count <= d_clk_count + 1;
 				end
 			end
 		end

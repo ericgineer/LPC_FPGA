@@ -29,15 +29,15 @@ read_master_length_addr         = 0x1002;
 read_master_step_addr 			= 0x1004;
 read_master_rate_addr			= 0x1006;
 read_master_start_addr			= 0x1008;
-read_master_done_addr 			= 0x1010;
-read_master_reset				= 0x1012;
+read_master_done_addr 			= 0x100A;
+read_master_reset				= 0x100C;
 
-write_master_base_address_addr = 0x20000;
+write_master_base_address_addr = 0x2000;
 write_master_length_addr       = 0x2002;
 write_master_step_addr		   = 0x2004;
 write_master_start_addr		   = 0x2008;
-write_master_done_addr 		   = 0x2010;
-write_master_reset			   = 0x2012;
+write_master_done_addr 		   = 0x200A;
+write_master_reset			   = 0x200C;
 
 
 % Load input file (fixed point scaled to 16 bits)
@@ -51,7 +51,7 @@ read_master_length         = 256;
 read_master_step           = 2;
 read_master_rate	       = 6250;
 
-write_master_base_address = 0x3000;
+write_master_base_address = 0x0000;
 write_master_length       = 256;
 write_master_step         = 2;
 
@@ -97,13 +97,11 @@ fprintf(fid,'master_write_16 $claim_path 0x%x 0x%x\n',write_master_step_addr,wri
 
 fprintf(fid,'\n\n#Start write master\n\n');
 fprintf(fid,'master_write_16 $claim_path 0x%x 0x%x\n',write_master_start_addr,1);
-fprintf(fid,'master_write_16 $claim_path 0x%x 0x%x\n',write_master_start_addr,0);
 
 % Start read master
 
 fprintf(fid,'\n\n#Start read master\n\n');
 fprintf(fid,'master_write_16 $claim_path 0x%x 0x%x\n',read_master_start_addr,1);
-fprintf(fid,'master_write_16 $claim_path 0x%x 0x%x\n',read_master_start_addr,0);
 
 
 fclose(fid)

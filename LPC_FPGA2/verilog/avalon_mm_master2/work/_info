@@ -9,13 +9,13 @@ z2
 cModel Technology
 Z0 d/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/verilog/avalon_mm_master2
 vddr3_mem_sim
-Z1 !s110 1434682643
+Z1 !s110 1436115694
 !i10b 1
-!s100 KAX7O@QI0F;c4UoUFUj@_3
-ID72o]BHbk_`<18=DWCzHU1
+!s100 3cIUIz[D=TXg2Co5hZ07<1
+IIg;U^mg?Z[?>7z2NJ[9623
 Z2 V`JN@9S9cnhjKRR_L]QIcM3
 R0
-w1434514813
+w1435976033
 8ddr3_mem_sim.v
 Fddr3_mem_sim.v
 L0 3
@@ -23,9 +23,9 @@ Z3 OV;L;10.3d;59
 r1
 !s85 0
 31
-Z4 !s108 1434682643.313379
-Z5 !s107 write_master.v|read_master_tb.v|read_master.v|master_tb.v|dualportram.v|ddr3_mem_sim.v|
-Z6 !s90 -reportprogress|300|ddr3_mem_sim.v|dualportram.v|master_tb.v|read_master.v|read_master_tb.v|write_master.v|
+Z4 !s108 1436115694.911869
+Z5 !s107 write_master.v|regtest.v|read_master_tb.v|read_master.v|master_tb.v|dualportram.v|ddr3_mem_sim.v|LPC_master_tb.v|
+Z6 !s90 -reportprogress|300|LPC_master_tb.v|ddr3_mem_sim.v|dualportram.v|master_tb.v|read_master.v|read_master_tb.v|regtest.v|write_master.v|
 !i113 1
 vdualportram
 R1
@@ -49,11 +49,11 @@ R6
 vmaster_tb
 R1
 !i10b 1
-!s100 X>HbiE@DR1hX6>kh9oAl^1
-IBM3L[dKJQBAZh;mG0aoOF2
+!s100 Yoj:;P7UD@NHI4oi_9Y_>2
+IljozEYb;cf:mGAjkXHWD53
 R2
 R0
-w1434682626
+w1436115679
 Z7 8master_tb.v
 Z8 Fmaster_tb.v
 L0 3
@@ -68,13 +68,32 @@ R6
 vread_master
 R1
 !i10b 1
-!s100 k;?1eoYk?eAOUTYY@UEX;0
-I^5k_3>]jfcSVnPfI=WjQJ3
+!s100 K^bXERGM7VZI]`8=3_An22
+I`15I:FH`18C;b;bOozW3G3
 R2
 R0
-w1434681803
+w1435976401
 8read_master.v
 Fread_master.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+vregtest
+R1
+!i10b 1
+!s100 A<WBC^>Hg^kJZFEkfRd490
+I3iiDkcX^Iz41KKD`E:U[50
+R2
+R0
+w1434690641
+8regtest.v
+Fregtest.v
 L0 3
 R3
 r1
@@ -100,8 +119,8 @@ r1
 !s85 0
 31
 !s108 1434510162.024743
-R5
-R6
+!s107 write_master.v|read_master_tb.v|read_master.v|master_tb.v|dualportram.v|ddr3_mem_sim.v|
+!s90 -reportprogress|300|ddr3_mem_sim.v|dualportram.v|master_tb.v|read_master.v|read_master_tb.v|write_master.v|
 !i113 1
 vstreamfromdram_tb
 R1
@@ -125,11 +144,11 @@ R6
 vwrite_master
 R1
 !i10b 1
-!s100 IKfSCZgW=Gb5CWaSNOg5b2
-I`0CJ5PPA<TlhQB`]BJ:L02
+!s100 PG4Z8K3Gk9N?mzhnIbV?l3
+IdT7ef97KQA98ln8YOS5m<0
 R2
 R0
-w1434682479
+w1434762896
 8write_master.v
 Fwrite_master.v
 L0 3
