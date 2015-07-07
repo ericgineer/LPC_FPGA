@@ -57,16 +57,16 @@ module synthfilt(input wire clk,
 			end
 			if (v)
 			begin
-				y1_tmp <= y1 * A1;
-				y2_tmp <= y2 * A2;
-				y3_tmp <= y3 * A3;
-				y4_tmp <= y4 * A4;
-				y5_tmp <= y5 * A5;
-				y6_tmp <= y6 * A6;
-				y7_tmp <= y7 * A7;
-				y8_tmp <= y8 * A8;
-				y9_tmp <= y9 * A9;
-				y10_tmp <= y10 * A10;
+				y1_tmp <= y1 * (* multstyle = "dsp" *) A1;
+				y2_tmp <= y2 * (* multstyle = "dsp" *) A2;
+				y3_tmp <= y3 * (* multstyle = "dsp" *) A3;
+				y4_tmp <= y4 * (* multstyle = "dsp" *) A4;
+				y5_tmp <= y5 * (* multstyle = "dsp" *) A5;
+				y6_tmp <= y6 * (* multstyle = "dsp" *) A6;
+				y7_tmp <= y7 * (* multstyle = "dsp" *) A7; 
+				y8_tmp <= y8 * (* multstyle = "dsp" *) A8;
+				y9_tmp <= y9 * (* multstyle = "dsp" *) A9;
+				y10_tmp <= y10 * (* multstyle = "dsp" *) A10;
 				x_tmp <= x;
 				v1 <= 1'b1;
 			end else

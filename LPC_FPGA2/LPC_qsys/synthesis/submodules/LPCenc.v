@@ -8,6 +8,7 @@
 module LPCenc(input wire signed [15:0] x,
 			  input wire 			   v,
 			  input wire 			   clk,
+			  input wire 			   clk_rst,
 			  input wire 			   d_clk,
 			  input wire 			   rst,
 			  output reg signed [15:0] A0,
@@ -58,7 +59,7 @@ module LPCenc(input wire signed [15:0] x,
 					   .y(x),
 					   .v(v),
 					   .clk(d_clk),
-					   .rst(rst),
+					   .rst(rst || clk_rst),
 					   .R0(R0),
 					   .R1(R1),
 					   .R2(R2),
@@ -85,7 +86,7 @@ module LPCenc(input wire signed [15:0] x,
 			   .R10(R10),
 			   .start(start),
 			   .clk(clk),
-			   .rst(LDR_rst || rst),
+			   .rst(LDR_rst || rst || clk_rst),
 			   .A0(A0_tmp),
 			   .A1(A1_tmp),
 			   .A2(A2_tmp),
@@ -102,7 +103,7 @@ module LPCenc(input wire signed [15:0] x,
 		peak_find pk(.x(x),
 					  .v(peak_find_v),
 					  .clk(d_clk),
-					  .rst(peak_rst || rst),
+					  .rst(peak_rst || rst || clk_rst),
 					  .peak(peak),
 					  .vout(peak_find_vout));
 				  
@@ -121,7 +122,7 @@ module LPCenc(input wire signed [15:0] x,
 							 .threshold(threshold),
 							 .v(freq_est_v),
 							 .clk(clk),
-							 .rst(freq_est_rst || rst),
+							 .rst(freq_est_rst || rst || clk_rst),
 							 .count(freq_count_tmp),
 							 .vout(freq_est_vout));
 			   
@@ -160,7 +161,8 @@ module LPCenc(input wire signed [15:0] x,
 			if (write)
 			begin
 				case (address)
-					16'h0: rate <= writedata;
+					//16'h0: rate <= writedata;
+					16'h0: mem_null <= writedata;
 					default: mem_null <= writedata;
 				endcase
 			end
@@ -171,6 +173,7 @@ module LPCenc(input wire signed [15:0] x,
 		begin
 			if (rst)
 				count <= 16'b0;
+				rate <= 16'd240;
 			if (v)
 			begin
 				if (count == rate)

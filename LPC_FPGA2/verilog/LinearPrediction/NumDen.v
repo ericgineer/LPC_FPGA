@@ -1,6 +1,6 @@
 `timescale 1ns/1ns
 
-module NumDen(input wire signed [15:0] R_num0,
+(* multstyle = "logic" *) module NumDen(input wire signed [15:0] R_num0,
 			  input wire signed [15:0] R_num1,
 			  input wire signed [15:0] R_num2,
 			  input wire signed [15:0] R_num3,
@@ -36,8 +36,8 @@ module NumDen(input wire signed [15:0] R_num0,
 			  input wire 			 v,
 			  input wire			 clk,
 			  input wire			 rst,
-			  output reg signed[31:0] Rn /* synthesis multstyle = "logic" */,
-			  output reg signed[31:0] Rd /* synthesis multstyle = "logic" */,
+			  output reg signed[31:0] Rn,
+			  output reg signed[31:0] Rd,
 			  output reg 			vout);
 			  
 	  always @(posedge clk)

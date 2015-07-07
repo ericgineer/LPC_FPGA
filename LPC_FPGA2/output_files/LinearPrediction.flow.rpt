@@ -1,5 +1,5 @@
 Flow report for LinearPrediction
-Sun Jul  5 21:28:15 2015
+Mon Jul  6 22:01:12 2015
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
@@ -38,24 +38,29 @@ agreement for further details.
 
 
 
-+--------------------------------------------------------------------------+
-; Flow Summary                                                             ;
-+-----------------------------+--------------------------------------------+
-; Flow Status                 ; Successful - Sun Jul  5 21:28:15 2015      ;
-; Quartus II 64-Bit Version   ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
-; Revision Name               ; LinearPrediction                           ;
-; Top-level Entity Name       ; LinearPrediction                           ;
-; Family                      ; Cyclone V                                  ;
-; Device                      ; 5CEFA2F23C8                                ;
-; Timing Models               ; Final                                      ;
-; Logic utilization (in ALMs) ; N/A until Partition Merge                  ;
-; Total registers             ; N/A until Partition Merge                  ;
-; Total pins                  ; N/A until Partition Merge                  ;
-; Total virtual pins          ; N/A until Partition Merge                  ;
-; Total block memory bits     ; N/A until Partition Merge                  ;
-; Total PLLs                  ; N/A until Partition Merge                  ;
-; Total DLLs                  ; N/A until Partition Merge                  ;
-+-----------------------------+--------------------------------------------+
++------------------------------------------------------------------------------+
+; Flow Summary                                                                 ;
++---------------------------------+--------------------------------------------+
+; Flow Status                     ; Successful - Mon Jul  6 22:01:12 2015      ;
+; Quartus II 64-Bit Version       ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
+; Revision Name                   ; LinearPrediction                           ;
+; Top-level Entity Name           ; LinearPrediction                           ;
+; Family                          ; Cyclone V                                  ;
+; Device                          ; 5CEFA2F23C8                                ;
+; Timing Models                   ; Final                                      ;
+; Logic utilization (in ALMs)     ; 7,922 / 9,430 ( 84 % )                     ;
+; Total registers                 ; 6208                                       ;
+; Total pins                      ; 1 / 224 ( < 1 % )                          ;
+; Total virtual pins              ; 0                                          ;
+; Total block memory bits         ; 266,752 / 1,802,240 ( 15 % )               ;
+; Total DSP Blocks                ; 10 / 25 ( 40 % )                           ;
+; Total HSSI RX PCSs              ; 0                                          ;
+; Total HSSI PMA RX Deserializers ; 0                                          ;
+; Total HSSI TX PCSs              ; 0                                          ;
+; Total HSSI PMA TX Serializers   ; 0                                          ;
+; Total PLLs                      ; 0 / 4 ( 0 % )                              ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                              ;
++---------------------------------+--------------------------------------------+
 
 
 +-----------------------------------------+
@@ -63,7 +68,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/05/2015 21:27:33 ;
+; Start date & time ; 07/06/2015 21:50:04 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; LinearPrediction    ;
 +-------------------+---------------------+
@@ -74,7 +79,7 @@ agreement for further details.
 +---------------------------------------+------------------------------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                       ; Value                                                      ; Default Value ; Entity Name ; Section Id     ;
 +---------------------------------------+------------------------------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                 ; 165027876618.143615685306129                               ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                 ; 165027876618.143624460408427                               ; --            ; --          ; --             ;
 ; ECO_REGENERATE_REPORT                 ; On                                                         ; Off           ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT                ; Verilog Hdl                                                ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                   ; ModelSim-Altera (Verilog)                                  ; <None>        ; --          ; --             ;
@@ -89,36 +94,48 @@ agreement for further details.
 ; POWER_PRESET_COOLING_SOLUTION         ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                      ; --            ; --          ; --             ;
 ; PROJECT_OUTPUT_DIRECTORY              ; output_files                                               ; --            ; --          ; --             ;
 ; SLD_FILE                              ; LPC_qsys/synthesis/LPC_qsys.debuginfo                      ; --            ; --          ; --             ;
-; SLD_INFO                              ; QSYS_NAME LPC_qsys HAS_SOPCINFO 1 GENERATION_ID 1436155441 ; --            ; LPC_qsys    ; --             ;
+; SLD_INFO                              ; QSYS_NAME LPC_qsys HAS_SOPCINFO 1 GENERATION_ID 1436244570 ; --            ; LPC_qsys    ; --             ;
 ; SOPCINFO_FILE                         ; LPC_qsys/synthesis/../../LPC_qsys.sopcinfo                 ; --            ; --          ; --             ;
 ; SYNTHESIS_ONLY_QIP                    ; On                                                         ; --            ; --          ; --             ;
 ; USE_DLL_FREQUENCY_FOR_DQS_DELAY_CHAIN ; On                                                         ; Off           ; --          ; --             ;
 +---------------------------------------+------------------------------------------------------------+---------------+-------------+----------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                          ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:00:43     ; 1.0                     ; 1499 MB             ; 00:01:43                           ;
-; Total                  ; 00:00:43     ; --                      ; --                  ; 00:01:43                           ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:01:29     ; 1.0                     ; 1271 MB             ; 00:02:31                           ;
+; Fitter                    ; 00:06:29     ; 1.0                     ; 2014 MB             ; 00:07:59                           ;
+; Assembler                 ; 00:00:14     ; 1.0                     ; 1072 MB             ; 00:00:14                           ;
+; TimeQuest Timing Analyzer ; 00:02:17     ; 1.0                     ; 1473 MB             ; 00:02:16                           ;
+; EDA Netlist Writer        ; 00:00:09     ; 1.0                     ; 1388 MB             ; 00:00:09                           ;
+; Total                     ; 00:10:38     ; --                      ; --                  ; 00:13:09                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                          ;
-+------------------------+------------------+----------------+------------+----------------+
-; Module Name            ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
-+------------------------+------------------+----------------+------------+----------------+
-; Analysis & Elaboration ; Eric-Ubuntu      ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
-+------------------------+------------------+----------------+------------+----------------+
++---------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                             ;
++---------------------------+------------------+----------------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
++---------------------------+------------------+----------------+------------+----------------+
+; Analysis & Synthesis      ; Eric-Ubuntu      ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
+; Fitter                    ; Eric-Ubuntu      ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
+; Assembler                 ; Eric-Ubuntu      ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
+; TimeQuest Timing Analyzer ; Eric-Ubuntu      ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
+; EDA Netlist Writer        ; Eric-Ubuntu      ; Ubuntu 14.04.2 ; 14         ; x86_64         ;
++---------------------------+------------------+----------------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
-quartus_map --read_settings_files=on --write_settings_files=off top_LPC_FPGA -c LinearPrediction --analysis_and_elaboration
+quartus_map --read_settings_files=on --write_settings_files=off top_LPC_FPGA -c LinearPrediction
+quartus_fit --read_settings_files=off --write_settings_files=off top_LPC_FPGA -c LinearPrediction
+quartus_asm --read_settings_files=off --write_settings_files=off top_LPC_FPGA -c LinearPrediction
+quartus_sta top_LPC_FPGA -c LinearPrediction
+quartus_eda --read_settings_files=off --write_settings_files=off top_LPC_FPGA -c LinearPrediction
 
 
 

@@ -22,6 +22,7 @@ module LPC_qsys (
 		input  wire [15:0] lpcdec_a10,                   //                    .a10
 		output wire [15:0] lpcdec_synth,                 //                    .synth
 		output wire        lpcdec_vout,                  //                    .vout
+		input  wire        lpcdec_reset,                 //                    .reset
 		input  wire        lpcenc_v,                     //              lpcenc.v
 		output wire        lpcenc_voiced,                //                    .voiced
 		output wire [15:0] lpcenc_a0,                    //                    .a0
@@ -39,6 +40,7 @@ module LPC_qsys (
 		input  wire [15:0] lpcenc_x,                     //                    .x
 		input  wire        lpcenc_d_clk,                 //                    .d_clk
 		output wire [15:0] lpcenc_freq_count,            //                    .freq_count
+		input  wire        lpcenc_reset,                 //                    .reset
 		output wire [15:0] read_master_stream_d_out,     //  read_master_stream.d_out
 		output wire        read_master_stream_d_clk,     //                    .d_clk
 		output wire        read_master_stream_vout,      //                    .vout
@@ -109,7 +111,7 @@ module LPC_qsys (
 	wire         mm_interconnect_2_read_memory_s1_write;                          // mm_interconnect_2:read_memory_s1_write -> read_memory:write
 	wire  [15:0] mm_interconnect_2_read_memory_s1_writedata;                      // mm_interconnect_2:read_memory_s1_writedata -> read_memory:writedata
 	wire         mm_interconnect_2_read_memory_s1_clken;                          // mm_interconnect_2:read_memory_s1_clken -> read_memory:clken
-	wire         rst_controller_reset_out_reset;                                  // rst_controller:reset_out -> [LPCdec_0:rst, LPCenc_0:rst, ddr3_read_master:rst, ddr3_write_master:rst, mm_interconnect_0:ddr3_write_master_reset_sink_reset_bridge_in_reset_reset, mm_interconnect_1:ddr3_read_master_reset_sink_reset_bridge_in_reset_reset, mm_interconnect_2:JTAG_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:LPCenc_0_reset_sink_reset_bridge_in_reset_reset, read_memory:reset, read_memory:reset2, rst_translator:in_reset, sink_ram:reset, sink_ram:reset2]
+	wire         rst_controller_reset_out_reset;                                  // rst_controller:reset_out -> [LPCdec_0:clk_rst, LPCenc_0:clk_rst, ddr3_read_master:rst, ddr3_write_master:rst, mm_interconnect_0:ddr3_write_master_reset_sink_reset_bridge_in_reset_reset, mm_interconnect_1:ddr3_read_master_reset_sink_reset_bridge_in_reset_reset, mm_interconnect_2:JTAG_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:LPCenc_0_reset_sink_reset_bridge_in_reset_reset, read_memory:reset, read_memory:reset2, rst_translator:in_reset, sink_ram:reset, sink_ram:reset2]
 	wire         rst_controller_reset_out_reset_req;                              // rst_controller:reset_req -> [read_memory:reset_req, read_memory:reset_req2, rst_translator:reset_req_in, sink_ram:reset_req, sink_ram:reset_req2]
 
 	LPC_qsys_JTAG_master #(
@@ -132,7 +134,7 @@ module LPC_qsys (
 
 	LPCdec lpcdec_0 (
 		.clk       (clk_clk),                        //      clock.clk
-		.rst       (rst_controller_reset_out_reset), // reset_sink.reset
+		.clk_rst   (rst_controller_reset_out_reset), // reset_sink.reset
 		.v         (lpcdec_v),                       //    signals.v
 		.voiced    (lpcdec_voiced),                  //           .voiced
 		.pulserate (lpcdec_pulserate),               //           .pulserate
@@ -149,7 +151,8 @@ module LPC_qsys (
 		.A9        (lpcdec_a9),                      //           .a9
 		.A10       (lpcdec_a10),                     //           .a10
 		.synth     (lpcdec_synth),                   //           .synth
-		.vout      (lpcdec_vout)                     //           .vout
+		.vout      (lpcdec_vout),                    //           .vout
+		.rst       (lpcdec_reset)                    //           .reset
 	);
 
 	LPCenc #(
@@ -161,7 +164,7 @@ module LPC_qsys (
 		.S5 (5)
 	) lpcenc_0 (
 		.clk        (clk_clk),                                                   //                clock.clk
-		.rst        (rst_controller_reset_out_reset),                            //           reset_sink.reset
+		.clk_rst    (rst_controller_reset_out_reset),                            //           reset_sink.reset
 		.address    (mm_interconnect_2_lpcenc_0_avalon_control_slave_address),   // avalon_control_slave.address
 		.read       (mm_interconnect_2_lpcenc_0_avalon_control_slave_read),      //                     .read
 		.write      (mm_interconnect_2_lpcenc_0_avalon_control_slave_write),     //                     .write
@@ -183,7 +186,8 @@ module LPC_qsys (
 		.vout       (lpcenc_vout),                                               //                     .vout
 		.x          (lpcenc_x),                                                  //                     .x
 		.d_clk      (lpcenc_d_clk),                                              //                     .d_clk
-		.freq_count (lpcenc_freq_count)                                          //                     .freq_count
+		.freq_count (lpcenc_freq_count),                                         //                     .freq_count
+		.rst        (lpcenc_reset)                                               //                     .reset
 	);
 
 	read_master #(

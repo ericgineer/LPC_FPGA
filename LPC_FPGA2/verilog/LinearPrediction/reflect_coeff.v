@@ -23,7 +23,7 @@ module reflect_coeff(input wire signed [31:0] k_tmp,
 		end 
 		if (v)
 		begin
-			k_tmp1 <= k_tmp * 16'h7ff8;
+			k_tmp1 <= k_tmp * (* multstyle = "logic" *) 16'h7ff8;
 			b_tmp1 <= k_tmp + 16'h2;
 			v1 <= v;
 		end else

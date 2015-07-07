@@ -89,17 +89,17 @@ module correlation(input wire signed [15:0] x,
 				d9 <= d8;
 				d10 <= d9;
 				
-				m0 <= x * y;
-				m1 <= x * d1;
-				m2 <= x * d2;
-				m3 <= x * d3;
-				m4 <= x * d4;
-				m5 <= x * d5;
-				m6 <= x * d6;
-				m7 <= x * d7;
-				m8 <= x * d8;
-				m9 <= x * d9;
-				m10 <= x * d10;
+				m0 <= x * (* multstyle = "logic" *) y;
+				m1 <= x * (* multstyle = "logic" *) d1;
+				m2 <= x * (* multstyle = "logic" *) d2;
+				m3 <= x * (* multstyle = "logic" *) d3;
+				m4 <= x * (* multstyle = "logic" *) d4;
+				m5 <= x * (* multstyle = "logic" *) d5;
+				m6 <= x * (* multstyle = "logic" *) d6;
+				m7 <= x * (* multstyle = "logic" *) d7;
+				m8 <= x * (* multstyle = "logic" *) d8;
+				m9 <= x * (* multstyle = "logic" *) d9;
+				m10 <= x * (* multstyle = "logic" *) d10;
 				
 				add0 <= add0 + m0;
 				add1 <= add1 + m1;

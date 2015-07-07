@@ -94,4 +94,5 @@ set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/correlation.v
 set_global_assignment -name VERILOG_FILE verilog/LinearPrediction/coeff_update.v
 set_global_assignment -name QIP_FILE LPC_qsys/synthesis/LPC_qsys.qip
 set_global_assignment -name VERILOG_FILE verilog/LinearPrediction.v
+set_global_assignment -name DSP_BLOCK_BALANCING AUTO
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

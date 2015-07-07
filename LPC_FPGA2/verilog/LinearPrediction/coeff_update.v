@@ -166,17 +166,17 @@ module coeff_update(input wire signed [31:0] aL_0,
 					aL_9_tmp1 <= aL_9 <<< 15;
 					aL_10_tmp1 <= aL_10 <<< 15;
 					
-					aR_0_tmp1 <= aR_0 * k;
-					aR_1_tmp1 <= aR_1 * k;
-					aR_2_tmp1 <= aR_2 * k;
-					aR_3_tmp1 <= aR_3 * k;
-					aR_4_tmp1 <= aR_4 * k;
-					aR_5_tmp1 <= aR_5 * k;
-					aR_6_tmp1 <= aR_6 * k;
-					aR_7_tmp1 <= aR_7 * k;
-					aR_8_tmp1 <= aR_8 * k;
-					aR_9_tmp1 <= aR_9 * k;
-					aR_10_tmp1 <= aR_10 * k;
+					aR_0_tmp1 <= aR_0 * (* multstyle = "logic" *) k;
+					aR_1_tmp1 <= aR_1 * (* multstyle = "logic" *) k;
+					aR_2_tmp1 <= aR_2 * (* multstyle = "logic" *) k;
+					aR_3_tmp1 <= aR_3 * (* multstyle = "logic" *) k;
+					aR_4_tmp1 <= aR_4 * (* multstyle = "logic" *) k;
+					aR_5_tmp1 <= aR_5 * (* multstyle = "logic" *) k;
+					aR_6_tmp1 <= aR_6 * (* multstyle = "logic" *) k;
+					aR_7_tmp1 <= aR_7 * (* multstyle = "logic" *) k;
+					aR_8_tmp1 <= aR_8 * (* multstyle = "logic" *) k;
+					aR_9_tmp1 <= aR_9 * (* multstyle = "logic" *) k;
+					aR_10_tmp1 <= aR_10 * (* multstyle = "logic" *) k;
 					
 					v1 <= v;
 				end

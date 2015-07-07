@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="LPC_qsys" kind="system" version="15.0" fabric="QSYS">
  <!-- Format version 15.0 145 (Future versions may contain additional information.) -->
- <!-- 2015.07.05.21:04:12 -->
+ <!-- 2015.07.06.21:49:43 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1436155441</value>
+  <value>1436244570</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -834,7 +834,7 @@ parameters are a RESULT of the module parameters. -->
    <type>reset</type>
    <isStart>false</isStart>
    <port>
-    <name>rst</name>
+    <name>clk_rst</name>
     <direction>Input</direction>
     <width>1</width>
     <role>reset</role>
@@ -854,7 +854,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="associatedReset">
     <type>java.lang.String</type>
-    <value></value>
+    <value>reset_sink</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -979,6 +979,12 @@ parameters are a RESULT of the module parameters. -->
     <direction>Output</direction>
     <width>1</width>
     <role>vout</role>
+   </port>
+   <port>
+    <name>rst</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>reset</role>
    </port>
   </interface>
  </module>
@@ -1133,7 +1139,7 @@ parameters are a RESULT of the module parameters. -->
    <type>reset</type>
    <isStart>false</isStart>
    <port>
-    <name>rst</name>
+    <name>clk_rst</name>
     <direction>Input</direction>
     <width>1</width>
     <role>reset</role>
@@ -1643,6 +1649,12 @@ parameters are a RESULT of the module parameters. -->
     <direction>Output</direction>
     <width>16</width>
     <role>freq_count</role>
+   </port>
+   <port>
+    <name>rst</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>reset</role>
    </port>
   </interface>
  </module>
@@ -12538,5 +12550,5 @@ parameters are a RESULT of the module parameters. -->
   <version>15.0</version>
  </plugin>
  <reportVersion>15.0 145</reportVersion>
- <uniqueIdentifier>00266C6D8F0A0000014E61890259</uniqueIdentifier>
+ <uniqueIdentifier>00266C6D8F0A0000014E66D9081C</uniqueIdentifier>
 </EnsembleReport>

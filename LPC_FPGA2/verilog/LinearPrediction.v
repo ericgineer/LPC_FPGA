@@ -3,7 +3,7 @@ module LinearPrediction (
 	);		
 		// Stream interface
 		wire		vout;
-		wire [15:0] data;
+		wire signed [15:0] data;
 		wire 		d_clk, d_rst;
 		
 		// LPC encode
@@ -42,6 +42,7 @@ module LinearPrediction (
 					  .lpcenc_x(data),                     //                    .x
 					  .lpcenc_d_clk(d_clk),                 //                    .d_clk
 					  .lpcenc_freq_count(freq_count),
+					  .lpcenc_reset(d_rst),
 					  
 					 // LPC decode
 					  .lpcdec_v(enc_vout),                     //              lpcdec.v
@@ -61,6 +62,7 @@ module LinearPrediction (
 					  .lpcdec_a10(A10),                   //                    .a10
 					  .lpcdec_synth(synth),                 //                    .synth
 					  .lpcdec_vout(dec_vout),
+					  .lpcdec_reset(d_rst),
 					 
 					 // Write master 
 					  .write_master_stream_d_in(synth), // write_master_stream.d_in

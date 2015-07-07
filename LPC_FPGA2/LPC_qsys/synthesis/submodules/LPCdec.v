@@ -3,6 +3,7 @@
 // LPC decoder
 
 module LPCdec(input wire 			   clk,
+			  input wire 			   clk_rst,
 			  input wire 			   rst,
 			  input wire 			   v,
 			  input wire 			   voiced,
@@ -37,7 +38,7 @@ module LPCdec(input wire 			   clk,
 		end  
 			  
 	    synthfilt synthfilt(.clk(clk),
-						 .rst(rst),
+						 .rst(rst || clk_rst),
 						 .v(v),
 						 .x(x),
 						 .A0(A0),
@@ -55,7 +56,7 @@ module LPCdec(input wire 			   clk,
 						 .vout(synth_vout));
 						 
 		pulsegen pulsegen(.clk(clk),
-						 .rst(rst),
+						 .rst(rst || clk_rst),
 						 .v(v),
 						 .pulserate(pulserate),
 						 .lpcrate(lpcrate),
@@ -63,7 +64,7 @@ module LPCdec(input wire 			   clk,
 						 .vout(pulsegen_vout));
 	
 		LFSR LFSR(.clk(clk),
-				  .rst(rst),
+				  .rst(rst || clk_rst),
 				  .d_out(d_out));
 endmodule
 
