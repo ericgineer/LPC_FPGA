@@ -256,10 +256,20 @@ master_write_16 $claim_path 0x1e8 0xd09
 master_write_16 $claim_path 0x1ea 0x595
 
 
+#Reset DDR3 read master
+
+master_write_16 $claim_path 0x400c 0x1
+
+
+#Reset DDR3 read master
+
+master_write_16 $claim_path 0x500c 0x1
+
+
 #Configure DDR3 read master
 
 master_write_16 $claim_path 0x4000 0x0
-master_write_16 $claim_path 0x4002 0xf6
+master_write_16 $claim_path 0x4002 0x100
 master_write_16 $claim_path 0x4004 0x2
 master_write_16 $claim_path 0x4006 0x186a
 
@@ -272,7 +282,7 @@ master_write_16 $claim_path 0x4010 0xf0
 #Configure DDR3 write master
 
 master_write_16 $claim_path 0x5000 0x0
-master_write_16 $claim_path 0x5002 0xf6
+master_write_16 $claim_path 0x5002 0x100
 master_write_16 $claim_path 0x5004 0x2
 master_write_16 $claim_path 0x5006 0x186a
 

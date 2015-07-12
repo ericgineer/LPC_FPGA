@@ -2,8 +2,7 @@
 
 // LPC encode module
 
-`define peak_threshold 3000  // If input amplitude is greater than peak_threshold, the LPC frame
-						     // is considered voiced speech. Otherwise it is unvoiced.
+`define peak_threshold 3000  
 
 module LPCenc(input wire signed [15:0] x,
 			  input wire 			   v,
@@ -24,10 +23,12 @@ module LPCenc(input wire signed [15:0] x,
 			  output reg signed [15:0] A10,
 			  output reg 			   voiced,     // 0) Unvoiced speech. 1) Voiced speech
 			  output reg 		[15:0] freq_count,
-			  output reg 			   vout,
+			  output reg 			   start_dec,
+			  output reg 			   stop_dec,
 			  
 			  // Avalon-MM interface
-			  input wire 		[1:0] address,
+			  input wire 			   avalon_clk,
+			  input wire 		[3:0]  address,
 			  input wire       		   read,
 			  input wire 		 	   write,
 			  input wire signed [15:0] writedata,
@@ -40,7 +41,7 @@ module LPCenc(input wire signed [15:0] x,
 		reg start, LDR_rst;
 		wire done;
 		
-		reg [15:0] rate, mem_null;
+		reg [15:0] rate, mem_null, peak_threshold;
 		reg [7:0] count, freq_est_count;
 		wire signed [15:0] peak, mem_out;
 		reg signed [15:0] threshold;
@@ -54,12 +55,16 @@ module LPCenc(input wire signed [15:0] x,
 		
 		reg [2:0] state;
 		parameter S0 = 0, S1 = 1, S2 = 2, S3 = 3, S4 = 4, S5 = 5;
+		
+		
+		reg [2:0] state2;
+		parameter Q0 = 0, Q1 = 1, Q2 = 2, Q3 = 3, Q4 = 4;
 			  
 		correlation corr(.x(x),
 					   .y(x),
 					   .v(v),
 					   .clk(d_clk),
-					   .rst(rst || clk_rst),
+					   .rst(rst),
 					   .R0(R0),
 					   .R1(R1),
 					   .R2(R2),
@@ -86,7 +91,7 @@ module LPCenc(input wire signed [15:0] x,
 			   .R10(R10),
 			   .start(start),
 			   .clk(clk),
-			   .rst(LDR_rst || rst || clk_rst),
+			   .rst(LDR_rst || rst),
 			   .A0(A0_tmp),
 			   .A1(A1_tmp),
 			   .A2(A2_tmp),
@@ -103,7 +108,7 @@ module LPCenc(input wire signed [15:0] x,
 		peak_find pk(.x(x),
 					  .v(peak_find_v),
 					  .clk(d_clk),
-					  .rst(peak_rst || rst || clk_rst),
+					  .rst(peak_rst || rst),
 					  .peak(peak),
 					  .vout(peak_find_vout));
 				  
@@ -122,7 +127,7 @@ module LPCenc(input wire signed [15:0] x,
 							 .threshold(threshold),
 							 .v(freq_est_v),
 							 .clk(clk),
-							 .rst(freq_est_rst || rst || clk_rst),
+							 .rst(freq_est_rst || rst),
 							 .count(freq_count_tmp),
 							 .vout(freq_est_vout));
 			   
@@ -141,31 +146,43 @@ module LPCenc(input wire signed [15:0] x,
 			A10 <= A10_tmp;
 			freq_count <= freq_count_tmp;
 			voiced <= (peak >= `peak_threshold) ? 1'b1 : 1'b0;
-			if (v)
-				vout <= 1'b1;
-			else
-				vout <= 1'b0;
 		end
 		
 		// Avalon-MM interface
-		always @(posedge clk)
+		always @(posedge avalon_clk)
 		begin
-			if (read)
-			begin
-				case (address)
-					16'h0: readdata <= rate;
-					default: readdata <= 16'hbad;
-				endcase
-			end else
-				readdata <= 16'b0;
-			if (write)
-			begin
-				case (address)
-					//16'h0: rate <= writedata;
-					16'h0: mem_null <= writedata;
-					default: mem_null <= writedata;
-				endcase
-			end
+			if (rst)
+				peak_threshold <= 16'd3000; // If input amplitude is greater than peak_threshold, the LPC frame
+			else								// is considered voiced speech. Otherwise it is unvoiced.
+				if (read)
+				begin
+					case (address)
+						16'h0: readdata <= rate;
+						16'h1: readdata <= peak_threshold;
+						16'h2: readdata <= A0;
+						16'h3: readdata <= A1;
+						16'h4: readdata <= A2;
+						16'h5: readdata <= A3;
+						16'h6: readdata <= A4;
+						16'h7: readdata <= A5;
+						16'h8: readdata <= A6;
+						16'h9: readdata <= A7;
+						16'ha: readdata <= A8;
+						16'hb: readdata <= A9;
+						16'hc: readdata <= A10;
+						default: readdata <= 16'hbad;
+					endcase
+				end else
+					readdata <= 16'b0;
+				if (write)
+				begin
+					case (address)
+						//16'h0: rate <= writedata;
+						16'h0: rate <= writedata;
+						16'h1: peak_threshold <= writedata;
+						default: mem_null <= writedata;
+					endcase
+				end
 		end
 		
 		// rate counter
@@ -173,7 +190,6 @@ module LPCenc(input wire signed [15:0] x,
 		begin
 			if (rst)
 				count <= 16'b0;
-				rate <= 16'd240;
 			if (v)
 			begin
 				if (count == rate)
@@ -249,6 +265,49 @@ module LPCenc(input wire signed [15:0] x,
 						threshold <= peak >>> 2;
 					end
 				S2: freq_est_v <= 1'b0;
+			endcase
+		end
+		
+		// Start decode state machine
+		always @(posedge d_clk)
+		begin
+			if (rst)
+			begin
+				state2    <= Q0;
+				start_dec <= 1'b0;
+				stop_dec  <= 1'b0;
+			end else
+				case (state2)
+					Q0: if (done)
+							state2 <= Q1;
+						else
+							state2 <= Q0;
+					Q1: if (Q1)
+							state2 <= Q2;
+						else
+							state2 <= Q1;
+					Q2: if (v == 0)
+							state2 <= Q3;
+						else
+							state2 <= Q2;
+					Q3: if (Q3)
+							state2 <= Q4;
+						else
+							state2 <= Q3;
+					Q4: state2 <= Q4;
+					default: state2 <= Q0;
+				endcase
+		end
+		
+		always @(posedge d_clk)
+		begin
+			case (state2)
+				Q0: start_dec <= 1'b0;
+				Q1: start_dec <= 1'b1;
+				Q2: start_dec <= 1'b0;
+				Q3: stop_dec  <= 1'b1;
+				Q4: stop_dec  <= 1'b0;
+				default: start_dec <= 1'b0;
 			endcase
 		end
 endmodule

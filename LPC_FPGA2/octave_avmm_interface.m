@@ -34,7 +34,7 @@ read_master_step_addr 			= 0x4004;
 read_master_rate_addr			= 0x4006;
 read_master_start_addr			= 0x4008;
 read_master_done_addr 			= 0x400A;
-read_master_reset				= 0x400C;
+read_master_reset_addr			= 0x400C;
 
 write_master_base_address_addr = 0x5000;
 write_master_length_addr       = 0x5002;
@@ -42,7 +42,7 @@ write_master_step_addr		   = 0x5004;
 write_master_rate_addr		   = 0x5006;
 write_master_start_addr		   = 0x5008;
 write_master_done_addr 		   = 0x500A;
-write_master_reset			   = 0x500C;
+write_master_reset_addr		   = 0x500C;
 
 LPCenc_frame_size_addr		   = 0x4010;
 
@@ -54,14 +54,14 @@ w = textread('cross_seg.txt');
 % Specify read master and write master parameters
 
 read_master_base_address   = 0x0;
-read_master_length         = 246;
+read_master_length         = 256;
 read_master_step           = 2;
 read_master_rate	       = 6250;
 
 LPCenc_frame_size		  = 240;
 
 write_master_base_address = 0x0;
-write_master_length       = 246;
+write_master_length       = 256;
 write_master_step         = 2;
 write_master_rate		  = 6250;
 
@@ -87,6 +87,16 @@ for i = 1:numel(w)
 	fprintf(fid,'master_write_16 $claim_path 0x%x 0x%x\n',address,abs(w(i)));
 	address = address + 2;
 end
+
+% Reset DDR3 read master
+
+fprintf(fid,'\n\n#Reset DDR3 read master\n\n');
+fprintf(fid,'master_write_16 $claim_path 0x%x 0x%x\n',read_master_reset_addr,1);
+
+% Reset DDR3 write master
+
+fprintf(fid,'\n\n#Reset DDR3 read master\n\n');
+fprintf(fid,'master_write_16 $claim_path 0x%x 0x%x\n',write_master_reset_addr,1);
 
 % Configure DDR3 read master
 

@@ -27,7 +27,7 @@ module LPCenc(input wire signed [15:0] x,
 			  output reg 			   vout,
 			  
 			  // Avalon-MM interface
-			  input wire 		[1:0] address,
+			  input wire 		[3:0] address,
 			  input wire       		   read,
 			  input wire 		 	   write,
 			  input wire signed [15:0] writedata,
@@ -59,7 +59,7 @@ module LPCenc(input wire signed [15:0] x,
 					   .y(x),
 					   .v(v),
 					   .clk(d_clk),
-					   .rst(rst || clk_rst),
+					   .rst(rst),
 					   .R0(R0),
 					   .R1(R1),
 					   .R2(R2),
@@ -86,7 +86,7 @@ module LPCenc(input wire signed [15:0] x,
 			   .R10(R10),
 			   .start(start),
 			   .clk(clk),
-			   .rst(LDR_rst || rst || clk_rst),
+			   .rst(LDR_rst || rst),
 			   .A0(A0_tmp),
 			   .A1(A1_tmp),
 			   .A2(A2_tmp),
@@ -103,7 +103,7 @@ module LPCenc(input wire signed [15:0] x,
 		peak_find pk(.x(x),
 					  .v(peak_find_v),
 					  .clk(d_clk),
-					  .rst(peak_rst || rst || clk_rst),
+					  .rst(peak_rst || rst),
 					  .peak(peak),
 					  .vout(peak_find_vout));
 				  
@@ -122,7 +122,7 @@ module LPCenc(input wire signed [15:0] x,
 							 .threshold(threshold),
 							 .v(freq_est_v),
 							 .clk(clk),
-							 .rst(freq_est_rst || rst || clk_rst),
+							 .rst(freq_est_rst || rst),
 							 .count(freq_count_tmp),
 							 .vout(freq_est_vout));
 			   
@@ -153,7 +153,17 @@ module LPCenc(input wire signed [15:0] x,
 			if (read)
 			begin
 				case (address)
-					16'h0: readdata <= rate;
+					16'h0: readdata <= A0;
+					16'h1: readdata <= A1;
+					16'h2: readdata <= A2;
+					16'h3: readdata <= A3;
+					16'h4: readdata <= A4;
+					16'h5: readdata <= A5;
+					16'h6: readdata <= A6;
+					16'h7: readdata <= A7;
+					16'h8: readdata <= A8;
+					16'h9: readdata <= A9;
+					16'h10: readdata <= A10;
 					default: readdata <= 16'hbad;
 				endcase
 			end else

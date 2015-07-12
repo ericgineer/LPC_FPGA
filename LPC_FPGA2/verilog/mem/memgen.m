@@ -1,7 +1,7 @@
 % Octave script to generate memory contents for Modelsim
 
 
-w = textread('cross_seg.txt');
+w = textread('cross_seg2.txt');
 
 filename = 'mem_in.mem';
 fid = fopen(filename, 'w');

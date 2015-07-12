@@ -1,5 +1,17 @@
 `timescale 1ns/1ns
 
+`define frame_rate 16'd240
+
+`define base_address 16'd0
+
+`define num_samples 16'd500
+
+`define step_sise 16'd1
+
+`define sample_rate 16'd6250
+
+`define peak_threshold 16'd2000
+
 module LPC_master_tb;
 
 	reg clk, rst;
@@ -27,11 +39,17 @@ module LPC_master_tb;
 	reg				   master_write_read;
 	reg				   master_write_write;
 	
-	reg signed 	[15:0] lpc_writedata;
-	wire signed [15:0] lpc_readdata;
-	reg			[15:0] lpc_address;
-	reg				   lpc_read;
-	reg				   lpc_write;
+	reg signed 	[15:0] lpcenc_writedata;
+	wire signed [15:0] lpcenc_readdata;
+	reg			[3:0]  lpcenc_address;
+	reg				   lpcenc_read;
+	reg				   lpcenc_write;
+	
+	reg signed 	[15:0] lpcdec_writedata;
+	wire signed [15:0] lpcdec_readdata;
+	reg			[3:0]  lpcdec_address;
+	reg				   lpcdec_read;
+	reg				   lpcdec_write;
 	
 	wire signed [15:0] d_out;
 	wire 			   d_clk;
@@ -43,7 +61,7 @@ module LPC_master_tb;
 	wire signed [15:0] A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10;
 	wire signed [15:0] synth;
 	wire 		[15:0] freq_count;
-	wire 			   voiced, enc_vout, dec_vout;
+	wire 			   voiced, start_dec, stop_dec, dec_vout;
 	
 	integer i;
 	
@@ -83,6 +101,7 @@ module LPC_master_tb;
 	LPCenc LPCenc(.x(d_out),
 				  .v(vout),
 				  .clk(clk),
+				  .clk_rst(1'b0),
 				  .d_clk(d_clk),
 				  .rst(d_rst),
 				  .A0(A0),
@@ -98,19 +117,24 @@ module LPC_master_tb;
 				  .A10(A10),
 				  .voiced(voiced),
 				  .freq_count(freq_count),
-				  .vout(enc_vout),
-				  .address(lpc_address),
-				  .read(lpc_read),
-				  .write(lpc_write),
-				  .writedata(lpc_writedata),
-				  .readdata(lpc_readdata));
+				  .start_dec(start_dec),
+				  .stop_dec(stop_dec),
+				  
+				  // Avalon-MM interface
+				  .avalon_clk(clk),
+				  .address(lpcenc_address),
+				  .read(lpcenc_read),
+				  .write(lpcenc_write),
+				  .writedata(lpcenc_writedata),
+				  .readdata(lpcenc_readdata));
 		      
 	LPCdec LPCdec(.clk(d_clk),
+				  .clk_rst(1'b0),
 			      .rst(d_rst),
-			      .v(enc_vout),
+			      .start(start_dec),
+			      .stop(stop_dec),
 			      .voiced(voiced),
 			      .pulserate(freq_count),
-			      .lpcrate(16'd240),
 			      .A0(A0),
 			      .A1(A1),
 			      .A2(A2),
@@ -123,7 +147,15 @@ module LPC_master_tb;
 			      .A9(A9),
 			      .A10(A10),
 			      .synth(synth),
-			      .vout(dec_vout));
+			      .vout(dec_vout),
+			      
+			      // Avalon-MM interface
+			      .avalon_clk(clk),
+			      .address(lpcdec_address),
+				  .read(lpcdec_read),
+				  .write(lpcdec_write),
+				  .writedata(lpcdec_writedata),
+				  .readdata(lpcdec_readdata));
 							
 	write_master write(//DDR3 Avalon-MM interface
 					  .ddr_waitrequest(sink_waitrequest),
@@ -175,32 +207,36 @@ module LPC_master_tb;
 		rst <= 1'b0;
 		repeat(10) @(posedge clk);
 		//Setup ddr master_read
-		master_read_avmm_write(3'h0,0);    // Set initial address to 0
-		master_read_avmm_write(3'h1,245);  // Set number of samples
-		master_read_avmm_write(3'h2,1);    // Set step size
-		master_read_avmm_write(3'h3,6250);	   // Set lpc sample rate to 8000 Hz
+		master_read_avmm_write(3'h0,`base_address);    // Set initial address to 0
+		master_read_avmm_write(3'h1,`num_samples);  // Set number of samples
+		master_read_avmm_write(3'h2,`step_sise);    // Set step size
+		master_read_avmm_write(3'h3,`sample_rate);	   // Set lpc sample rate to 8000 Hz
 		
 		
 		//Setup ddr master_write
-		master_write_avmm_write(3'h0,0);  // Set initial address to 0
-		master_write_avmm_write(3'h1,245); // Set number of samples
-		master_write_avmm_write(3'h2,1);    // Set step size
-		master_write_avmm_write(3'h3,6250); // Set lpc sample rate to 8000 hz
+		master_write_avmm_write(3'h0,`base_address);  // Set initial address to 0
+		master_write_avmm_write(3'h1,`num_samples); // Set number of samples
+		master_write_avmm_write(3'h2,`step_sise);    // Set step size
+		master_write_avmm_write(3'h3,`sample_rate); // Set lpc sample rate to 8000 hz
 		
-		// Setup LPC core
-		lpc_avmm_write(3'h0,16'd240); // Set LPC frame size (LPC rate)
+		// Setup LPC encoder
+		lpcenc_avmm_write(3'h0,`frame_rate); // Set LPC frame size (LPC rate)
+		lpcenc_avmm_write(3'h1,`peak_threshold);  // Set LPC peak threshold
+		
+		// Setup LPC decoder
+		lpcdec_avmm_write(3'h0,`frame_rate);
 		
 		// Start streams
 		master_write_avmm_write(3'h4,1);   // Start
 		master_read_avmm_write(3'h4,1);    // Start
 		while (master_write_readdata == 32'b0)
 		begin
-			master_write_avmm_read(3'h5); // Read master write done address untill asserted
+			master_write_avmm_read(3'h5); // Read master write done address until asserted
 		end
 		repeat(50) @(posedge clk);
 		master_read_avmm_write(3'h6,1);   // Reset read master
 		master_write_avmm_write(3'h6,1);  // Reset write master
-		repeat(50) @(posedge clk);
+		repeat(100000) @(posedge clk);
 		$stop;
 	end
 
@@ -248,25 +284,47 @@ module LPC_master_tb;
 		end
 	endtask
 	
-	task lpc_avmm_write;
+	task lpcenc_avmm_write;
 		input [2:0] address;
 		input [31:0] data;
 		begin
-			lpc_writedata <= data;
-			lpc_address <= address;
-			lpc_write <= 1'b1;
+			lpcenc_writedata <= data;
+			lpcenc_address <= address;
+			lpcenc_write <= 1'b1;
 			@(posedge clk);
-			lpc_write <= 1'b0;
+			lpcenc_write <= 1'b0;
 		end
 	endtask
 	
-	task lpc_avmm_read;
+	task lpcenc_avmm_read;
 		input [2:0] address;
 		begin
-			lpc_address <= address;
-			lpc_read <= 1'b1;
+			lpcenc_address <= address;
+			lpcenc_read <= 1'b1;
 			@(posedge clk);
-			lpc_read <= 1'b0;
+			lpcenc_read <= 1'b0;
+		end
+	endtask
+	
+	task lpcdec_avmm_write;
+		input [2:0] address;
+		input [31:0] data;
+		begin
+			lpcdec_writedata <= data;
+			lpcdec_address <= address;
+			lpcdec_write <= 1'b1;
+			@(posedge clk);
+			lpcdec_write <= 1'b0;
+		end
+	endtask
+	
+	task lpcdec_avmm_read;
+		input [2:0] address;
+		begin
+			lpcdec_address <= address;
+			lpcdec_read <= 1'b1;
+			@(posedge clk);
+			lpcdec_read <= 1'b0;
 		end
 	endtask
 endmodule

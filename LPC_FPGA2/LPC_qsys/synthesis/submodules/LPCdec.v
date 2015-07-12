@@ -38,7 +38,7 @@ module LPCdec(input wire 			   clk,
 		end  
 			  
 	    synthfilt synthfilt(.clk(clk),
-						 .rst(rst || clk_rst),
+						 .rst(rst),
 						 .v(v),
 						 .x(x),
 						 .A0(A0),
@@ -56,7 +56,7 @@ module LPCdec(input wire 			   clk,
 						 .vout(synth_vout));
 						 
 		pulsegen pulsegen(.clk(clk),
-						 .rst(rst || clk_rst),
+						 .rst(rst),
 						 .v(v),
 						 .pulserate(pulserate),
 						 .lpcrate(lpcrate),

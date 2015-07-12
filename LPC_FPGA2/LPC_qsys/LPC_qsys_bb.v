@@ -18,6 +18,7 @@ module LPC_qsys (
 	lpcdec_a10,
 	lpcdec_synth,
 	lpcdec_vout,
+	lpcdec_rst,
 	lpcenc_v,
 	lpcenc_voiced,
 	lpcenc_a0,
@@ -34,12 +35,16 @@ module LPC_qsys (
 	lpcenc_vout,
 	lpcenc_x,
 	lpcenc_d_clk,
-	lpcenc_readdata,
+	lpcenc_freq_count,
+	lpcenc_rst,
 	read_master_stream_d_out,
 	read_master_stream_d_clk,
 	read_master_stream_vout,
+	read_master_stream_d_rst,
 	write_master_stream_d_in,
-	write_master_stream_v);	
+	write_master_stream_v,
+	write_master_stream_d_in_clk,
+	lpc_clk_clk);	
 
 	input		clk_clk;
 	input		lpcdec_v;
@@ -59,6 +64,7 @@ module LPC_qsys (
 	input	[15:0]	lpcdec_a10;
 	output	[15:0]	lpcdec_synth;
 	output		lpcdec_vout;
+	input		lpcdec_rst;
 	input		lpcenc_v;
 	output		lpcenc_voiced;
 	output	[15:0]	lpcenc_a0;
@@ -75,10 +81,14 @@ module LPC_qsys (
 	output		lpcenc_vout;
 	input	[15:0]	lpcenc_x;
 	input		lpcenc_d_clk;
-	output	[15:0]	lpcenc_readdata;
+	output	[15:0]	lpcenc_freq_count;
+	input		lpcenc_rst;
 	output	[15:0]	read_master_stream_d_out;
 	output		read_master_stream_d_clk;
 	output		read_master_stream_vout;
+	output		read_master_stream_d_rst;
 	input	[15:0]	write_master_stream_d_in;
 	input		write_master_stream_v;
+	input		write_master_stream_d_in_clk;
+	output		lpc_clk_clk;
 endmodule

@@ -9,13 +9,13 @@ z2
 cModel Technology
 Z0 d/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/verilog
 vcoeff_update
-Z1 !s110 1436152356
+Z1 !s110 1436743051
 !i10b 1
-!s100 dK2>ZCGV?oP:;dT4OL8>K0
-I3o=fjVL8V:dX`ad:BOB8N0
+!s100 MY`QK846R=P4hb?>eYaf;3
+I`hFE1aHz1zTKZJ<X>=oZ<3
 Z2 V`JN@9S9cnhjKRR_L]QIcM3
 R0
-w1430798610
+w1436239376
 8./LinearPrediction/coeff_update.v
 F./LinearPrediction/coeff_update.v
 L0 3
@@ -23,18 +23,18 @@ Z3 OV;L;10.3d;59
 r1
 !s85 0
 31
-Z4 !s108 1436152356.120190
+Z4 !s108 1436743051.314437
 Z5 !s107 ./LinearPrediction/synthfilt_tb.v|./LinearPrediction/synthfilt.v|./LinearPrediction/reflect_coeff.v|./LinearPrediction/pulsegen_tb.v|./LinearPrediction/pulsegen.v|./LinearPrediction/peak_find.v|./LinearPrediction/freq_est_tb.v|./LinearPrediction/freq_est.v|./LinearPrediction/dualportram.v|./LinearPrediction/divide_stage.v|./LinearPrediction/divide.v|./LinearPrediction/correlation.v|./LinearPrediction/coeff_update.v|./LinearPrediction/NumDen.v|./LinearPrediction/LPCenc_tb.v|./LinearPrediction/LPCenc.v|./LinearPrediction/LPCdec.v|./LinearPrediction/LPC_tb.v|./LinearPrediction/LFSR_tb.v|./LinearPrediction/LFSR.v|./LinearPrediction/LDR.v|
 Z6 !s90 -reportprogress|300|./LinearPrediction/LDR.v|./LinearPrediction/LFSR.v|./LinearPrediction/LFSR_tb.v|./LinearPrediction/LPC_tb.v|./LinearPrediction/LPCdec.v|./LinearPrediction/LPCenc.v|./LinearPrediction/LPCenc_tb.v|./LinearPrediction/NumDen.v|./LinearPrediction/coeff_update.v|./LinearPrediction/correlation.v|./LinearPrediction/divide.v|./LinearPrediction/divide_stage.v|./LinearPrediction/dualportram.v|./LinearPrediction/freq_est.v|./LinearPrediction/freq_est_tb.v|./LinearPrediction/peak_find.v|./LinearPrediction/pulsegen.v|./LinearPrediction/pulsegen_tb.v|./LinearPrediction/reflect_coeff.v|./LinearPrediction/synthfilt.v|./LinearPrediction/synthfilt_tb.v|
 !i113 1
 vcorrelation
 R1
 !i10b 1
-!s100 JF;DgARTd6:R0a@IQOBC61
-I5<2Oa@Gk?P`h5j>fUdf4D2
+!s100 XILUQ;^3Xf8JMC=ELI1:?2
+I8CzS]2_=NR=`zMNe=hIgK2
 R2
 R0
-w1433302780
+w1436239292
 8./LinearPrediction/correlation.v
 F./LinearPrediction/correlation.v
 L0 5
@@ -49,11 +49,11 @@ R6
 vddr3_mem_sim
 R1
 !i10b 1
-!s100 3cIUIz[D=TXg2Co5hZ07<1
-IGRfaVBIZjA^YK83l:eKI52
+!s100 OMS2Ga=g7gkE_Y`7=Ih[K2
+I2f2ZoR5VEVWB87eB2PY3N0
 R2
 R0
-w1435976033
+w1436730696
 8./avalon_mm_master2/ddr3_mem_sim.v
 F./avalon_mm_master2/ddr3_mem_sim.v
 L0 3
@@ -61,7 +61,7 @@ R3
 r1
 !s85 0
 31
-Z7 !s108 1436152356.019317
+Z7 !s108 1436743051.239769
 Z8 !s107 ./avalon_mm_master2/write_master.v|./avalon_mm_master2/regtest.v|./avalon_mm_master2/read_master_tb.v|./avalon_mm_master2/read_master.v|./avalon_mm_master2/master_tb.v|./avalon_mm_master2/dualportram.v|./avalon_mm_master2/ddr3_mem_sim.v|
 Z9 !s90 -reportprogress|300|./avalon_mm_master2/ddr3_mem_sim.v|./avalon_mm_master2/dualportram.v|./avalon_mm_master2/master_tb.v|./avalon_mm_master2/read_master.v|./avalon_mm_master2/read_master_tb.v|./avalon_mm_master2/regtest.v|./avalon_mm_master2/write_master.v|
 !i113 1
@@ -223,19 +223,19 @@ n@l@f@s@r_tb
 vLPC_master_tb
 R1
 !i10b 1
-!s100 dm0oD_NWDZUfR5fNzmi[;0
-Ia8579ldmV?R07iW]f>Bcg2
+!s100 ?4F0nA[:An<DT=TSCYa6W1
+IeBZEG?ibjUWdQEn4e`ERh3
 R2
 R0
-w1436130484
+w1436743036
 8LPC_master_tb.v
 FLPC_master_tb.v
-L0 3
+L0 15
 R3
 r1
 !s85 0
 31
-!s108 1436152356.271224
+!s108 1436743051.442484
 !s107 LPC_master_tb.v|
 !s90 -reportprogress|300|LPC_master_tb.v|
 !i113 1
@@ -263,11 +263,11 @@ n@l@p@c_tb
 vLPCdec
 R1
 !i10b 1
-!s100 NJmJ7>^BM_zRNJ;V`?JPb1
-IG8dY]5KU80>Wg@od8FOFZ1
+!s100 hN:Q2i`DR6EjjTb^@197D2
+ISRbAWNP<YbI4cEz;RhZ2N0
 R2
 R0
-w1436126960
+w1436735721
 8./LinearPrediction/LPCdec.v
 F./LinearPrediction/LPCdec.v
 L0 5
@@ -283,14 +283,14 @@ n@l@p@cdec
 vLPCenc
 R1
 !i10b 1
-!s100 58Pj8<C4odFCkji`f@]TQ2
-IWH4cK64L^>=B`<4T@S]A33
+!s100 =MTd3mil=ggISTU:ohYOz1
+I^eiA9jJzl]YjPF[RAz0B^0
 R2
 R0
-w1433736891
+w1436742952
 8./LinearPrediction/LPCenc.v
 F./LinearPrediction/LPCenc.v
-L0 8
+L0 7
 R3
 r1
 !s85 0
@@ -300,6 +300,26 @@ R5
 R6
 !i113 1
 n@l@p@cenc
+vlpcenc_master_tb
+!s110 1436731247
+!i10b 1
+!s100 f]jg4dW3galmce]@OdHP[1
+I2H8K9FU_465O3jH_oNl530
+R2
+R0
+w1436731057
+8/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/verilog/LPC_master_tb.v
+F/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/verilog/LPC_master_tb.v
+L0 13
+R3
+r1
+!s85 0
+31
+!s108 1436731247.378318
+!s107 /home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/verilog/LPC_master_tb.v|
+!s90 -reportprogress|300|-work|work|/home/eric/Documents/Verilog_stuff/LPC_FPGA/LPC_FPGA2/verilog/LPC_master_tb.v|
+!i113 1
+o-work work
 vLPCenc_tb
 R1
 !i10b 1
@@ -342,11 +362,11 @@ R9
 vNumDen
 R1
 !i10b 1
-!s100 mPP8Faml@:JzE1BU`Le5l0
-I2cKl?h^^g@;^h[PO9>=QN2
+!s100 c9AEECQR`n5<GcLTffLHA0
+I1C9MeX6190::nEI0L4dK_1
 R2
 R0
-w1432781190
+w1436239407
 8./LinearPrediction/NumDen.v
 F./LinearPrediction/NumDen.v
 L0 3
@@ -385,7 +405,7 @@ R1
 IC>Go2ThCLm^U8VzX6Wmj@3
 R2
 R0
-w1436127715
+w1436737034
 8./LinearPrediction/pulsegen.v
 F./LinearPrediction/pulsegen.v
 L0 3
@@ -438,11 +458,11 @@ R9
 vreflect_coeff
 R1
 !i10b 1
-!s100 8G``NALlFH]86SGFL9E4z0
-I7VSG7K4nE1ok2926I6GP30
+!s100 D<:3WPzhU?a[AR8lSeEUb2
+II8dn04O[icJ4<^J3]nah81
 R2
 R0
-w1431320111
+w1436239388
 8./LinearPrediction/reflect_coeff.v
 F./LinearPrediction/reflect_coeff.v
 L0 3
@@ -495,11 +515,11 @@ R9
 vsynthfilt
 R1
 !i10b 1
-!s100 5Z21=g_B;=DMYaAOb;7:D0
-IKmAd^kD6RP^@n415:m>1]0
+!s100 UVf]BN:ETX[F@nlOYA@cb1
+IVQbIiY79hK?9CNjTb645U3
 R2
 R0
-w1433822919
+w1436737750
 8./LinearPrediction/synthfilt.v
 F./LinearPrediction/synthfilt.v
 L0 5

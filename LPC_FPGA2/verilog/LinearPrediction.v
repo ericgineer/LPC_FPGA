@@ -1,6 +1,9 @@
 module LinearPrediction (
 		input wire         clk_clk                               //                  clk.clk
-	);		
+	);	
+
+		wire lpc_clk;
+	
 		// Stream interface
 		wire		vout;
 		wire signed [15:0] data;
@@ -17,6 +20,7 @@ module LinearPrediction (
 	
 		LPC_qsys LPC(// Clock
 					  .clk_clk(clk_clk),                  //                 clk.clk
+					  .lpc_clk_clk(lpc_clk),
 				 
 					 // Read master
 					  .read_master_stream_d_out(data), //  read_master_stream.d_out
@@ -42,7 +46,7 @@ module LinearPrediction (
 					  .lpcenc_x(data),                     //                    .x
 					  .lpcenc_d_clk(d_clk),                 //                    .d_clk
 					  .lpcenc_freq_count(freq_count),
-					  .lpcenc_reset(d_rst),
+					  .lpcenc_rst(d_rst),
 					  
 					 // LPC decode
 					  .lpcdec_v(enc_vout),                     //              lpcdec.v
@@ -59,13 +63,13 @@ module LinearPrediction (
 					  .lpcdec_a7(A7),                    //                    .a7
 					  .lpcdec_a8(A8),                    //                    .a8
 					  .lpcdec_a9(A9),                    //                    .a9
-					  .lpcdec_a10(A10),                   //                    .a10
+					  .lpcdec_a10(A10),                     //                    .a10
 					  .lpcdec_synth(synth),                 //                    .synth
 					  .lpcdec_vout(dec_vout),
-					  .lpcdec_reset(d_rst),
+					  .lpcdec_rst(d_rst),
 					 
 					 // Write master 
 					  .write_master_stream_d_in(synth), // write_master_stream.d_in
-					  .write_master_stream_v(dec_vout),
-					  .write_master_stream_d_in_clk(d_clk));     //                    .v
+					  .write_master_stream_v(dec_vout), 
+					  .write_master_stream_d_in_clk(d_clk));  //  .v
 endmodule

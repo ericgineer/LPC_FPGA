@@ -28,7 +28,7 @@ module LPC_qsys_mm_interconnect_2 (
 		output wire        ddr3_write_master_avalon_mm_control_read,          //                                            .read
 		input  wire [15:0] ddr3_write_master_avalon_mm_control_readdata,      //                                            .readdata
 		output wire [15:0] ddr3_write_master_avalon_mm_control_writedata,     //                                            .writedata
-		output wire [1:0]  LPCenc_0_avalon_control_slave_address,             //               LPCenc_0_avalon_control_slave.address
+		output wire [3:0]  LPCenc_0_avalon_control_slave_address,             //               LPCenc_0_avalon_control_slave.address
 		output wire        LPCenc_0_avalon_control_slave_write,               //                                            .write
 		output wire        LPCenc_0_avalon_control_slave_read,                //                                            .read
 		input  wire [15:0] LPCenc_0_avalon_control_slave_readdata,            //                                            .readdata
@@ -526,7 +526,7 @@ module LPC_qsys_mm_interconnect_2 (
 	);
 
 	altera_merlin_slave_translator #(
-		.AV_ADDRESS_W                   (2),
+		.AV_ADDRESS_W                   (4),
 		.AV_DATA_W                      (16),
 		.UAV_DATA_W                     (16),
 		.AV_BURSTCOUNT_W                (1),

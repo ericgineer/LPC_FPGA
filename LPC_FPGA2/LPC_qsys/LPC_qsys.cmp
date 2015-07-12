@@ -1,6 +1,7 @@
 	component LPC_qsys is
 		port (
 			clk_clk                      : in  std_logic                     := 'X';             -- clk
+			lpc_clk_clk                  : out std_logic;                                        -- clk
 			lpcdec_v                     : in  std_logic                     := 'X';             -- v
 			lpcdec_voiced                : in  std_logic                     := 'X';             -- voiced
 			lpcdec_pulserate             : in  std_logic_vector(15 downto 0) := (others => 'X'); -- pulserate
@@ -18,7 +19,7 @@
 			lpcdec_a10                   : in  std_logic_vector(15 downto 0) := (others => 'X'); -- a10
 			lpcdec_synth                 : out std_logic_vector(15 downto 0);                    -- synth
 			lpcdec_vout                  : out std_logic;                                        -- vout
-			lpcdec_reset                 : in  std_logic                     := 'X';             -- reset
+			lpcdec_rst                   : in  std_logic                     := 'X';             -- rst
 			lpcenc_v                     : in  std_logic                     := 'X';             -- v
 			lpcenc_voiced                : out std_logic;                                        -- voiced
 			lpcenc_a0                    : out std_logic_vector(15 downto 0);                    -- a0
@@ -36,7 +37,7 @@
 			lpcenc_x                     : in  std_logic_vector(15 downto 0) := (others => 'X'); -- x
 			lpcenc_d_clk                 : in  std_logic                     := 'X';             -- d_clk
 			lpcenc_freq_count            : out std_logic_vector(15 downto 0);                    -- freq_count
-			lpcenc_reset                 : in  std_logic                     := 'X';             -- reset
+			lpcenc_rst                   : in  std_logic                     := 'X';             -- rst
 			read_master_stream_d_out     : out std_logic_vector(15 downto 0);                    -- d_out
 			read_master_stream_d_clk     : out std_logic;                                        -- d_clk
 			read_master_stream_vout      : out std_logic;                                        -- vout

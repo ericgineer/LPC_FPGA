@@ -136,7 +136,7 @@ module LPC_qsys_mm_interconnect_2_router
     // -------------------------------------------------------
     localparam PAD0 = log2ceil(64'h4000 - 64'h0); 
     localparam PAD1 = log2ceil(64'h4010 - 64'h4000); 
-    localparam PAD2 = log2ceil(64'h4018 - 64'h4010); 
+    localparam PAD2 = log2ceil(64'h4040 - 64'h4020); 
     localparam PAD3 = log2ceil(64'h5010 - 64'h5000); 
     localparam PAD4 = log2ceil(64'h10000 - 64'hc000); 
     // -------------------------------------------------------
@@ -204,8 +204,8 @@ module LPC_qsys_mm_interconnect_2_router
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
     end
 
-    // ( 0x4010 .. 0x4018 )
-    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 16'h4010   ) begin
+    // ( 0x4020 .. 0x4040 )
+    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 16'h4020   ) begin
             src_channel = 5'b00001;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
     end

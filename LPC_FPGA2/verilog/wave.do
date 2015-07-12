@@ -41,6 +41,7 @@ add wave -noupdate -divider {LPC encode}
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/x
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/v
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/clk
+add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/clk_rst
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/d_clk
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/rst
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/A0
@@ -56,7 +57,9 @@ add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/A9
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/A10
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/voiced
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/freq_count
-add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/vout
+add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/start_dec
+add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/stop_dec
+add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/avalon_clk
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/address
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/read
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/write
@@ -105,13 +108,15 @@ add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/peak_rst
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/freq_est_start
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/voiced_tmp
 add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/state
+add wave -noupdate -group LPCenc /LPC_master_tb/LPCenc/state2
 add wave -noupdate -divider {LPC decode}
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/clk
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/clk_rst
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/rst
-add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/v
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/start
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/stop
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/voiced
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/pulserate
-add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/lpcrate
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/A0
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/A1
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/A2
@@ -125,12 +130,25 @@ add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/A9
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/A10
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/synth
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/vout
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/avalon_clk
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/address
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/read
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/write
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/writedata
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/readdata
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/x
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/pulseout
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/d_out
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/y
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/synth_vout
 add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/pulsegen_vout
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/v
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/vout_tmp
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/count
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/lpcrate
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/mem_null
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/num_samples
+add wave -noupdate -group LPCdec /LPC_master_tb/LPCdec/state
 add wave -noupdate -divider write_master
 add wave -noupdate -group write /LPC_master_tb/write/ddr_waitrequest
 add wave -noupdate -group write /LPC_master_tb/write/ddr_addr
@@ -187,11 +205,6 @@ add wave -noupdate -group master_tb /LPC_master_tb/master_write_readdata
 add wave -noupdate -group master_tb /LPC_master_tb/master_write_addr
 add wave -noupdate -group master_tb /LPC_master_tb/master_write_read
 add wave -noupdate -group master_tb /LPC_master_tb/master_write_write
-add wave -noupdate -group master_tb /LPC_master_tb/lpc_writedata
-add wave -noupdate -group master_tb /LPC_master_tb/lpc_readdata
-add wave -noupdate -group master_tb /LPC_master_tb/lpc_address
-add wave -noupdate -group master_tb /LPC_master_tb/lpc_read
-add wave -noupdate -group master_tb /LPC_master_tb/lpc_write
 add wave -noupdate -group master_tb /LPC_master_tb/d_out
 add wave -noupdate -group master_tb /LPC_master_tb/d_clk
 add wave -noupdate -group master_tb /LPC_master_tb/vout
@@ -211,7 +224,6 @@ add wave -noupdate -group master_tb /LPC_master_tb/A10
 add wave -noupdate -group master_tb /LPC_master_tb/synth
 add wave -noupdate -group master_tb /LPC_master_tb/freq_count
 add wave -noupdate -group master_tb /LPC_master_tb/voiced
-add wave -noupdate -group master_tb /LPC_master_tb/enc_vout
 add wave -noupdate -group master_tb /LPC_master_tb/dec_vout
 add wave -noupdate -group master_tb /LPC_master_tb/i
 TreeUpdate [SetDefaultTree]

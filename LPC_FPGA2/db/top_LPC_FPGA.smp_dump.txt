@@ -188,6 +188,12 @@ state.S148 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 state.S149 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 state.S150 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 
+State Machine - |LinearPrediction|LPC_qsys:LPC|LPCenc:lpcenc_0|state
+Name state.S0 state.S2 state.S1 
+state.S0 0 0 0 
+state.S1 1 0 1 
+state.S2 1 1 0 
+
 State Machine - |LinearPrediction|LPC_qsys:LPC|LPC_qsys_JTAG_master:jtag_master|altera_avalon_st_jtag_interface:jtag_phy_embedded_in_jtag_master|altera_jtag_dc_streaming:normal.jtag_dc_streaming|altera_jtag_streaming:jtag_streaming|read_state
 Name read_state.ST_HEADER read_state.ST_READ_DATA read_state.ST_PADDED 
 read_state.ST_HEADER 0 0 0 
@@ -200,9 +206,3 @@ write_state.ST_BYPASS 0 0 0 0
 write_state.ST_HEADER_1 0 0 1 1 
 write_state.ST_HEADER_2 0 1 0 1 
 write_state.ST_WRITE_DATA 1 0 0 1 
-
-State Machine - |LinearPrediction|LPC_qsys:LPC|LPCenc:lpcenc_0|state
-Name state.S0 state.S2 state.S1 
-state.S0 0 0 0 
-state.S1 1 0 1 
-state.S2 1 1 0 

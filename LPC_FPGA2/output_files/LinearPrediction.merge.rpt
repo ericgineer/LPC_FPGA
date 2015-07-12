@@ -1,0 +1,302 @@
+Partition Merge report for LinearPrediction
+Thu Jul  9 20:27:18 2015
+Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Partition Merge Summary
+  3. Partition Merge Netlist Types Used
+  4. Partition Merge Partition Statistics
+  5. Partition Merge Partition Pin Processing
+  6. Partition Merge Resource Usage Summary
+  7. Partition Merge RAM Summary
+  8. Partition Merge DSP Block Usage Summary
+  9. Partition Merge Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++------------------------------------------------------------------------------+
+; Partition Merge Summary                                                      ;
++---------------------------------+--------------------------------------------+
+; Partition Merge Status          ; Successful - Thu Jul  9 20:27:18 2015      ;
+; Quartus II 64-Bit Version       ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
+; Revision Name                   ; LinearPrediction                           ;
+; Top-level Entity Name           ; LinearPrediction                           ;
+; Family                          ; Cyclone V                                  ;
+; Logic utilization (in ALMs)     ; N/A                                        ;
+; Total registers                 ; 5925                                       ;
+; Total pins                      ; 1                                          ;
+; Total virtual pins              ; 0                                          ;
+; Total block memory bits         ; 262,656                                    ;
+; Total DSP Blocks                ; 10                                         ;
+; Total HSSI RX PCSs              ; 0                                          ;
+; Total HSSI PMA RX Deserializers ; 0                                          ;
+; Total HSSI TX PCSs              ; 0                                          ;
+; Total HSSI PMA TX Serializers   ; 0                                          ;
+; Total PLLs                      ; 0                                          ;
+; Total DLLs                      ; 0                                          ;
++---------------------------------+--------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Netlist Types Used                                                                                            ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+; Partition Name                 ; Partition Type ; Netlist Type Used ; Netlist Type Requested ; Partition Contents             ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+; Top                            ; User-created   ; Source File       ; Source File            ;                                ;
+; sld_hub:auto_hub               ; Auto-generated ; Post-Synthesis    ; Post-Synthesis         ; sld_hub:auto_hub               ;
+; hard_block:auto_generated_inst ; Auto-generated ; Source File       ; Source File            ; hard_block:auto_generated_inst ;
++--------------------------------+----------------+-------------------+------------------------+--------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Partition Merge Partition Statistics                                                                     ;
++---------------------------------------------+--------+------------------+--------------------------------+
+; Statistic                                   ; Top    ; sld_hub:auto_hub ; hard_block:auto_generated_inst ;
++---------------------------------------------+--------+------------------+--------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 7668   ; 55               ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; Combinational ALUT usage for logic          ; 13846  ; 95               ; 0                              ;
+;     -- 7 input functions                    ; 40     ; 1                ; 0                              ;
+;     -- 6 input functions                    ; 545    ; 12               ; 0                              ;
+;     -- 5 input functions                    ; 408    ; 19               ; 0                              ;
+;     -- 4 input functions                    ; 6099   ; 17               ; 0                              ;
+;     -- <=3 input functions                  ; 6754   ; 46               ; 0                              ;
+; Memory ALUT usage                           ; 0      ; 0                ; 0                              ;
+;     -- 64-address deep                      ; 0      ; 0                ; 0                              ;
+;     -- 32-address deep                      ; 0      ; 0                ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; Dedicated logic registers                   ; 5848   ; 77               ; 0                              ;
+;                                             ;        ;                  ;                                ;
+;                                             ;        ;                  ;                                ;
+; I/O pins                                    ; 1      ; 0                ; 0                              ;
+; I/O registers                               ; 0      ; 0                ; 0                              ;
+; Total block memory bits                     ; 262656 ; 0                ; 0                              ;
+; Total block memory implementation bits      ; 0      ; 0                ; 0                              ;
+; JTAG                                        ; 0      ; 0                ; 1                              ;
+; DSP block                                   ; 10     ; 0                ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; Connections                                 ;        ;                  ;                                ;
+;     -- Input Connections                    ; 451    ; 114              ; 1                              ;
+;     -- Registered Input Connections         ; 224    ; 86               ; 0                              ;
+;     -- Output Connections                   ; 5      ; 227              ; 334                            ;
+;     -- Registered Output Connections        ; 0      ; 226              ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; Internal Connections                        ;        ;                  ;                                ;
+;     -- Total Connections                    ; 82321  ; 808              ; 343                            ;
+;     -- Registered Connections               ; 40996  ; 636              ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; External Connections                        ;        ;                  ;                                ;
+;     -- Top                                  ; 0      ; 231              ; 225                            ;
+;     -- sld_hub:auto_hub                     ; 231    ; 0                ; 110                            ;
+;     -- hard_block:auto_generated_inst       ; 225    ; 110              ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; Partition Interface                         ;        ;                  ;                                ;
+;     -- Input Ports                          ; 29     ; 37               ; 4                              ;
+;     -- Output Ports                         ; 5      ; 55               ; 9                              ;
+;     -- Bidir Ports                          ; 0      ; 0                ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; Registered Ports                            ;        ;                  ;                                ;
+;     -- Registered Input Ports               ; 0      ; 3                ; 0                              ;
+;     -- Registered Output Ports              ; 0      ; 21               ; 0                              ;
+;                                             ;        ;                  ;                                ;
+; Port Connectivity                           ;        ;                  ;                                ;
+;     -- Input Ports driven by GND            ; 0      ; 4                ; 0                              ;
+;     -- Output Ports driven by GND           ; 0      ; 28               ; 0                              ;
+;     -- Input Ports driven by VCC            ; 0      ; 0                ; 0                              ;
+;     -- Output Ports driven by VCC           ; 0      ; 0                ; 0                              ;
+;     -- Input Ports with no Source           ; 0      ; 24               ; 0                              ;
+;     -- Output Ports with no Source          ; 0      ; 0                ; 0                              ;
+;     -- Input Ports with no Fanout           ; 0      ; 29               ; 0                              ;
+;     -- Output Ports with no Fanout          ; 0      ; 44               ; 0                              ;
++---------------------------------------------+--------+------------------+--------------------------------+
+Note: Resource usage numbers presented for Partitions containing post-synthesis logic are estimates.  For Partitions containing post-fit logic, resource usage numbers are accurate based on previous placement information.  Actual Fitter results may vary depending on current Fitter Preservation Level assignments.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge Partition Pin Processing                                                                                                                                                 ;
++-------------------------------------------------------------------------------------------------------------------------------------+-----------+---------------+----------+-------------+
+; Name                                                                                                                                ; Partition ; Type          ; Location ; Status      ;
++-------------------------------------------------------------------------------------------------------------------------------------+-----------+---------------+----------+-------------+
+; altera_reserved_tck                                                                                                                 ; Top       ; Input Port    ; n/a      ;             ;
+;     -- altera_reserved_tck                                                                                                          ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tck~input                                                                                                    ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; altera_reserved_tdi                                                                                                                 ; Top       ; Input Port    ; n/a      ;             ;
+;     -- altera_reserved_tdi                                                                                                          ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tdi~input                                                                                                    ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; altera_reserved_tdo                                                                                                                 ; Top       ; Output Port   ; n/a      ;             ;
+;     -- altera_reserved_tdo                                                                                                          ; Top       ; Output Pad    ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tdo~output                                                                                                   ; Top       ; Output Buffer ; Unplaced ; Synthesized ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; altera_reserved_tms                                                                                                                 ; Top       ; Input Port    ; n/a      ;             ;
+;     -- altera_reserved_tms                                                                                                          ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- altera_reserved_tms~input                                                                                                    ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; clk_clk                                                                                                                             ; Top       ; Input Port    ; n/a      ;             ;
+;     -- clk_clk                                                                                                                      ; Top       ; Input Pad     ; Unplaced ; Synthesized ;
+;     -- clk_clk~input                                                                                                                ; Top       ; Input Buffer  ; Unplaced ; Synthesized ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_clr             ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_ena             ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_ir_in_0_        ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_ir_in_1_        ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_ir_in_2_        ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_ir_out_0_       ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_ir_out_1_       ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_ir_out_2_       ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_cdr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_cir  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_e1dr ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_e1ir ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_e2dr ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_e2ir ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_pdr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_pir  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_rti  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_sdr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_sdrs ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_sir  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_sirs ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_tlr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_udr  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_jtag_state_uir  ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_raw_tck         ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_raw_tms         ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_tdi             ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_tdo             ; Top       ; Output Port   ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
+; jtag.bp.LPC_jtag_master_jtag_phy_embedded_in_jtag_master_node_sld_virtual_jtag_component_sld_virtual_jtag_impl_inst_usr1            ; Top       ; Input Port    ; n/a      ;             ;
+;                                                                                                                                     ;           ;               ;          ;             ;
++-------------------------------------------------------------------------------------------------------------------------------------+-----------+---------------+----------+-------------+
+
+
++-------------------------------------------------------------+
+; Partition Merge Resource Usage Summary                      ;
++---------------------------------------------+---------------+
+; Resource                                    ; Usage         ;
++---------------------------------------------+---------------+
+; Estimate of Logic utilization (ALMs needed) ; 7743          ;
+;                                             ;               ;
+; Combinational ALUT usage for logic          ; 13941         ;
+;     -- 7 input functions                    ; 41            ;
+;     -- 6 input functions                    ; 557           ;
+;     -- 5 input functions                    ; 427           ;
+;     -- 4 input functions                    ; 6116          ;
+;     -- <=3 input functions                  ; 6800          ;
+;                                             ;               ;
+; Dedicated logic registers                   ; 5925          ;
+;                                             ;               ;
+; I/O pins                                    ; 1             ;
+; Total MLAB memory bits                      ; 0             ;
+; Total block memory bits                     ; 262656        ;
+;                                             ;               ;
+; Total DSP Blocks                            ; 10            ;
+;                                             ;               ;
+; Maximum fan-out node                        ; clk_clk~input ;
+; Maximum fan-out                             ; 4401          ;
+; Total fan-out                               ; 79107         ;
+; Average fan-out                             ; 3.97          ;
++---------------------------------------------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Partition Merge RAM Summary                                                                                                                                                                                                                                       ;
++-----------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+--------------------------+
+; Name                                                                                                                                    ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF                      ;
++-----------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+--------------------------+
+; LPC_qsys:LPC|LPC_qsys_JTAG_master:jtag_master|altera_avalon_sc_fifo:fifo|altsyncram:mem_rtl_0|altsyncram_g0n1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 64           ; 8            ; 64           ; 8            ; 512    ; None                     ;
+; LPC_qsys:LPC|LPC_qsys_read_memory:read_memory|altsyncram:the_altsyncram|altsyncram_6d92:auto_generated|ALTSYNCRAM                       ; AUTO ; True Dual Port   ; 8192         ; 16           ; 8192         ; 16           ; 131072 ; LPC_qsys_read_memory.hex ;
+; LPC_qsys:LPC|LPC_qsys_sink_ram:sink_ram|altsyncram:the_altsyncram|altsyncram_6392:auto_generated|ALTSYNCRAM                             ; AUTO ; True Dual Port   ; 8192         ; 16           ; 8192         ; 16           ; 131072 ; LPC_qsys_sink_ram.hex    ;
++-----------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+--------------------------+
+
+
++---------------------------------------------+
+; Partition Merge DSP Block Usage Summary     ;
++-------------------------------+-------------+
+; Statistic                     ; Number Used ;
++-------------------------------+-------------+
+; Independent 18x18             ; 10          ;
+; Total number of DSP blocks    ; 10          ;
+;                               ;             ;
+; Fixed Point Signed Multiplier ; 10          ;
++-------------------------------+-------------+
+
+
++--------------------------+
+; Partition Merge Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Partition Merge
+    Info: Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
+    Info: Processing started: Thu Jul  9 20:27:13 2015
+Info: Command: quartus_cdb --read_settings_files=off --write_settings_files=off top_LPC_FPGA -c LinearPrediction --merge=on
+Info (35007): Using synthesis netlist for partition "Top"
+Info (35007): Using synthesis netlist for partition "sld_hub:auto_hub"
+Info (35002): Resolved and merged 2 partition(s)
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 9 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 16877 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 1 output pins
+    Info (21061): Implemented 16821 logic cells
+    Info (21064): Implemented 40 RAM segments
+    Info (21062): Implemented 10 DSP elements
+Info: Quartus II 64-Bit Partition Merge was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 1319 megabytes
+    Info: Processing ended: Thu Jul  9 20:27:19 2015
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:06
+
+

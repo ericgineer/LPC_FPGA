@@ -9,7 +9,7 @@ module ddr3_mem_sim(output reg signed [15:0] ddr_readdata,
 					input wire signed [15:0] ddr_writedata,
 					input wire 				 clk);
 					
-		reg signed [15:0] mem[0:255];
+		reg signed [15:0] mem[0:512];
 					
 		always @(posedge clk)
 		begin

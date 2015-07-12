@@ -5,6 +5,7 @@
 `timescale 1 ps / 1 ps
 module LPC_qsys (
 		input  wire        clk_clk,                      //                 clk.clk
+		output wire        lpc_clk_clk,                  //             lpc_clk.clk
 		input  wire        lpcdec_v,                     //              lpcdec.v
 		input  wire        lpcdec_voiced,                //                    .voiced
 		input  wire [15:0] lpcdec_pulserate,             //                    .pulserate
@@ -22,7 +23,7 @@ module LPC_qsys (
 		input  wire [15:0] lpcdec_a10,                   //                    .a10
 		output wire [15:0] lpcdec_synth,                 //                    .synth
 		output wire        lpcdec_vout,                  //                    .vout
-		input  wire        lpcdec_reset,                 //                    .reset
+		input  wire        lpcdec_rst,                   //                    .rst
 		input  wire        lpcenc_v,                     //              lpcenc.v
 		output wire        lpcenc_voiced,                //                    .voiced
 		output wire [15:0] lpcenc_a0,                    //                    .a0
@@ -40,7 +41,7 @@ module LPC_qsys (
 		input  wire [15:0] lpcenc_x,                     //                    .x
 		input  wire        lpcenc_d_clk,                 //                    .d_clk
 		output wire [15:0] lpcenc_freq_count,            //                    .freq_count
-		input  wire        lpcenc_reset,                 //                    .reset
+		input  wire        lpcenc_rst,                   //                    .rst
 		output wire [15:0] read_master_stream_d_out,     //  read_master_stream.d_out
 		output wire        read_master_stream_d_clk,     //                    .d_clk
 		output wire        read_master_stream_vout,      //                    .vout
@@ -50,7 +51,7 @@ module LPC_qsys (
 		input  wire        write_master_stream_d_in_clk  //                    .d_in_clk
 	);
 
-	wire         jtag_master_master_reset_reset;                                  // JTAG_master:master_reset_reset -> [JTAG_master:clk_reset_reset, rst_controller:reset_in0]
+	wire         jtag_master_master_reset_reset;                                  // JTAG_master:master_reset_reset -> [JTAG_master:clk_reset_reset, pll_0:rst, rst_controller:reset_in0]
 	wire         ddr3_write_master_ddr3_avalon_master_waitrequest;                // mm_interconnect_0:ddr3_write_master_ddr3_avalon_master_waitrequest -> ddr3_write_master:ddr_waitrequest
 	wire  [15:0] ddr3_write_master_ddr3_avalon_master_address;                    // ddr3_write_master:ddr_addr -> mm_interconnect_0:ddr3_write_master_ddr3_avalon_master_address
 	wire         ddr3_write_master_ddr3_avalon_master_write;                      // ddr3_write_master:ddr_write -> mm_interconnect_0:ddr3_write_master_ddr3_avalon_master_write
@@ -83,7 +84,7 @@ module LPC_qsys (
 	wire         jtag_master_master_write;                                        // JTAG_master:master_write -> mm_interconnect_2:JTAG_master_master_write
 	wire  [31:0] jtag_master_master_writedata;                                    // JTAG_master:master_writedata -> mm_interconnect_2:JTAG_master_master_writedata
 	wire  [15:0] mm_interconnect_2_lpcenc_0_avalon_control_slave_readdata;        // LPCenc_0:readdata -> mm_interconnect_2:LPCenc_0_avalon_control_slave_readdata
-	wire   [1:0] mm_interconnect_2_lpcenc_0_avalon_control_slave_address;         // mm_interconnect_2:LPCenc_0_avalon_control_slave_address -> LPCenc_0:address
+	wire   [3:0] mm_interconnect_2_lpcenc_0_avalon_control_slave_address;         // mm_interconnect_2:LPCenc_0_avalon_control_slave_address -> LPCenc_0:address
 	wire         mm_interconnect_2_lpcenc_0_avalon_control_slave_read;            // mm_interconnect_2:LPCenc_0_avalon_control_slave_read -> LPCenc_0:read
 	wire         mm_interconnect_2_lpcenc_0_avalon_control_slave_write;           // mm_interconnect_2:LPCenc_0_avalon_control_slave_write -> LPCenc_0:write
 	wire  [15:0] mm_interconnect_2_lpcenc_0_avalon_control_slave_writedata;       // mm_interconnect_2:LPCenc_0_avalon_control_slave_writedata -> LPCenc_0:writedata
@@ -152,7 +153,7 @@ module LPC_qsys (
 		.A10       (lpcdec_a10),                     //           .a10
 		.synth     (lpcdec_synth),                   //           .synth
 		.vout      (lpcdec_vout),                    //           .vout
-		.rst       (lpcdec_reset)                    //           .reset
+		.rst       (lpcdec_rst)                      //           .rst
 	);
 
 	LPCenc #(
@@ -187,7 +188,7 @@ module LPC_qsys (
 		.x          (lpcenc_x),                                                  //                     .x
 		.d_clk      (lpcenc_d_clk),                                              //                     .d_clk
 		.freq_count (lpcenc_freq_count),                                         //                     .freq_count
-		.rst        (lpcenc_reset)                                               //                     .reset
+		.rst        (lpcenc_rst)                                                 //                     .rst
 	);
 
 	read_master #(
@@ -238,6 +239,13 @@ module LPC_qsys (
 		.write           (mm_interconnect_2_ddr3_write_master_avalon_mm_control_write),     //                   .write
 		.writedata       (mm_interconnect_2_ddr3_write_master_avalon_mm_control_writedata), //                   .writedata
 		.readdata        (mm_interconnect_2_ddr3_write_master_avalon_mm_control_readdata)   //                   .readdata
+	);
+
+	LPC_qsys_pll_0 pll_0 (
+		.refclk   (clk_clk),                        //  refclk.clk
+		.rst      (jtag_master_master_reset_reset), //   reset.reset
+		.outclk_0 (lpc_clk_clk),                    // outclk0.clk
+		.locked   ()                                //  locked.export
 	);
 
 	LPC_qsys_read_memory read_memory (
